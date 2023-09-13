@@ -5,11 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: darkcyan ;
+  background-color: #c8c8e3;
   color: aquamarine;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.logo {
+  color: #61617d;
+  text-shadow: 2px 2px 2px;
+  text-align: left;
+  margin: 20px;
+  padding-left: 30px;
 }
