@@ -1,17 +1,16 @@
 import './App.css';
 import Logo from "./logo";
 import Activity from "./activity/Activity";
-import Menu from "./menu/Menu";
+import Menu from "./structure/menu/Menu";
+import TopBar from "./structure/topBar";
+import Content from "./structure/Content";
 
 function App() {
   return (
     <div className="App">
-        <Logo />
+        <TopBar />
         <Menu />
-        <Activity name="Activity1" time="300" />
-        <Activity name="Activity2" time="300" />
-        <Activity name="Activity3" time="300" />
-        <Activity name="Activity4" time="300" />
+        <Content />
     </div>
   );
 }

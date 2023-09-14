@@ -1,4 +1,4 @@
-import '../css/menu.css';
+import '../../css/menu.css';
 import MenuElement from "./MenuElement";
 function Menu() {
     return (
