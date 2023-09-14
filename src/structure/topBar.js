@@ -1,5 +1,5 @@
 import Logo from "../logo";
 
-const TopBar = () => <div className="top-bar"> <Logo /> </div>
+const TopBar = () => <div id="top-bar"> <Logo /> </div>
 
 export default TopBar;

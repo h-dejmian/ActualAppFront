@@ -1,12 +1,13 @@
-import Activity from "../activity/Activity";
+import Activities from "./Activities";
+import Calendar from "./Calendar";
+import '../css/content.css';
+
 
 function Content() {
     return (
         <div className="content">
-            <Activity name="Activity1" time="300" />
-            <Activity name="Activity2" time="300" />
-            <Activity name="Activity3" time="300" />
-            <Activity name="Activity4" time="300" />
+            <Activities />
+            <Calendar />
         </div>
     )
 }

@@ -1,0 +1,16 @@
+.content {
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.activities {
+    border: 1px solid black;
+    color: #282c34;
+}
+
+.calendar {
+    border: 1px solid black;
+    color: #282c34;
+}
