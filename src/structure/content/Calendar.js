@@ -1,4 +1,4 @@
-import '../css/content.css';
+import '../../css/content.css';
 
 function Calendar() {
     return (

@@ -1,6 +1,6 @@
 import Activities from "./Activities";
 import Calendar from "./Calendar";
-import '../css/content.css';
+import '../../css/content.css';
 
 
 function Content() {
