@@ -26,7 +26,7 @@ function Activities() {
         // </div>
 
         <div className="activities">
-            <h3>Aktywności</h3>
+            <h3>Activities</h3>
             {data.map((activity, index) => <Activity key={index} name={activity.description} time={activity.timeSpentInMinutes} />)}
         </div>
     )
