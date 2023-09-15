@@ -1,3 +1,6 @@
-const ActivityDescription = (props) => <h3> {props.name + "  :  " + props.time + " minutes"}</h3>;
+import DeleteActivityButton from "./DeleteActivityButton";
 
-export  default ActivityDescription;
+
+const ActivityDescription = (props) => <h3> {props.name + "  :  " + props.time + " minutes"} <DeleteActivityButton id={props.id} /> </h3>;
+
+export default ActivityDescription;
