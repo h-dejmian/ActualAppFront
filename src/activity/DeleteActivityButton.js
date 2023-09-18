@@ -9,8 +9,6 @@ function DeleteActivityButton(props) {
         props.removeActivity(props.id);
     }, [props])
 
-
-
     return (
         <button type="button" onClick={fetchDelete}> X </button>
     )
