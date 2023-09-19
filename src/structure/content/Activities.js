@@ -4,13 +4,16 @@ import React, {Component} from 'react'
 import ModalForm from "../../modalForm";
 
 class Activities extends Component {
-    // const [data, setData] = useState([])
-
     constructor() {
         super()
 
         this.state = {
-            data: []
+            data: [],
+            // description: "",
+            // timeSpentInMinutes: 0,
+            // date: "",
+            // completed: false,
+            // categoryName: ""
         }
     }
 
@@ -18,31 +21,12 @@ class Activities extends Component {
         this.fetchData()
     }
 
-    // useEffect( () => {
-    //
-    //     async function fetchData() {
-    //             const response = await fetch("http://localhost:8080/api/v1/activities");
-    //             const data = await response.json();
-    //             setData(data);
-    //         }
-    //     fetchData()
-    //     }, []
-    // )
-
     render() {
-        // <div className="activities">
-        //     <h3>Activities</h3>
-        //     <Activity name="Activity1" time="300" />
-        //     <Activity name="Activity2" time="20" />
-        //     <Activity name="Activity3" time="100" />
-        //     <Activity name="Activity4" time="80" />
-        // </div>
-
         return (
             <div className="activities">
 
                 <h3>Activities</h3>
-                <ModalForm />
+                <ModalForm handleSubmitForm={this.handleSubmitForm} />
                 {this.state.data.map((activity, index) => <Activity key={index}
                                                                     name={activity.description}
                                                                     time={activity.timeSpentInMinutes}
@@ -64,9 +48,11 @@ class Activities extends Component {
         this.setState({data: data});
     }
 
-    showModalForm() {
+    addActivity(activity) {
 
     }
+
+
 }
 
 export default Activities;
