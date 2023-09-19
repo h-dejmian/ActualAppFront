@@ -10,7 +10,7 @@ function DeleteActivityButton(props) {
     }, [props])
 
     return (
-        <button type="button" onClick={fetchDelete}> X </button>
+        <a href="" onClick={fetchDelete}> X </a>
     )
 }
 

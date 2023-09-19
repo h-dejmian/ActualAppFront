@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 const customStyles = {
     content: {
         top: '50%',
-        left: '50%',
+        left: '35%',
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
@@ -20,23 +20,23 @@ function ModalForm() {
 
     return (
         <div>
-            <button onClick={handleOpen}>Open Modal</button>
+            <button onClick={handleOpen}>Create New Activity</button>
             <Modal
                 isOpen={isOpen}
                 style={customStyles}
                 onRequestClose={handleClose}
-                contentLabel="Example Modal"
+                contentLabel="Create New Activity"
             >
                 <h2>New Activity</h2>
                 <hr/>
                 <br/>
-                    <form>
+                    <form action="" method="POST">
                         <label>Description</label>
-                        <input typr="text"/><br/><br/>
+                        <input type="text"/><br/><br/>
                         <label>Time spent in minutes</label>
-                        <input typr="text"/> <br/><br/>
+                        <input type="text"/> <br/><br/>
                         <label>Category</label>
-                        <input typr="text"/><br/><br/>
+                        <input type="text"/><br/><br/>
                         <button type="submit">Submit</button>
                         <button onClick={handleClose}>Close</button>
                     </form>
