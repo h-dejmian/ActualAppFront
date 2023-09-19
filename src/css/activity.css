@@ -12,3 +12,13 @@
 .activity-desc {
 
 }
+
+#removeActivity{
+    border: 1px solid black;
+    padding: 2px;
+}
+
+#removeActivity:hover {
+    cursor: pointer;
+    background-color: #61dafb;
+}

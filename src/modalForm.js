@@ -25,7 +25,7 @@ function ModalForm(props) {
 
     return (
         <div>
-            <button onClick={handleOpen}>Create New Activity</button>
+            <button onClick={handleOpen}>Add New Activity</button>
             <Modal
                 isOpen={isOpen}
                 style={customStyles}
@@ -69,7 +69,9 @@ function ModalForm(props) {
         }
         );
 
-        let resJson = await res.json();
+        let activityJson = await res.json();
+        props.addActivity(activityJson)
+
         setIsOpen(false);
     }
 

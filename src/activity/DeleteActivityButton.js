@@ -1,5 +1,5 @@
-import {useCallback, useEffect} from "react";
-import {Link, Route, Routes} from "react-router-dom";
+import {useCallback} from "react";
+import '../css/activity.css'
 
 
 function DeleteActivityButton(props) {
@@ -10,7 +10,7 @@ function DeleteActivityButton(props) {
     }, [props])
 
     return (
-        <a href="" onClick={fetchDelete}> X </a>
+        <a id="removeActivity" onClick={fetchDelete}> X </a>
     )
 }
 

@@ -8,7 +8,7 @@ class Activities extends Component {
         super()
 
         this.state = {
-            data: [],
+            data: []
             // description: "",
             // timeSpentInMinutes: 0,
             // date: "",
@@ -26,7 +26,7 @@ class Activities extends Component {
             <div className="activities">
 
                 <h3>Activities</h3>
-                <ModalForm handleSubmitForm={this.handleSubmitForm} />
+                <ModalForm handleSubmitForm={this.handleSubmitForm} addActivity={this.addActivity.bind(this)} />
                 {this.state.data.map((activity, index) => <Activity key={index}
                                                                     name={activity.description}
                                                                     time={activity.timeSpentInMinutes}
@@ -44,12 +44,14 @@ class Activities extends Component {
     }
 
     removeActivity(id) {
-        const data = this.state.data.filter((activity) => activity.id !== id)
+        const data = this.state.data.filter((activity) => activity.id !== id);
         this.setState({data: data});
     }
 
     addActivity(activity) {
-
+        this.setState(current => ({
+            data : [...current.data, activity ]
+        }))
     }
 
 
