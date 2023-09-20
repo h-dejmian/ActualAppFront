@@ -14,14 +14,6 @@ code {
     monospace;
 }
 
-.logo {
-  color: #61617d;
-  text-shadow: 2px 2px 2px;
-  text-align: left;
-  margin: 20px;
-  padding-left: 30px;
-}
-
 input {
   display: block;
   width: 20rem;
@@ -38,6 +30,7 @@ button {
   font-size: 1.2em;
   border-radius: 0.2rem;
   cursor: pointer;
+  box-shadow: 1px 1px 3px black;
 }
 button:hover {
   background-color: #c5c5c5;
