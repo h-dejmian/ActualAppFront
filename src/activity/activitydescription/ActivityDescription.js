@@ -1,7 +1,7 @@
 import DeleteActivityButton from "./DeleteActivityButton";
 import ActivityName from "./ActivityName";
 import ActivityTime from "./ActivityTime";
-import '../css/activity.css'
+import '../../css/activity.css'
 
 
 const ActivityDescription = (props) => <h3 className="activity-desc">

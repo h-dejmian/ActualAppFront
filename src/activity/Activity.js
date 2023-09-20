@@ -1,5 +1,5 @@
 import '../css/activity.css';
-import ActivityDescription from "./ActivityDescription";
+import ActivityDescription from "./activitydescription/ActivityDescription";
 
 function Activity(props) {
     return <div className="activity">

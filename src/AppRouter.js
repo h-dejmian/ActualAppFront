@@ -1,4 +1,4 @@
-import DeleteActivityButton from "./activity/DeleteActivityButton";
+import DeleteActivityButton from "./activity/activitydescription/DeleteActivityButton";
 import {Route, Router, Routes} from "react-router-dom";
 
 const AppRouter = () => (

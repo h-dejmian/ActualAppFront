@@ -1,4 +1,4 @@
-import '../css/top-bar.css'
+import '../../css/top-bar.css'
 import Logo from "./logo";
 import Clock from "./Clock";
 
