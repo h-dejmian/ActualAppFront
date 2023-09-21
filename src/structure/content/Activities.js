@@ -9,11 +9,6 @@ class Activities extends Component {
 
         this.state = {
             data: []
-            // description: "",
-            // timeSpentInMinutes: 0,
-            // date: "",
-            // completed: false,
-            // categoryName: ""
         }
     }
 
