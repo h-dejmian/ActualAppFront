@@ -1,5 +1,5 @@
 import Activities from "./Activities";
-import Calendar from "./Calendar";
+import MyCalendar from "./MyCalendar";
 import '../../css/content.css';
 
 
@@ -7,7 +7,7 @@ function Content() {
     return (
         <div className="content">
             <Activities />
-            <Calendar />
+            <MyCalendar />
         </div>
     )
 }

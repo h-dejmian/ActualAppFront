@@ -3,8 +3,8 @@ import {useState} from "react";
 
 
 function Clock() {
-    let time = new Date().toLocaleString();
-    const [currentTime, setCurrentTime] = useState(time);
+    let dateAndTime = new Date().toLocaleString();
+    const [currentTime, setCurrentTime] = useState(dateAndTime);
 
     const updateTime = () => {
         setCurrentTime(new Date().toLocaleTimeString())
@@ -12,7 +12,7 @@ function Clock() {
 
     setInterval(updateTime);
 
-    return <h2 id="clock"> Today is : {time} </h2>
+    return <h2 id="clock"> {dateAndTime} </h2>
 }
 
 export default Clock
