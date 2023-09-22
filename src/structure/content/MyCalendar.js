@@ -3,11 +3,12 @@ import {useState} from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
 
-function MyCalendar() {
+function MyCalendar(props) {
     const [date, setDate] = useState(moment(new Date).format("yyyy-MM-DD"));
 
     const onChange = (selectedDate) => {
         setDate(moment(selectedDate).format("yyyy-MM-DD"));
+        props.fetchActivitiesByDate(date);
     }
 
     return (

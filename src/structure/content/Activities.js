@@ -2,18 +2,19 @@ import Activity from "../../activity/Activity";
 import '../../css/content.css';
 import React, {Component} from 'react'
 import ModalForm from "../../modalForm";
+import moment from "moment/moment";
 
 class Activities extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
-        this.state = {
-            data: []
-        }
+        // this.state = {
+        //     data: []
+        // }
     }
 
     componentDidMount() {
-        this.fetchData()
+        // this.fetchData()
     }
 
     render() {
@@ -21,8 +22,8 @@ class Activities extends Component {
             <div className="activities">
 
                 <h3>Activities</h3>
-                <ModalForm handleSubmitForm={this.handleSubmitForm} addActivity={this.addActivity.bind(this)} />
-                {this.state.data.map((activity, index) => <Activity key={index}
+                <ModalForm handleSubmitForm={this.handleSubmitForm} addActivity={this.addActivity.bind(this)} date={moment(new Date).format("yyyy-MM-DD")} />
+                {this.props.activities.map((activity, index) => <Activity key={index}
                                                                     name={activity.description}
                                                                     time={activity.timeSpentInMinutes}
                                                                     id={activity.id}
@@ -32,11 +33,11 @@ class Activities extends Component {
         )
     }
 
-    async fetchData() {
-        const response = await fetch("http://localhost:8080/api/v1/activities");
-        const data = await response.json();
-        this.setState({data: data});
-    }
+    // async fetchData() {
+    //     const response = await fetch("http://localhost:8080/api/v1/activities");
+    //     const data = await response.json();
+    //     this.setState({data: data});
+    // }
 
     removeActivity(id) {
         const data = this.state.data.filter((activity) => activity.id !== id);
@@ -44,9 +45,10 @@ class Activities extends Component {
     }
 
     addActivity(activity) {
-        this.setState(current => ({
-            data : [...current.data, activity ]
-        }))
+        // this.setState(current => ({
+        //     data : [...current.data, activity ]
+        // }))
+        this.props.activities.push(activity)
     }
 
 

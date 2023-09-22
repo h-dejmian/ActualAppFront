@@ -62,7 +62,7 @@ function ModalForm(props) {
             body: JSON.stringify({
                 description: description,
                 timeSpentInMinutes: timeSpentInMinutes,
-                date : "2023-09-09",
+                date : props.date,
                 completed: completed,
                 categoryName: categoryName
             })
