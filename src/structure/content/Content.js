@@ -21,6 +21,18 @@ class Content extends Component {
         this.setState({activities: activities});
     }
 
+    removeActivity(id) {
+        let activities = this.state.activities.filter((activity) => activity.id !== id);
+        this.setState({activities: activities});
+    }
+
+    addActivity(activity) {
+        this.setState(current => ({
+            activities : [...current.activities, activity ]
+        }))
+        // this.state.activities.push(activity)
+    }
+
     componentDidMount() {
         this.fetchActivitiesByDate(moment(new Date).format("yyyy-MM-DD"))
     }
@@ -28,7 +40,9 @@ class Content extends Component {
     render () {
         return (
             <div className="content">
-                <Activities activities={this.state.activities} />
+                <Activities activities={this.state.activities}
+                            addActivity={this.addActivity.bind(this)}
+                            removeActivity={this.removeActivity.bind(this)} />
                 <MyCalendar fetchActivitiesByDate={this.fetchActivitiesByDate.bind(this)}/>
             </div>
         )

@@ -22,12 +22,12 @@ class Activities extends Component {
             <div className="activities">
 
                 <h3>Activities</h3>
-                <ModalForm handleSubmitForm={this.handleSubmitForm} addActivity={this.addActivity.bind(this)} date={moment(new Date).format("yyyy-MM-DD")} />
+                <ModalForm handleSubmitForm={this.handleSubmitForm} addActivity={this.props.addActivity} date={moment(new Date).format("yyyy-MM-DD")} />
                 {this.props.activities.map((activity, index) => <Activity key={index}
                                                                     name={activity.description}
                                                                     time={activity.timeSpentInMinutes}
                                                                     id={activity.id}
-                                                                    removeActivity={this.removeActivity.bind(this)}/>
+                                                                    removeActivity={this.props.removeActivity}/>
                 )}
             </div>
         )
@@ -39,17 +39,17 @@ class Activities extends Component {
     //     this.setState({data: data});
     // }
 
-    removeActivity(id) {
-        const data = this.state.data.filter((activity) => activity.id !== id);
-        this.setState({data: data});
-    }
-
-    addActivity(activity) {
-        // this.setState(current => ({
-        //     data : [...current.data, activity ]
-        // }))
-        this.props.activities.push(activity)
-    }
+    // removeActivity(id) {
+    //     this.props.activities.filter((activity) => activity.id !== id);
+    //     // this.setState({data: data});
+    // }
+    //
+    // addActivity(activity) {
+    //     // this.setState(current => ({
+    //     //     data : [...current.data, activity ]
+    //     // }))
+    //     this.props.activities.push(activity)
+    // }
 
 
 }
