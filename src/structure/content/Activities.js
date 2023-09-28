@@ -27,31 +27,12 @@ class Activities extends Component {
                                                                     name={activity.description}
                                                                     time={activity.timeSpentInMinutes}
                                                                     id={activity.id}
-                                                                    removeActivity={this.props.removeActivity}/>
+                                                                    removeActivity={this.props.removeActivity}
+                                                                    updateActivity={this.props.updateActivity}/>
                 )}
             </div>
         )
     }
-
-    // async fetchData() {
-    //     const response = await fetch("http://localhost:8080/api/v1/activities");
-    //     const data = await response.json();
-    //     this.setState({data: data});
-    // }
-
-    // removeActivity(id) {
-    //     this.props.activities.filter((activity) => activity.id !== id);
-    //     // this.setState({data: data});
-    // }
-    //
-    // addActivity(activity) {
-    //     // this.setState(current => ({
-    //     //     data : [...current.data, activity ]
-    //     // }))
-    //     this.props.activities.push(activity)
-    // }
-
-
 }
 
 export default Activities;

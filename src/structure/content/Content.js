@@ -30,7 +30,10 @@ class Content extends Component {
         this.setState(current => ({
             activities : [...current.activities, activity ]
         }))
-        // this.state.activities.push(activity)
+    }
+
+    updateActivity(id, activity) {
+        let activityToUpdate = this.state.activities.filter((a) => a.id !== id);
     }
 
     componentDidMount() {
@@ -42,7 +45,8 @@ class Content extends Component {
             <div className="content">
                 <Activities activities={this.state.activities}
                             addActivity={this.addActivity.bind(this)}
-                            removeActivity={this.removeActivity.bind(this)} />
+                            removeActivity={this.removeActivity.bind(this)}
+                            updateActivity={this.updateActivity.bind(this)}/>
                 <MyCalendar fetchActivitiesByDate={this.fetchActivitiesByDate.bind(this)}/>
             </div>
         )
