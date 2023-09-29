@@ -13,7 +13,7 @@ const customStyles = {
     },
 };
 
-function ModalForm(props) {
+function AddActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [description, setDescription] = useState("");
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(0);
@@ -73,8 +73,16 @@ function ModalForm(props) {
         props.addActivity(activityJson)
 
         setIsOpen(false);
+        resetState();
     }
 
+    function resetState() {
+        setDescription("");
+        setCategoryName("");
+        setTimeSpentInMinutes(0);
+    }
 }
 
-export default ModalForm;
+
+
+export default AddActivityModal;

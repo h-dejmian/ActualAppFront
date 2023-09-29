@@ -2,14 +2,14 @@ import DeleteActivityButton from "./DeleteActivityButton";
 import ActivityName from "./ActivityName";
 import ActivityTime from "./ActivityTime";
 import '../../css/activity.css'
-import UpdateActivityButton from "./UpdateActivityButton";
+import UpdateActivityModal from "../../modals/UpdateActivityModal";
 
 
 const ActivityDescription = (props) => <h3 className="activity-desc">
-    <ActivityName name={props.name} /> : <ActivityTime time={props.time}/>
+    <ActivityName description={props.description} /> : <ActivityTime time={props.time}/>
 
     <DeleteActivityButton id={props.id} removeActivity = {props.removeActivity} />
-    <UpdateActivityButton id={props.id} updateActivity = {props.updateActivity} />
+    <UpdateActivityModal id={props.id} description={props.description} time={props.time} updateActivity = {props.updateActivity} />
 </h3>;
 
 export default ActivityDescription;

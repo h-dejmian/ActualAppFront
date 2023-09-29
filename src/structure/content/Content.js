@@ -3,6 +3,7 @@ import MyCalendar from "./MyCalendar";
 import '../../css/content.css';
 import {Component} from "react";
 import moment from "moment";
+import {remove} from "react-modal/lib/helpers/classList";
 
 
 class Content extends Component {
@@ -33,7 +34,10 @@ class Content extends Component {
     }
 
     updateActivity(id, activity) {
-        let activityToUpdate = this.state.activities.filter((a) => a.id !== id);
+        this.removeActivity(id);
+        this.setState(current => ({
+            activities : [...current.activities, activity ]
+        }))
     }
 
     componentDidMount() {
