@@ -24,25 +24,17 @@ class Activities extends Component {
                     <th>Time spent</th>
                     <th>Category</th>
                     <th>Completed</th>
-                    <th>Update</th>
                     <th>Delete</th>
+                    <th>Update</th>
                     {this.props.activities.map((activity, index) =>  <Activity key={index}
-                                                                              description={activity.description}
-                                                                              time={activity.timeSpentInMinutes}
-                                                                               category = {activity.category}
+                                                                               id={activity.id}
+                                                                               description={activity.description}
+                                                                               time={activity.timeSpentInMinutes}
                                                                                completed = {activity.completed}
-                                                                              id={activity.id}
-                                                                              removeActivity={this.props.removeActivity}
-                                                                              updateActivity={this.props.updateActivity}/> )}
+                                                                               category = {activity.category}
+                                                                               removeActivity={this.props.removeActivity}
+                                                                               updateActivity={this.props.updateActivity}/> )}
                 </table>
-
-                {/*{this.props.activities.map((activity, index) => <Activity key={index}*/}
-                {/*                                                          description={activity.description}*/}
-                {/*                                                          time={activity.timeSpentInMinutes}*/}
-                {/*                                                        id={activity.id}*/}
-                {/*                                                        removeActivity={this.props.removeActivity}*/}
-                {/*                                                        updateActivity={this.props.updateActivity}/>*/}
-                {/*)}*/}
             </div>
         )
     }
