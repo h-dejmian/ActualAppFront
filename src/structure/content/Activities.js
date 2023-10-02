@@ -34,7 +34,7 @@ class Activities extends Component {
                                                                                        description={activity.description}
                                                                                        time={activity.timeSpentInMinutes}
                                                                                        completed = {activity.completed}
-                                                                                       category = {activity.category}
+                                                                                       categoryName = {activity.categoryName}
                                                                                        removeActivity={this.props.removeActivity}
                                                                                        updateActivity={this.props.updateActivity}/> )}
                     </tbody>

@@ -23,7 +23,7 @@ function Activity(props) {
         <tr className="activity">
             <td>{props.description}</td>
             <td>{props.time}</td>
-            <td>{props.category}</td>
+            <td>{props.categoryName}</td>
             <td> <input type="checkbox" id="is-completed-checkbox"  checked={completed}
                                                                     onChange={handleCheckboxChange} /></td>
 
@@ -31,7 +31,7 @@ function Activity(props) {
             <td><UpdateActivityModal id={props.id}
                                      description={props.description}
                                      time={props.time}
-                                     category={props.category}
+                                     categoryName={props.categoryName}
                                      updateActivity = {props.updateActivity} /></td>
         </tr>
     )
