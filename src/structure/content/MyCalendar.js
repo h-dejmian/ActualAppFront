@@ -1,6 +1,7 @@
 import '../../css/content.css';
 import {useState} from "react";
 import Calendar from "react-calendar";
+import '../../css/calendar.css';
 import moment from "moment";
 
 

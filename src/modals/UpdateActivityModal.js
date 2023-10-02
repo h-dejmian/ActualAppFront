@@ -28,6 +28,7 @@ function UpdateActivityModal(props) {
         <div>
             <a id={"updateActivity"} onClick={handleOpen}>Update</a>
             <Modal
+                ariaHideApp={false}
                 isOpen={isOpen}
                 style={customStyles}
                 onRequestClose={handleClose}
@@ -74,6 +75,14 @@ function UpdateActivityModal(props) {
         props.updateActivity(props.id, activityJson)
 
         setIsOpen(false);
+        resetState();
+    }
+
+    function resetState() {
+        setDescription("");
+        setCategoryName("");
+        setTimeSpentInMinutes(0);
+        setCategoryName("")
     }
 
 }

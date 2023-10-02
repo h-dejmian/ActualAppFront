@@ -36,6 +36,7 @@ function AddActivityModal(props) {
             <button onClick={handleOpen}>Add New Activity</button>
             <Modal
                 isOpen={isOpen}
+                ariaHideApp={false}
                 style={customStyles}
                 onRequestClose={handleClose}
                 contentLabel="Create New Activity"
@@ -51,10 +52,9 @@ function AddActivityModal(props) {
                         <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
                         <label htmlFor="categories">Choose category from the list :   </label>
-
                         <select name="categories" id="categories-dropdown">
                             <option disabled selected value> -- select an option -- </option>
-                            {categories.map(category => (<option value={category.name}>{category.name}</option>))}
+                            {categories.map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
                         </select>
 
                         <br/><br/>
