@@ -2,16 +2,37 @@ import '../css/activity.css';
 import ActivityDescription from "./activitydescription/ActivityDescription";
 import DeleteActivityButton from "./activitydescription/DeleteActivityButton";
 import UpdateActivityModal from "../modals/UpdateActivityModal";
+import {useState} from "react";
 
 function Activity(props) {
+    const [completed, setCompleted] = useState(props.completed);
+
+    async function handleCheckboxChange() {
+        setCompleted(!completed)
+
+        await fetch(`http://localhost:8080/api/v1/activities/${props.id}`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+    }
+
     return (
         <tr className="activity">
             <td>{props.description}</td>
             <td>{props.time}</td>
             <td>{props.category}</td>
-            <td>{props.completed.toString()}</td>
+            <td> <input type="checkbox" id="is-completed-checkbox"  checked={completed}
+                                                                    onChange={handleCheckboxChange} /></td>
+
             <td><DeleteActivityButton id={props.id} removeActivity = {props.removeActivity} /></td>
-            <td><UpdateActivityModal id={props.id} description={props.description} time={props.time} updateActivity = {props.updateActivity} /></td>
+            <td><UpdateActivityModal id={props.id}
+                                     description={props.description}
+                                     time={props.time}
+                                     category={props.category}
+                                     updateActivity = {props.updateActivity} /></td>
         </tr>
     )
 }

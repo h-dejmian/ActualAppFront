@@ -20,7 +20,7 @@ function UpdateActivityModal(props) {
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(props.time);
     const [date, setDate] = useState("");
     const [completed, setCompleted] = useState(false);
-    const [categoryName, setCategoryName] = useState("");
+    const [categoryName, setCategoryName] = useState(props.category);
     const handleOpen = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
 
@@ -44,7 +44,7 @@ function UpdateActivityModal(props) {
                     <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
                     <label>Category</label>
-                    <input type="text" value={categoryName} onChange={(e) => setCategoryName(e.target.value)} /><br/>
+                    <input type="text" value={categoryName} onChange={(e) => setCategoryName(e.target.value)}/> <br/>
 
                     <button type="submit">Submit</button>
                     <button onClick={handleClose}>Close</button>

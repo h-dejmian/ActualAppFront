@@ -42,6 +42,17 @@ function AddActivityModal(props) {
                         <label>Time spent in minutes</label>
                         <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
+                        <label htmlFor="categories">Choose category :   </label>
+
+                        <select name="categories" id="categories-dropdown">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+
+                        <br/><br/>
+
                         <label>Category</label>
                         <input type="text" value={categoryName} placeholder={"Category"} onChange={(e) => setCategoryName(e.target.value)} /><br/>
 

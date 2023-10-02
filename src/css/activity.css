@@ -56,7 +56,16 @@
     border-style: hidden;
 }
 
+th {
+    background-color: #e9e9f1;
+}
+
 td, th {
     border: 2px solid black;
     padding: 14px;
+}
+
+#is-completed-checkbox {
+    width: 25px;
+    margin: 10px 30px 10px 30px;
 }
