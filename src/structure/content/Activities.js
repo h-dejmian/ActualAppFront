@@ -9,10 +9,6 @@ class Activities extends Component {
         super(props)
     }
 
-    componentDidMount() {
-        // this.fetchData()
-    }
-
     render() {
         return (
             <div className="activities">
@@ -26,6 +22,7 @@ class Activities extends Component {
                     <th>Completed</th>
                     <th>Delete</th>
                     <th>Update</th>
+
                     {this.props.activities.map((activity, index) =>  <Activity key={index}
                                                                                id={activity.id}
                                                                                description={activity.description}

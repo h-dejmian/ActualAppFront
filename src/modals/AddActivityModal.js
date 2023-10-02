@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -17,11 +17,19 @@ function AddActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [description, setDescription] = useState("");
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(0);
-    const [date, setDate] = useState("");
     const [completed, setCompleted] = useState(false);
     const [categoryName, setCategoryName] = useState("");
+    const [categories, setCategories] = useState([])
     const handleOpen = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
+
+    async function fetchCategories() {
+        const response = await fetch(`http://localhost:8080/api/v1/categories`)
+        const categories = await response.json();
+        setCategories(categories)
+    }
+
+    useEffect(() => fetchCategories, []);
 
     return (
         <div>
@@ -42,18 +50,16 @@ function AddActivityModal(props) {
                         <label>Time spent in minutes</label>
                         <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
-                        <label htmlFor="categories">Choose category :   </label>
+                        <label htmlFor="categories">Choose category from the list :   </label>
 
                         <select name="categories" id="categories-dropdown">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                            <option disabled selected value> -- select an option -- </option>
+                            {categories.map(category => (<option value={category.name}>{category.name}</option>))}
                         </select>
 
                         <br/><br/>
 
-                        <label>Category</label>
+                        <label>Or create new category</label>
                         <input type="text" value={categoryName} placeholder={"Category"} onChange={(e) => setCategoryName(e.target.value)} /><br/>
 
                         <button type="submit">Submit</button>
