@@ -19,9 +19,11 @@ function AddActivityModal(props) {
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(0);
     const [completed, setCompleted] = useState(false);
     const [categoryName, setCategoryName] = useState("");
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([]);
+    const [selected, setSelected] = useState("");
     const handleOpen = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
+    const handleSelect = (e) => setSelected(e.target.value);
 
     async function fetchCategories() {
         const response = await fetch(`http://localhost:8080/api/v1/categories`)
@@ -52,7 +54,7 @@ function AddActivityModal(props) {
                         <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
                         <label htmlFor="categories">Choose category from the list :   </label>
-                        <select name="categories" id="categories-dropdown">
+                        <select onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
                             <option disabled selected value> -- select an option -- </option>
                             {categories.map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
                         </select>
@@ -81,7 +83,7 @@ function AddActivityModal(props) {
                 timeSpentInMinutes: timeSpentInMinutes,
                 date : props.date,
                 completed: completed,
-                categoryName: categoryName
+                categoryName: selected
             })
         }
         );
