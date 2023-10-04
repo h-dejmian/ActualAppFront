@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import Modal from 'react-modal';
+import '../css/modal.css'
 
 const customStyles = {
     content: {
@@ -62,7 +63,13 @@ function AddActivityModal(props) {
                         <br/><br/>
 
                         <label>Or create new category</label>
-                        <input type="text" value={categoryName} placeholder={"Category"} onChange={(e) => setCategoryName(e.target.value)} /><br/>
+
+                            <div id="add-category">
+                                <input type="text" value={categoryName} placeholder={"Category"} onChange={(e) => setCategoryName(e.target.value)} />
+                                <button className="add-category-button" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
+                            </div>
+
+                        <br/>
 
                         <button type="submit">Submit</button>
                         <button onClick={handleClose}>Close</button>
@@ -88,11 +95,32 @@ function AddActivityModal(props) {
         }
         );
 
-        let activityJson = await res.json();
+        const activityJson = await res.json();
         props.addActivity(activityJson)
 
         setIsOpen(false);
         resetState();
+    }
+
+    async function handleNewCategoryButton(e) {
+        e.preventDefault();
+
+        if(categoryName === "") {
+            return;
+        }
+
+        const res = await fetch("http://localhost:8080/api/v1/categories", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: categoryName
+                })
+            }
+        );
+        categories.push(categoryName);
+        setCategoryName("");
     }
 
     function resetState() {

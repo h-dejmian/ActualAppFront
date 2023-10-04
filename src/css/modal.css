@@ -35,3 +35,14 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+#add-category {
+    display: flex;
+}
+
+.add-category-button {
+    width: 300px;
+    height: 52px;
+    margin-left: 15px;
+    text-align: center;
+}
