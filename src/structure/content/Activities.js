@@ -3,19 +3,53 @@ import '../../css/content.css';
 import React, {Component} from 'react'
 import AddActivityModal from "../../modals/AddActivityModal";
 import moment from "moment/moment";
+import MyCalendar from "./MyCalendar";
 
 class Activities extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
+
+        this.state = {
+            activities: []
+        }
+    }
+
+    async fetchActivitiesByDate(date) {
+        const response = await fetch(`http://localhost:8080/api/v1/activities?date=${date}`);
+        const activities = await response.json();
+        this.setState({activities: activities});
+    }
+
+    componentDidMount() {
+        this.fetchActivitiesByDate(moment(new Date).format("yyyy-MM-DD"))
+    }
+
+    removeActivity(id) {
+        let activities = this.state.activities.filter((activity) => activity.id !== id);
+        this.setState({activities: activities});
+    }
+
+    addActivity(activity) {
+        this.setState(current => ({
+            activities : [...current.activities, activity ]
+        }))
+    }
+
+    updateActivity(id, activity) {
+        this.removeActivity(id);
+        this.setState(current => ({
+            activities : [...current.activities, activity ]
+        }))
     }
 
 
     render() {
         return (
             <div className="activities">
-
+                <div>
                 <h3>Activities</h3>
-                <AddActivityModal addActivity={this.props.addActivity} date={moment(new Date).format("yyyy-MM-DD")} appElement={'body'} />
+                <AddActivityModal addActivity={this.addActivity.bind(this)} date={moment(new Date).format("yyyy-MM-DD")} appElement={'body'} />
+
                 <table id="table-activities">
                     <thead>
                          <tr>
@@ -29,16 +63,18 @@ class Activities extends Component {
                     </thead>
 
                     <tbody>
-                            {this.props.activities.map((activity, index) =>  <Activity key={index}
-                                                                                       id={activity.id}
-                                                                                       description={activity.description}
-                                                                                       time={activity.timeSpentInMinutes}
-                                                                                       completed = {activity.completed}
-                                                                                       categoryName = {activity.categoryName}
-                                                                                       removeActivity={this.props.removeActivity}
-                                                                                       updateActivity={this.props.updateActivity}/> )}
+                            {this.state.activities.map((activity, index) =>  <Activity key={index}
+                                                                                                   id={activity.id}
+                                                                                                   description={activity.description}
+                                                                                                   time={activity.timeSpentInMinutes}
+                                                                                                   completed = {activity.completed}
+                                                                                                   categoryName = {activity.categoryName}
+                                                                                                   removeActivity={this.removeActivity.bind(this)}
+                                                                                                   updateActivity={this.updateActivity.bind(this)}/> )}
                     </tbody>
                 </table>
+                </div>
+                <MyCalendar fetchActivitiesByDate={this.fetchActivitiesByDate.bind(this)}/>
             </div>
         )
     }

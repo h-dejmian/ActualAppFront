@@ -1,9 +1,10 @@
 .content {
-    height: 600px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
 }
 
 .activities {
     color: #282c34;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
