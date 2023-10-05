@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
 
@@ -21,8 +21,21 @@ function UpdateActivityModal(props) {
     const [date, setDate] = useState("");
     const [completed, setCompleted] = useState(false);
     const [categoryName, setCategoryName] = useState(props.categoryName);
+    const [categories, setCategories] = useState([]);
+    const [selected, setSelected] = useState("");
+
     const handleOpen = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
+
+    const handleSelect = (e) => setSelected(e.target.value);
+
+    async function fetchCategories() {
+        const response = await fetch(`http://localhost:8080/api/v1/categories`)
+        const categories = await response.json();
+        setCategories(categories)
+    }
+
+    useEffect(() => fetchCategories, []);
 
     return (
         <div>
@@ -44,8 +57,17 @@ function UpdateActivityModal(props) {
                     <label>Time spent in minutes</label>
                     <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
-                    <label>Category</label>
-                    <input type="text" value={categoryName} onChange={(e) => setCategoryName(e.target.value)}/> <br/>
+                    <label htmlFor="categories">Choose category from the list :   </label>
+                    <select onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
+                        <option value={categoryName}> {categoryName} </option>
+                        {categories.filter(category => category.name !== categoryName)
+                                    .map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
+                    </select>
+
+                    {/*<label>Category</label>*/}
+                    {/*<input type="text" value={categoryName} onChange={(e) => setCategoryName(e.target.value)}/> <br/>*/}
+
+                    <br/><br/>
 
                     <button type="submit">Submit</button>
                     <button onClick={handleClose}>Close</button>
@@ -66,7 +88,7 @@ function UpdateActivityModal(props) {
                     timeSpentInMinutes: timeSpentInMinutes,
                     date : props.date,
                     completed: completed,
-                    categoryName: categoryName
+                    categoryName: selected
                 })
             }
         );

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
-import ModalMsg from "./modalMsg";
+import ModalMsg from "./ModalMsg";
 
 const customStyles = {
     content: {
@@ -19,7 +19,7 @@ function AddActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [description, setDescription] = useState("");
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(0);
-    const [completed, setCompleted] = useState(false);
+    const [completed, setCompleted] = useState(true);
     const [categoryName, setCategoryName] = useState("");
     const [categories, setCategories] = useState([]);
     const [selected, setSelected] = useState("");
@@ -28,6 +28,7 @@ function AddActivityModal(props) {
     const handleClose = () => {
         setIsOpen(false);
         setMessage("");
+        resetState();
     }
     const handleSelect = (e) => setSelected(e.target.value);
 
@@ -101,11 +102,9 @@ function AddActivityModal(props) {
         }
         );
 
+        setIsOpen(false)
         const activityJson = await res.json();
         props.addActivity(activityJson)
-
-        setIsOpen(false);
-        resetState();
     }
 
     async function handleNewCategoryButton(e) {
@@ -115,17 +114,17 @@ function AddActivityModal(props) {
             return;
         }
 
-        // const res = await fetch("http://localhost:8080/api/v1/categories", {
-        //         method: "POST",
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify({
-        //             name: categoryName
-        //         })
-        //     }
-        // );
-        categories.push(categoryName);
+        const res = await fetch("http://localhost:8080/api/v1/categories", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: categoryName
+                })
+            }
+        );
+        setCategories([...categories, {name : categoryName}])
         setCategoryName("");
         setMessage("New category added to list!")
     }

@@ -3,7 +3,6 @@ import MyCalendar from "./MyCalendar";
 import '../../css/content.css';
 import {Component} from "react";
 import moment from "moment";
-import {remove} from "react-modal/lib/helpers/classList";
 
 
 class Content extends Component {
