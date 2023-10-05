@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
+import ModalMsg from "./modalMsg";
 
 const customStyles = {
     content: {
@@ -22,8 +23,12 @@ function AddActivityModal(props) {
     const [categoryName, setCategoryName] = useState("");
     const [categories, setCategories] = useState([]);
     const [selected, setSelected] = useState("");
+    const [message, setMessage] = useState("");
     const handleOpen = () => setIsOpen(true);
-    const handleClose = () => setIsOpen(false);
+    const handleClose = () => {
+        setIsOpen(false);
+        setMessage("");
+    }
     const handleSelect = (e) => setSelected(e.target.value);
 
     async function fetchCategories() {
@@ -64,10 +69,11 @@ function AddActivityModal(props) {
 
                         <label>Or create new category</label>
 
-                            <div id="add-category">
+                        <div id="add-category">
                                 <input type="text" value={categoryName} placeholder={"Category"} onChange={(e) => setCategoryName(e.target.value)} />
                                 <button className="add-category-button" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
-                            </div>
+                        </div>
+                        <ModalMsg message={message} />
 
                         <br/>
 
@@ -109,18 +115,19 @@ function AddActivityModal(props) {
             return;
         }
 
-        const res = await fetch("http://localhost:8080/api/v1/categories", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: categoryName
-                })
-            }
-        );
+        // const res = await fetch("http://localhost:8080/api/v1/categories", {
+        //         method: "POST",
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             name: categoryName
+        //         })
+        //     }
+        // );
         categories.push(categoryName);
         setCategoryName("");
+        setMessage("New category added to list!")
     }
 
     function resetState() {
