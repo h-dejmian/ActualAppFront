@@ -30,6 +30,7 @@ function Activity(props) {
             <td><DeleteActivityButton id={props.id} removeActivity = {props.removeActivity} /></td>
             <td><UpdateActivityModal id={props.id}
                                      description={props.description}
+                                     date={props.date}
                                      time={props.time}
                                      categoryName={props.categoryName}
                                      updateActivity = {props.updateActivity} /></td>

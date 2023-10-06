@@ -4,6 +4,7 @@ import React, {Component} from 'react'
 import AddActivityModal from "../../modals/AddActivityModal";
 import moment from "moment/moment";
 import MyCalendar from "./MyCalendar";
+import NoActivityMsg from "../../activity/activitydescription/NoActivityMsg";
 
 class Activities extends Component {
     constructor() {
@@ -67,10 +68,11 @@ class Activities extends Component {
                     </thead>
 
                     <tbody>
-                            {this.state.activities.map((activity, index) =>  <Activity key={index}
+                            {this.state.activities.length === 0 ? <NoActivityMsg /> : this.state.activities.map((activity, index) =>  <Activity key={index}
                                                                                                    id={activity.id}
                                                                                                    description={activity.description}
                                                                                                    time={activity.timeSpentInMinutes}
+                                                                                                   date={activity.date}
                                                                                                    completed = {activity.completed}
                                                                                                    categoryName = {activity.categoryName}
                                                                                                    removeActivity={this.removeActivity.bind(this)}

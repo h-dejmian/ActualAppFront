@@ -101,7 +101,6 @@ function AddActivityModal(props) {
             })
         }
         );
-        console.log(props.date)
         setIsOpen(false)
         const activityJson = await res.json();
         props.addActivity(activityJson)

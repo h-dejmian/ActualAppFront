@@ -58,3 +58,7 @@ td, th {
     width: 25px;
     margin: 10px 30px 10px 30px;
 }
+
+#no-activity-msg {
+    text-align: center;
+}

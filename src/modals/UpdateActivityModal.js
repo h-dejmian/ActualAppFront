@@ -18,11 +18,11 @@ function UpdateActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [description, setDescription] = useState(props.description);
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(props.time);
-    const [date, setDate] = useState("");
+    // const [date, setDate] = useState("");
     const [completed, setCompleted] = useState(false);
     const [categoryName, setCategoryName] = useState(props.categoryName);
     const [categories, setCategories] = useState([]);
-    const [selected, setSelected] = useState("");
+    const [selected, setSelected] = useState(categoryName);
 
     const handleOpen = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
@@ -58,7 +58,7 @@ function UpdateActivityModal(props) {
                     <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
                     <label htmlFor="categories">Choose category from the list :   </label>
-                    <select onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
+                    <select defaultValue={categoryName} onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
                         <option value={categoryName}> {categoryName} </option>
                         {categories.filter(category => category.name !== categoryName)
                                     .map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
@@ -78,6 +78,7 @@ function UpdateActivityModal(props) {
 
     async function handleSubmitForm(e) {
         e.preventDefault();
+        console.log(categoryName)
         const res = await fetch(`http://localhost:8080/api/v1/activities/${props.id}`, {
                 method: "PUT",
                 headers: {
@@ -86,13 +87,13 @@ function UpdateActivityModal(props) {
                 body: JSON.stringify({
                     description: description,
                     timeSpentInMinutes: timeSpentInMinutes,
-                    date : props.date,
+                    date: props.date,
                     completed: completed,
                     categoryName: selected
                 })
             }
         );
-
+        console.log(props.id);
         let activityJson = await res.json();
         props.updateActivity(props.id, activityJson)
 
