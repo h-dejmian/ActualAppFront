@@ -10,12 +10,13 @@ function MyCalendar(props) {
 
     const onChange = (selectedDate) => {
         setDate(moment(selectedDate).format("yyyy-MM-DD"));
+        props.setSelectedDate(moment(selectedDate).format("yyyy-MM-DD"));
         props.fetchActivitiesByDate(moment(selectedDate).format("yyyy-MM-DD"));
     }
 
     return (
         <div className="calendar"> <Calendar onChange={onChange} value={date}/>
-            <p> Wybrana data: {date}</p>
+            {/*<p> Wybrana data: {date}</p>*/}
         </div>
     )
 }

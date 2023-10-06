@@ -61,7 +61,7 @@ function AddActivityModal(props) {
                         <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
                         <label htmlFor="categories">Choose category from the list :   </label>
-                        <select onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
+                        <select className="select" onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
                             <option disabled selected value> -- select an option -- </option>
                             {categories.map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
                         </select>
@@ -101,7 +101,7 @@ function AddActivityModal(props) {
             })
         }
         );
-
+        console.log(props.date)
         setIsOpen(false)
         const activityJson = await res.json();
         props.addActivity(activityJson)

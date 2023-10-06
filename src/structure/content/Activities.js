@@ -8,10 +8,14 @@ import MyCalendar from "./MyCalendar";
 class Activities extends Component {
     constructor() {
         super()
-
         this.state = {
-            activities: []
+            activities: [],
+            selectedDate: moment(new Date).format("yyyy-MM-DD")
         }
+    }
+
+    setSelectedDate(date) {
+        this.setState({selectedDate : date})
     }
 
     async fetchActivitiesByDate(date) {
@@ -47,8 +51,8 @@ class Activities extends Component {
         return (
             <div className="activities">
                 <div>
-                <h3>Activities</h3>
-                <AddActivityModal addActivity={this.addActivity.bind(this)} date={moment(new Date).format("yyyy-MM-DD")} appElement={'body'} />
+                <h3>Activities in {this.state.selectedDate}</h3>
+                <AddActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate} appElement={'body'} />
 
                 <table id="table-activities">
                     <thead>
@@ -74,7 +78,7 @@ class Activities extends Component {
                     </tbody>
                 </table>
                 </div>
-                <MyCalendar fetchActivitiesByDate={this.fetchActivitiesByDate.bind(this)}/>
+                <MyCalendar selectedDate = {this.state.selectedDate} setSelectedDate={this.setSelectedDate.bind(this)} fetchActivitiesByDate={this.fetchActivitiesByDate.bind(this)}/>
             </div>
         )
     }
