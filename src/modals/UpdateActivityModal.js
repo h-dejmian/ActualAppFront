@@ -18,7 +18,6 @@ function UpdateActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [description, setDescription] = useState(props.description);
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(props.time);
-    // const [date, setDate] = useState("");
     const [completed, setCompleted] = useState(false);
     const [categoryName, setCategoryName] = useState(props.categoryName);
     const [categories, setCategories] = useState([]);
