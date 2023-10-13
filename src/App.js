@@ -5,6 +5,7 @@ import Content from "./structure/content/Content";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
+
 function App() {
   return (
     <div className="App">

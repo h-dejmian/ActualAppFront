@@ -21,7 +21,12 @@ function RegisterForm() {
         }).then(res => res.json())
             .then(json => setUserInfo(json));
 
-        console.log(userInfo);
+        resetFormFields();
+    }
+
+    function resetFormFields() {
+        setUserName("");
+        setPassword("");
     }
     return (
         <div id="login-form">
