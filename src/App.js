@@ -9,16 +9,17 @@ import {useState} from "react";
 
 function App() {
     const [user, setUser] = useState("");
+
   return (
     <div className="App">
         <TopBar />
         <Menu />
-        {!user && <div id="login-register">
+        {!localStorage.getItem('user') && <div id="login-register">
             <LoginForm setUser={setUser}  />
             <RegisterForm />
         </div> }
 
-        {user && <Content /> }
+        {localStorage.getItem('user') && <Content /> }
     </div>
   );
 }

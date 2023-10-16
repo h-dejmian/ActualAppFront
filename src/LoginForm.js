@@ -21,7 +21,12 @@ function LoginForm(props) {
                 userName: userName,
                 password: password
             })
-        }).then(res => props.setUser(res.json()));
+        }).then(res => res.json())
+            .then(user => {
+                localStorage.setItem('user', user);
+                props.setUser(user);
+            });
+
         resetFormFields();
     }
 
