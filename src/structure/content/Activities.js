@@ -20,7 +20,13 @@ class Activities extends Component {
     }
 
     async fetchActivitiesByDate(date) {
-        const response = await fetch(`http://localhost:8080/api/v1/activities?date=${date}`);
+        const response = await fetch(`http://localhost:8080/api/v1/activities?date=${date}`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        });
         const activities = await response.json();
         this.setState({activities: activities});
     }
@@ -68,7 +74,7 @@ class Activities extends Component {
                     </thead>
 
                     <tbody>
-                            {this.state.activities.length === 0 ? <NoActivityMsg /> : this.state.activities.map((activity, index) =>  <Activity key={index}
+                            {this.state.activities.length === 0 ? <NoActivityMsg/> : this.state.activities.map((activity, index) =>  <Activity key={index}
                                                                                                    id={activity.id}
                                                                                                    description={activity.description}
                                                                                                    time={activity.timeSpentInMinutes}

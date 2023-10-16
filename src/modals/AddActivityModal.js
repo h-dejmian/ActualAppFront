@@ -33,7 +33,13 @@ function AddActivityModal(props) {
     const handleSelect = (e) => setSelected(e.target.value);
 
     async function fetchCategories() {
-        const response = await fetch(`http://localhost:8080/api/v1/categories`)
+        const response = await fetch(`http://localhost:8080/api/v1/categories`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        })
         const categories = await response.json();
         setCategories(categories)
     }
@@ -89,6 +95,7 @@ function AddActivityModal(props) {
         e.preventDefault();
         const res = await fetch("http://localhost:8080/api/v1/activities", {
             method: "POST",
+            credentials: "include",
             headers: {
                 'Content-Type': 'application/json'
 
@@ -113,9 +120,9 @@ function AddActivityModal(props) {
         if(categoryName === "") {
             return;
         }
-
-        const res = await fetch("http://localhost:8080/api/v1/categories", {
+        await fetch("http://localhost:8080/api/v1/categories", {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json'
                 },

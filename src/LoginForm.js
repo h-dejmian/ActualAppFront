@@ -1,19 +1,16 @@
 import './css/login-form.css'
 import {useState} from "react";
-import Cookies from 'js-cookie'
-import axios from 'axios'
 
 
 
-function LoginForm() {
 
+function LoginForm(props) {
     const [userName, setUserName ] = useState("");
     const [password, setPassword ] = useState("");
 
-    async function handleSubmitForm(e) {
+    function handleSubmitForm(e) {
         e.preventDefault();
-
-        const res = await fetch("http://localhost:8080/api/v1/login", {
+        fetch("http://localhost:8080/api/v1/login", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -24,8 +21,7 @@ function LoginForm() {
                 userName: userName,
                 password: password
             })
-        })
-
+        }).then(res => props.setUser(res.json()));
         resetFormFields();
     }
 

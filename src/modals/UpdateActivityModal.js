@@ -29,7 +29,13 @@ function UpdateActivityModal(props) {
     const handleSelect = (e) => setSelected(e.target.value);
 
     async function fetchCategories() {
-        const response = await fetch(`http://localhost:8080/api/v1/categories`)
+        const response = await fetch(`http://localhost:8080/api/v1/categories`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        })
         const categories = await response.json();
         setCategories(categories)
     }
@@ -80,6 +86,7 @@ function UpdateActivityModal(props) {
         console.log(categoryName)
         const res = await fetch(`http://localhost:8080/api/v1/activities/${props.id}`, {
                 method: "PUT",
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -92,7 +99,6 @@ function UpdateActivityModal(props) {
                 })
             }
         );
-        console.log(props.id);
         let activityJson = await res.json();
         props.updateActivity(props.id, activityJson)
 

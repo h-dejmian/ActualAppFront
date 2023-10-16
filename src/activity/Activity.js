@@ -12,6 +12,7 @@ function Activity(props) {
 
         await fetch(`http://localhost:8080/api/v1/activities/${props.id}`, {
                 method: "PATCH",
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json'
                 }
