@@ -14,12 +14,12 @@ function App() {
     <div className="App">
         <TopBar />
         <Menu />
-        {!localStorage.getItem('user') && <div id="login-register">
+        {!localStorage.getItem('userLogged') && <div id="login-register">
             <LoginForm setUser={setUser}  />
             <RegisterForm />
         </div> }
 
-        {localStorage.getItem('user') && <Content /> }
+        {localStorage.getItem('userLogged') && <Content /> }
     </div>
   );
 }

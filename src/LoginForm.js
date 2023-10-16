@@ -23,7 +23,7 @@ function LoginForm(props) {
             })
         }).then(res => res.json())
             .then(user => {
-                localStorage.setItem('user', user);
+                localStorage.setItem('userLogged', 'true');
                 props.setUser(user);
             });
 
