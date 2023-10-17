@@ -7,8 +7,8 @@ import MyCalendar from "./MyCalendar";
 import NoActivityMsg from "../../activity/activitydescription/NoActivityMsg";
 
 class Activities extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             activities: [],
             selectedDate: moment(new Date).format("yyyy-MM-DD")
@@ -20,7 +20,7 @@ class Activities extends Component {
     }
 
     async fetchActivitiesByDate(date) {
-        const response = await fetch(`http://localhost:8080/api/v1/activities?date=${date}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/activities/${this.props.user.id}?date=${date}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -59,7 +59,7 @@ class Activities extends Component {
             <div className="activities">
                 <div>
                 <h3>Activities in {this.state.selectedDate}</h3>
-                <AddActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate} appElement={'body'} />
+                <AddActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate} appElement={'body'} user={this.props.user} />
 
                 <table id="table-activities">
                     <thead>

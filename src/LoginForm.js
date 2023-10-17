@@ -1,9 +1,6 @@
 import './css/login-form.css'
 import {useState} from "react";
 
-
-
-
 function LoginForm(props) {
     const [userName, setUserName ] = useState("");
     const [password, setPassword ] = useState("");
@@ -23,9 +20,12 @@ function LoginForm(props) {
             })
         }).then(res => res.json())
             .then(user => {
-                localStorage.setItem('userLogged', 'true');
                 props.setUser(user);
-            });
+                localStorage.setItem('user', user.login);
+                localStorage.setItem('id', user.id);
+            })
+
+
 
         resetFormFields();
     }

@@ -105,7 +105,8 @@ function AddActivityModal(props) {
                 timeSpentInMinutes: timeSpentInMinutes,
                 date : props.date,
                 completed: completed,
-                categoryName: selected
+                categoryName: selected,
+                user_Id: props.user.id
             })
         }
         );
