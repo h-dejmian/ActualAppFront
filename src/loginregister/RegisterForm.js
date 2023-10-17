@@ -1,31 +1,25 @@
-import './css/login-form.css'
+import '../css/login-form.css'
 import {useState} from "react";
 
-function LoginForm(props) {
+function RegisterForm() {
     const [userName, setUserName ] = useState("");
     const [password, setPassword ] = useState("");
-
+    const [userInfo, setUserInfo] = useState("");
     function handleSubmitForm(e) {
         e.preventDefault();
-        fetch("http://localhost:8080/api/v1/login", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                'Content-Type': "application/json",
-            },
 
+        fetch("http://localhost:8080/api/v1/register", {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
             body: JSON.stringify({
-                userName: userName,
+                login: userName,
                 password: password
             })
+
         }).then(res => res.json())
-            .then(user => {
-                props.setUser(user);
-                localStorage.setItem('user', user.login);
-                localStorage.setItem('id', user.id);
-            })
-
-
+            .then(json => setUserInfo(json));
 
         resetFormFields();
     }
@@ -34,11 +28,9 @@ function LoginForm(props) {
         setUserName("");
         setPassword("");
     }
-
-
     return (
         <div id="login-form">
-            <h2> Login </h2>
+            <h2> Register </h2>
             <form onSubmit={handleSubmitForm}>
                 <label>User Name</label>
                 <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
@@ -50,4 +42,4 @@ function LoginForm(props) {
     )
 }
 
-export default LoginForm;
+export default RegisterForm;
