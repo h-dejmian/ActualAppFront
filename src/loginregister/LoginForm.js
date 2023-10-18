@@ -24,7 +24,8 @@ function LoginForm(props) {
             .then(user => {
                 if(validateResponse(user)) {
                     props.setUser(user);
-                    localStorage.setItem('user', user.login);
+                    console.log(user)
+                    localStorage.setItem('login', user.login);
                     localStorage.setItem('id', user.id);
                 }
             })
