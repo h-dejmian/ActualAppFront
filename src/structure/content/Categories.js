@@ -16,12 +16,12 @@ function Categories() {
         setCategories(categories)
     }
 
+    useEffect(() => fetchCategories, []);
+
     function removeCategory(id) {
         let updated = categories.filter((activity) => activity.id !== id);
         setCategories(updated);
     }
-
-    useEffect(() => fetchCategories, []);
 
     return (
         <div className="categories">
