@@ -1,4 +1,5 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import Category from "../../category/Category";
 
 function Categories() {
     const [categories, setCategories] = useState([]);
@@ -15,12 +16,34 @@ function Categories() {
         setCategories(categories)
     }
 
+    function removeCategory(id) {
+        let updated = categories.filter((activity) => activity.id !== id);
+        setCategories(updated);
+    }
+
     useEffect(() => fetchCategories, []);
 
     return (
         <div className="categories">
-            {categories.map(category => <ol>{category.name}</ol>) }
-
+            <table id="table-categories">
+                <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Number Of Activities</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                {categories.map((category, index) => <Category key={index}
+                                                               id={category.id}
+                                                               name={category.name}
+                                                               priority={category.priority}
+                                                               activitiesNumber={category.activitiesNumber}
+                                                               removeCategory={removeCategory.bind(this)}/>)}
+                </tbody>
+            </table>
         </div>
     )
 }
