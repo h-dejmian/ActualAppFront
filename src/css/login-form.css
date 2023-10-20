@@ -17,9 +17,10 @@
 
 #top-bar-hp {
     margin-top: 80px;
-    height: 130px;
+    height: 170px;
     background-color: #e6ebfc;
     box-shadow: 1px 1px 3px black;
+    display: inline-flex;
 }
 
 #logo-home {
@@ -27,3 +28,12 @@
     text-shadow: 2px 2px 2px;
     padding-top: 18px;
 }
+
+.icon {
+    margin: 75px;
+}
+
+#top-bar-hp-center {
+
+}
+
