@@ -62,7 +62,7 @@ class Activities extends Component {
                 <h3>Activities in {this.state.selectedDate} </h3>
                 <AddActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate} appElement={'body'} user={this.props.user} />
 
-                <table id="table-activities">
+                <table className="table-cst">
                     <thead>
                          <tr>
                             <th>Activity</th>

@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import '../../css/content.css';
 import Activity from "../../activity/Activity";
 
 function Statistics(props) {
@@ -22,7 +23,7 @@ function Statistics(props) {
         <div>
              {props.user.login} you're doing great!
             <h4> Activities by time spent</h4>
-            <table>
+            <table className="table-cst">
                 <thead>
                     <tr>
                         <th>Activity</th>

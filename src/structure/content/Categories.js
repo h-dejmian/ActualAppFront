@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Category from "../../category/Category";
+import '../../css/content.css';
 
 function Categories() {
     const [categories, setCategories] = useState([]);
@@ -25,7 +26,7 @@ function Categories() {
 
     return (
         <div className="categories">
-            <table id="table-categories">
+            <table className="table-cst">
                 <thead>
                 <tr>
                     <th>Category</th>

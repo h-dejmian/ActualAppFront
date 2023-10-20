@@ -8,3 +8,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+#table-cst {
+    background-color: white;
+    margin: 20px auto auto;
+    border-collapse: collapse;
+    border-style: hidden;
+}
+
+th {
+    background-color: #e9e9f1;
+}
+
+td, th {
+    border: 2px solid black;
+    padding: 14px;
+}
