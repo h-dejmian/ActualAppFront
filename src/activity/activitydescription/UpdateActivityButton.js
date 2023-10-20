@@ -11,7 +11,7 @@ function UpdateActivityButton(props) {
     }, [props])
 
     return (
-        <a id="updateActivity" onClick={fetchUpdate}> Update </a>
+        <a className="button-sm" onClick={fetchUpdate}> Update </a>
     )
 }
 

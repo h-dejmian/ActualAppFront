@@ -1,39 +1,14 @@
 
-.activity-desc {
-    height: 60px;
-    display: inline-flex;
-}
-
-.activity-name {
-    margin-right: 10px;
-}
-
-.activity-time {
-    margin-left: 10px;
-}
-
-#removeActivity{
-    height: 25px;
+.button-sm {
+    height: 30px;
+    width: 120px;
     border: 1px solid black;
     padding: 2px;
     background-color: #f0f0f0;
     margin-left: 10px;
 }
 
-#updateActivity {
-    height: 25px;
-    border: 1px solid black;
-    padding: 2px;
-    background-color: #f0f0f0;
-    margin-left: 10px;
-}
-
-#updateActivity:hover {
-    cursor: pointer;
-    background-color: #61dafb;
-}
-
-#removeActivity:hover {
+.button-sm:hover {
     cursor: pointer;
     background-color: #61dafb;
 }

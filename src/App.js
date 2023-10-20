@@ -36,8 +36,8 @@ function App() {
 
         {
             localStorage.getItem('login') && <div id="content">
-            <TopBar user={user} setUser={setUser} />
-            <Menu setSelectedContent={setSelectedContent} />
+            <TopBar />
+            <Menu setSelectedContent={setSelectedContent} user={user} setUser={setUser} />
             <Content selectedContent={selectedContent} user={user} /> </div>
         }
     </div>

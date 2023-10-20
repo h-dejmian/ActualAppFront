@@ -6,7 +6,9 @@ function Category(props) {
             <td>{props.name}</td>
             <td>{props.priority}</td>
             <td>{props.activitiesNumber}</td>
+            <td> - </td>
             <td><DeleteCategoryButton id={props.id} removeCategory={props.removeCategory}/></td>
+            <td> - </td>
         </tr>
     )
 }

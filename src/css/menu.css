@@ -1,6 +1,5 @@
 #menu {
     background-color: white;
-    width: 100%;
     height: 45px;
     padding-left: 60px;
     margin-bottom: 30px;
@@ -10,4 +9,17 @@
 .menu-element {
     float: left;
     padding: 10px;
+    font-weight: bold;
+}
+
+.menu-element:hover {
+    cursor: pointer;
+    background-color: #61dafb;
+}
+
+#logout {
+    text-align: right;
+    margin-right: 30px;
+    padding: 10px;
+    font-weight: bold;
 }

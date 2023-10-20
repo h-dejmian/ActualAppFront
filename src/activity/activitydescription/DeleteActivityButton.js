@@ -12,7 +12,7 @@ function DeleteActivityButton(props) {
     }, [props])
 
     return (
-        <a id="removeActivity" onClick={fetchDelete}> X </a>
+        <a className="button-sm" onClick={fetchDelete}> X </a>
     )
 }
 

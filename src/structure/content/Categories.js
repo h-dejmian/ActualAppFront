@@ -32,6 +32,7 @@ function Categories() {
                     <th>Category</th>
                     <th>Priority</th>
                     <th>Number Of Activities</th>
+                    <th>Time spent</th>
                     <th>Delete</th>
                     <th>Update</th>
                 </tr>

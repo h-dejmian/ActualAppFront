@@ -44,7 +44,7 @@ function UpdateActivityModal(props) {
 
     return (
         <div>
-            <a id={"updateActivity"} onClick={handleOpen}>Update</a>
+            <a className={"button-sm"} onClick={handleOpen}>Update</a>
             <Modal
                 ariaHideApp={false}
                 isOpen={isOpen}

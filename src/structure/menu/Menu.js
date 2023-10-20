@@ -2,6 +2,7 @@ import '../../css/menu.css';
 import MenuElement from "./MenuElement";
 import Activities from "../content/Activities";
 import Statistics from "../content/Statistics";
+import LogoutSection from "./LogoutSection";
 function Menu(props) {
 
     return (
@@ -12,6 +13,7 @@ function Menu(props) {
             <MenuElement name="My expenses" id="0" setSelectedContent={props.setSelectedContent} />
             <MenuElement name="Statistics" id="1" setSelectedContent={props.setSelectedContent} />
             <MenuElement name="About" id="0" setSelectedContent={props.setSelectedContent} />
+            <LogoutSection user={props.user} setUser={props.setUser} />
         </div>
     )
 }
