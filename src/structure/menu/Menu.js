@@ -7,12 +7,12 @@ function Menu(props) {
 
     return (
         <div id="menu">
-            <MenuElement name="Activities" id="0" setSelectedContent={props.setSelectedContent}/>
-            <MenuElement name="Categories" id="2" setSelectedContent={props.setSelectedContent} />
-            <MenuElement name="Plan your day" id="0" setSelectedContent={props.setSelectedContent} />
-            <MenuElement name="My expenses" id="0" setSelectedContent={props.setSelectedContent} />
-            <MenuElement name="Statistics" id="1" setSelectedContent={props.setSelectedContent} />
-            <MenuElement name="About" id="0" setSelectedContent={props.setSelectedContent} />
+            <MenuElement name="Activities" className="fa-solid fa-bolt" id="0" setSelectedContent={props.setSelectedContent}/>
+            <MenuElement name="Categories" className="fa-solid fa-list" id="2" setSelectedContent={props.setSelectedContent} />
+            <MenuElement name="Plan your day" className="fa-solid fa-pen-to-square" id="0" setSelectedContent={props.setSelectedContent} />
+            <MenuElement name="My expenses" className="fa-solid fa-dollar-sign" id="0" setSelectedContent={props.setSelectedContent} />
+            <MenuElement name="Statistics" className="fa-solid fa-chart-simple" id="1" setSelectedContent={props.setSelectedContent} />
+            <MenuElement name="About" className="fa-solid fa-question" id="0" setSelectedContent={props.setSelectedContent} />
             <LogoutSection user={props.user} setUser={props.setUser} />
         </div>
     )

@@ -6,7 +6,10 @@ function MenuElement(props) {
     }
 
     return (
-        <a className="menu-element" onClick={handleClick} href=""> {props.name} </a>
+        <a className="menu-element" onClick={handleClick} href="">
+            <div className={props.className}></div>
+            <div> {props.name} </div>
+        </a>
     )
 }
 

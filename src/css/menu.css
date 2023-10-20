@@ -1,6 +1,6 @@
 #menu {
     background-color: white;
-    height: 45px;
+    height: 65px;
     padding-left: 60px;
     margin-bottom: 30px;
     box-shadow: 1px 1px 5px black;
@@ -20,6 +20,6 @@
 #logout {
     text-align: right;
     margin-right: 30px;
-    padding: 10px;
+    padding: 20px;
     font-weight: bold;
 }

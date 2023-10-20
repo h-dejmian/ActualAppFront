@@ -2,11 +2,11 @@ import './App.css';
 import './css/login-form.css'
 import Menu from "./structure/menu/Menu";
 import TopBar from "./structure/topbar/TopBar";
-import LoginForm from "./loginregister/LoginForm";
-import RegisterForm from "./loginregister/RegisterForm";
+import LoginForm from "./structure/homepage/LoginForm";
+import RegisterForm from "./structure/homepage/RegisterForm";
 import {useState} from "react";
 import Content from "./structure/content/Content";
-import LogoHome from "./loginregister/LogoHome";
+import LogoHome from "./structure/homepage/LogoHome";
 
 
 function App() {

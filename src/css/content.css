@@ -9,11 +9,12 @@
     grid-template-columns: 1fr 1fr;
 }
 
-#table-cst {
+.table-cst {
     background-color: white;
     margin: 20px auto auto;
     border-collapse: collapse;
     border-style: hidden;
+    box-shadow: 1px 1px 3px black;
 }
 
 th {
