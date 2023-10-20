@@ -1,11 +1,13 @@
 import './App.css';
+import './css/login-form.css'
 import Menu from "./structure/menu/Menu";
-import TopBar from "./structure/topbar/topBar";
+import TopBar from "./structure/topbar/TopBar";
 import LoginForm from "./loginregister/LoginForm";
 import RegisterForm from "./loginregister/RegisterForm";
 import {useState} from "react";
-import Logo from "./structure/topbar/logo";
+import LogoLogged from "./structure/topbar/LogoLogged";
 import Content from "./structure/content/Content";
+import LogoHome from "./loginregister/LogoHome";
 
 
 function App() {
@@ -19,10 +21,17 @@ function App() {
     <div className="App">
 
         {
-            !localStorage.getItem('login') && <div id="login-register">
-            <Logo/>
-            <LoginForm setUser={setUser} user={user} />
-            <RegisterForm /> </div>
+            !localStorage.getItem('login') && <div>
+
+                <div id="top-bar-hp">
+                    <LogoHome />
+                    <h3>Place where you can start your growth!</h3>
+                </div>
+                <div id="login-register">
+                    <LoginForm setUser={setUser} user={user} />
+                    <RegisterForm />
+                </div>
+            </div>
         }
 
         {

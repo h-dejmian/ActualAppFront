@@ -29,7 +29,7 @@ function RegisterForm() {
         setPassword("");
     }
     return (
-        <div id="login-form">
+        <div className="login-form">
             <h2> Register </h2>
             <form onSubmit={handleSubmitForm}>
                 <label>User Name</label>

@@ -1,5 +1,5 @@
 import '../../css/top-bar.css'
-import Logo from "./logo";
+import LogoLogged from "./LogoLogged";
 import Clock from "./Clock";
 
 function TopBar(props) {
@@ -9,7 +9,7 @@ function TopBar(props) {
     }
 
     return (
-        <div id="top-bar"> <Logo /> User {props.user.login} logged | <button onClick={handleLogout}> Logout </button> <Clock /> </div>
+        <div id="top-bar"> <LogoLogged /> User {props.user.login} logged | <button onClick={handleLogout}> Logout </button> <Clock /> </div>
     )
 }
 

@@ -38,12 +38,4 @@ button:hover {
   background-color: #c5c5c5;
 }
 
-#login-register {
-  height: max-content;
-  width: max-content;
-  display: flex;
-  margin: 200px;
-  margin-left: 400px;
-  background-color: #61dafb;
-  box-shadow: 1px 1px 3px black;
-}
+

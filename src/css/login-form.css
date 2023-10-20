@@ -1,7 +1,29 @@
-#login-form {
+.login-form {
     height: 400px;
     width: 400px;
     border: 1px solid black;
     color: black;
     padding: 50px;
+}
+
+#login-register {
+    height: max-content;
+    width: max-content;
+    display: flex;
+    margin: 100px 200px 100px 400px;
+    background-color: #61dafb;
+    box-shadow: 1px 1px 3px black;
+}
+
+#top-bar-hp {
+    margin-top: 80px;
+    height: 130px;
+    background-color: #e6ebfc;
+    box-shadow: 1px 1px 3px black;
+}
+
+#logo-home {
+    color: #61617d;
+    text-shadow: 2px 2px 2px;
+    padding-top: 18px;
 }
