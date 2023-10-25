@@ -10,7 +10,9 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        color: 'black'
+        color: 'black',
+        backgroundColor: "#bdd3ef",
+        border: "1px solid black"
     },
 };
 

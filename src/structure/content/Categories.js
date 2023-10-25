@@ -42,6 +42,7 @@ function Categories() {
                                                                id={category.id}
                                                                name={category.name}
                                                                priority={category.priority}
+                                                               timeSpentInMinutes={category.timeSpentInMinutes}
                                                                activitiesNumber={category.activitiesNumber}
                                                                removeCategory={removeCategory.bind(this)}/>)}
                 </tbody>
