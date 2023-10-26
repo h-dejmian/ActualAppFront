@@ -7,9 +7,24 @@
     background-color: #6f6fda;
     color: white;
     margin-left: 10px;
+    box-shadow: 1px 1px 1px black;
 }
 
 .button-sm:hover {
+    cursor: pointer;
+    background-color: #61dafb;
+}
+
+.button-lg {
+    border: 1px solid black;
+    height: 40px;
+    padding: 10px 40px 10px 40px;
+    background-color: #6f6fda;
+    color: white;
+    box-shadow: 1px 1px 1px black;
+}
+
+.button-lg:hover {
     cursor: pointer;
     background-color: #61dafb;
 }

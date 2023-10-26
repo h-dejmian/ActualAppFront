@@ -1,7 +1,5 @@
 import '../../css/menu.css';
 import MenuElement from "./MenuElement";
-import Activities from "../content/Activities";
-import Statistics from "../content/Statistics";
 import LogoutSection from "./LogoutSection";
 function Menu(props) {
 

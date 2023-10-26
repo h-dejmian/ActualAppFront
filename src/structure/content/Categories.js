@@ -26,6 +26,7 @@ function Categories() {
 
     return (
         <div className="categories">
+            <h3>Categories</h3>
             <table className="table-cst">
                 <thead>
                 <tr>

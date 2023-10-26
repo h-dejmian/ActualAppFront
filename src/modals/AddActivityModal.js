@@ -50,7 +50,7 @@ function AddActivityModal(props) {
 
     return (
         <div>
-            <button onClick={handleOpen}>Add New Activity</button>
+            <button className="button-lg" onClick={handleOpen}>Add New Activity</button>
             <Modal
                 isOpen={isOpen}
                 ariaHideApp={false}
@@ -80,14 +80,14 @@ function AddActivityModal(props) {
 
                         <div id="add-category">
                                 <input type="text" value={categoryName} placeholder={"Category"} onChange={(e) => setCategoryName(e.target.value)} />
-                                <button className="add-category-button" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
+                                <button className="button-lg" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
                         </div>
                         <ModalMsg message={message} />
 
                         <br/>
 
-                        <button type="submit">Submit</button>
-                        <button onClick={handleClose}>Close</button>
+                        <button className="button-lg" type="submit">Submit</button>
+                        <button className="button-lg" onClick={handleClose}>Close</button>
                     </form>
             </Modal>
         </div>

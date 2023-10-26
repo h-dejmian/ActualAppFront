@@ -27,13 +27,7 @@ input {
 }
 
 button {
-  border: 1px solid black;
-  padding: 1rem;
-  width: 21.2rem;
-  font-size: 1.2em;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  box-shadow: 1px 1px 3px black;
+  font-size: medium;
 }
 button:hover {
   background-color: #c5c5c5;

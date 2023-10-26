@@ -76,8 +76,8 @@ function UpdateActivityModal(props) {
 
                     <br/><br/>
 
-                    <button type="submit">Submit</button>
-                    <button onClick={handleClose}>Close</button>
+                    <button className="button-lg" onClick={handleSubmitForm}>Submit</button>
+                    <button className="button-lg" onClick={handleClose}>Close</button>
                 </form>
             </Modal>
         </div>
