@@ -5,6 +5,7 @@ import ErrorMsg from "./ErrorMsg";
 function LoginForm(props) {
     const [userName, setUserName ] = useState("");
     const [password, setPassword ] = useState("");
+    const [logTime, setLogTime ] = useState();
     const [errorMsg, setErrorMsg] = useState('');
 
     function handleSubmitForm(e) {
@@ -24,9 +25,9 @@ function LoginForm(props) {
             .then(user => {
                 if(validateResponse(user)) {
                     props.setUser(user);
-                    console.log(user)
                     localStorage.setItem('login', user.login);
                     localStorage.setItem('id', user.id);
+                    localStorage.setItem('logTime', new Date().toString())
                 }
             })
 

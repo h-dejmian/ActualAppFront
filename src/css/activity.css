@@ -1,55 +1,55 @@
 
-.button-sm {
-    height: 30px;
-    width: 120px;
-    border: 1px solid black;
-    padding: 2px;
-    background-color: #6f6fda;
-    color: white;
-    margin-left: 10px;
-    box-shadow: 1px 1px 1px black;
-}
+/*.button-sm {*/
+/*    height: 30px;*/
+/*    width: 120px;*/
+/*    border: 1px solid black;*/
+/*    padding: 2px;*/
+/*    background-color: #6f6fda;*/
+/*    color: white;*/
+/*    margin-left: 10px;*/
+/*    box-shadow: 1px 1px 1px black;*/
+/*}*/
 
-.button-sm:hover {
-    cursor: pointer;
-    background-color: #61dafb;
-}
+/*.button-sm:hover {*/
+/*    cursor: pointer;*/
+/*    background-color: #61dafb;*/
+/*}*/
 
-.button-lg {
-    border: 1px solid black;
-    height: 40px;
-    padding: 10px 40px 10px 40px;
-    background-color: #6f6fda;
-    color: white;
-    box-shadow: 1px 1px 1px black;
-}
+/*.button-lg {*/
+/*    border: 1px solid black;*/
+/*    height: 40px;*/
+/*    padding: 10px 40px 10px 40px;*/
+/*    background-color: #6f6fda;*/
+/*    color: white;*/
+/*    box-shadow: 1px 1px 1px black;*/
+/*}*/
 
-.button-lg:hover {
-    cursor: pointer;
-    background-color: #61dafb;
-}
+/*.button-lg:hover {*/
+/*    cursor: pointer;*/
+/*    background-color: #61dafb;*/
+/*}*/
 
-.table-cst {
-    background-color: white;
-    margin: 20px auto auto;
-    border-collapse: collapse;
-    border-style: hidden;
-}
+/*.table-cst {*/
+/*    background-color: white;*/
+/*    margin: 20px auto auto;*/
+/*    border-collapse: collapse;*/
+/*    border-style: hidden;*/
+/*}*/
 
-th {
-    background-color: #e9e9f1;
-}
+/*th {*/
+/*    background-color: #e9e9f1;*/
+/*}*/
 
-td, th {
-    border: 2px solid black;
-    padding: 14px;
-}
+/*td, th {*/
+/*    border: 2px solid black;*/
+/*    padding: 14px;*/
+/*}*/
 
-#is-completed-checkbox {
-    width: 25px;
-    margin: 10px 30px 10px 30px;
-}
+/*#is-completed-checkbox {*/
+/*    width: 25px;*/
+/*    margin: 10px 30px 10px 30px;*/
+/*}*/
 
-#no-activity-msg {
-    text-align: center;
-}
+/*#no-activity-msg {*/
+/*    text-align: center;*/
+/*}*/

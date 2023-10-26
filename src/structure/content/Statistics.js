@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import '../../css/content.css';
 import Activity from "../../activity/Activity";
+import Categories from "./Categories";
 
 function Statistics(props) {
     const [activitiesByTime, setActivitiesByTime] = useState([]);
@@ -20,23 +21,25 @@ function Statistics(props) {
     useEffect(() => fetchActivitiesByTime, []);
 
     return (
-        <div>
-             {props.user.login} you're doing great!
-            <h4> Activities by time spent</h4>
-            <table className="table-cst">
-                <thead>
-                    <tr>
-                        <th>Activity</th>
-                        <th>Time spent</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {activitiesByTime.map((activity, index) =>  <tr key={index}><td>{activity.description}</td>
-                    <td>{activity.timeSpentInMinutes}</td></tr>  )}
+        <div id="statistics">
+            <div>
+                 {props.user.login} you're doing great!
+                <h4> Activities by time spent</h4>
+                <table className="table-cst">
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Time spent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {activitiesByTime.map((activity, index) =>  <tr key={index}><td>{activity.description}</td>
+                        <td>{activity.timeSpentInMinutes}</td></tr>  )}
 
-                </tbody>
-
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            <Categories />
         </div>
     )
 }

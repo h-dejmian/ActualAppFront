@@ -27,6 +27,7 @@ function Categories() {
     return (
         <div className="categories">
             <h3>Categories</h3>
+            <button className="button-lg">Add new category</button>
             <table className="table-cst">
                 <thead>
                 <tr>

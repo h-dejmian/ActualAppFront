@@ -2,12 +2,18 @@ import {useState} from "react";
 import Activities from "./Activities";
 import Statistics from "./Statistics";
 import Categories from "./Categories";
+import PlanYourDay from "./PlanYourDay";
+import About from "./About";
+import MyExpenses from "./MyExpenses";
 
 function Content(props) {
     const menuItems = [
         <Activities user={props.user} />,
+        <Categories user={props.user} />,
+        <PlanYourDay />,
+        <MyExpenses />,
         <Statistics user={props.user} />,
-        <Categories />
+        <About />
     ]
 
     return (
