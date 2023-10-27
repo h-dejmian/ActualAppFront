@@ -85,9 +85,10 @@ function AddActivityModal(props) {
                         <ModalMsg message={message} />
 
                         <br/>
-
-                        <button className="button-lg" type="submit">Submit</button>
-                        <button className="button-lg" onClick={handleClose}>Close</button>
+                        <div className="submit-close">
+                            <button className="button-lg" type="submit">Submit</button>
+                            <button className="button-lg" onClick={handleClose}>Close</button>
+                        </div>
                     </form>
             </Modal>
         </div>
@@ -115,6 +116,7 @@ function AddActivityModal(props) {
         setIsOpen(false)
         const activityJson = await res.json();
         props.addActivity(activityJson)
+        resetState();
     }
 
     async function handleNewCategoryButton(e) {

@@ -54,6 +54,7 @@ button:hover {
   border: 1px solid black;
   height: 40px;
   padding: 10px 40px 10px 40px;
+  margin-left: 20px;
   background-color: #6f6fda;
   color: white;
   box-shadow: 1px 1px 1px black;

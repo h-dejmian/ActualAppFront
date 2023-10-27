@@ -76,8 +76,10 @@ function UpdateActivityModal(props) {
 
                     <br/><br/>
 
-                    <button className="button-lg" onClick={handleSubmitForm}>Submit</button>
-                    <button className="button-lg" onClick={handleClose}>Close</button>
+                    <div className="submit-close">
+                        <button className="button-lg" onClick={handleSubmitForm}>Submit</button>
+                        <button className="button-lg" onClick={handleClose}>Close</button>
+                    </div>
                 </form>
             </Modal>
         </div>
@@ -104,15 +106,14 @@ function UpdateActivityModal(props) {
         props.updateActivity(props.id, activityJson)
 
         setIsOpen(false);
-        resetState();
     }
 
-    function resetState() {
-        setDescription("");
-        setCategoryName("");
-        setTimeSpentInMinutes(0);
-        setCategoryName("")
-    }
+    // function resetState() {
+    //     setDescription("");
+    //     setCategoryName("");
+    //     setTimeSpentInMinutes(0);
+    //     setCategoryName("")
+    // }
 
 }
 

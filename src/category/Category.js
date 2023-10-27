@@ -9,7 +9,10 @@ function Category(props) {
             <td>{props.activitiesNumber}</td>
             <td> {props.timeSpentInMinutes} </td>
             <td><DeleteCategoryButton id={props.id} removeCategory={props.removeCategory}/></td>
-            <td> <UpdateCategoryModal id={props.id} name={props.name} priority={props.priority} updateCategory={props.updateCategory}/> </td>
+            <td> <UpdateCategoryModal id={props.id}
+                                      name={props.name}
+                                      priority={props.priority}
+                                      updateCategory={props.updateCategory}/> </td>
         </tr>
     )
 }

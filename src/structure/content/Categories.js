@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Category from "../../category/Category";
 import '../../css/content.css';
+import AddCategoryModal from "../../modals/AddCategoryModal";
 
 function Categories() {
     const [categories, setCategories] = useState([]);
@@ -29,10 +30,14 @@ function Categories() {
         setCategories(categories => [...categories, category])
     }
 
+    function addCategory(category) {
+        setCategories(categories => [...categories, category])
+    }
+
     return (
         <div className="categories">
             <h3>Categories</h3>
-            <button className="button-lg">Add New Category</button>
+            <AddCategoryModal addCategory={addCategory.bind(this)}/>
             <table className="table-cst">
                 <thead>
                 <tr>
@@ -52,7 +57,8 @@ function Categories() {
                                                                timeSpentInMinutes={category.timeSpentInMinutes}
                                                                activitiesNumber={category.activitiesNumber}
                                                                removeCategory={removeCategory.bind(this)}
-                                                               updateCategory={updateCategory.bind(this)}/>)}
+                                                               updateCategory={updateCategory.bind(this)}
+                                                                addCategory={addCategory.bind(this)}/>)}
                 </tbody>
             </table>
         </div>
