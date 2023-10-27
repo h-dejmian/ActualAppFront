@@ -85,7 +85,6 @@ function UpdateActivityModal(props) {
 
     async function handleSubmitForm(e) {
         e.preventDefault();
-        console.log(categoryName)
         const res = await fetch(`http://localhost:8080/api/v1/activities/${props.id}`, {
                 method: "PUT",
                 credentials: "include",

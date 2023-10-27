@@ -24,10 +24,15 @@ function Categories() {
         setCategories(updated);
     }
 
+    function updateCategory(category) {
+        removeCategory(category.id);
+        setCategories(categories => [...categories, category])
+    }
+
     return (
         <div className="categories">
             <h3>Categories</h3>
-            <button className="button-lg">Add new category</button>
+            <button className="button-lg">Add New Category</button>
             <table className="table-cst">
                 <thead>
                 <tr>
@@ -46,7 +51,8 @@ function Categories() {
                                                                priority={category.priority}
                                                                timeSpentInMinutes={category.timeSpentInMinutes}
                                                                activitiesNumber={category.activitiesNumber}
-                                                               removeCategory={removeCategory.bind(this)}/>)}
+                                                               removeCategory={removeCategory.bind(this)}
+                                                               updateCategory={updateCategory.bind(this)}/>)}
                 </tbody>
             </table>
         </div>
