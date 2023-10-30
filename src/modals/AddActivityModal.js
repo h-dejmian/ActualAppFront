@@ -23,6 +23,7 @@ function AddActivityModal(props) {
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(0);
     const [completed, setCompleted] = useState(true);
     const [categoryName, setCategoryName] = useState("");
+    const [priority, setPriority] = useState(3)
     const [categories, setCategories] = useState([]);
     const [selected, setSelected] = useState("");
     const [message, setMessage] = useState("");
@@ -76,10 +77,15 @@ function AddActivityModal(props) {
 
                         <br/><br/>
 
-                        <label>Or create new category</label>
+                        <div>
+                            <label>Or create new category</label>
+                            <label id="priority-label">Priority</label>
+                        </div>
 
                         <div id="add-category">
                                 <input type="text" value={categoryName} placeholder={"Category"} onChange={(e) => setCategoryName(e.target.value)} />
+                                <input id="priority-input"  type="number" value={priority} min="1"  max="7" onChange={(e) => setPriority(e.target.value)}/> <br/>
+
                                 <button className="button-lg" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
                         </div>
                         <ModalMsg message={message} />
@@ -133,7 +139,7 @@ function AddActivityModal(props) {
                 },
                 body: JSON.stringify({
                     name: categoryName,
-                    priority: 3,
+                    priority: priority,
                     user_Id: props.user.id
                 })
             }

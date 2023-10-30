@@ -40,6 +40,14 @@
     display: flex;
 }
 
+#priority-input {
+    width: 40px;
+}
+
+#priority-label {
+    margin-left: 240px;
+}
+
 /*.add-category-button {*/
 /*    width: 300px;*/
 /*    height: 52px;*/

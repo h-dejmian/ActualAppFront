@@ -20,7 +20,7 @@ const customStyles = {
 function AddCategoryModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("");
-    const [priority, setPriority] = useState(0)
+    const [priority, setPriority] = useState(3)
     const [message, setMessage] = useState("");
     const handleOpen = () => setIsOpen(true);
     const handleClose = () => {
