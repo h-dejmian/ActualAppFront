@@ -1,4 +1,4 @@
-import DeleteActivityButton from "./activitydescription/DeleteActivityButton";
+import DeleteActivityButton from "./DeleteActivityButton";
 import UpdateActivityModal from "../modals/UpdateActivityModal";
 import {useState} from "react";
 

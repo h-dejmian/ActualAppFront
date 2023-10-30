@@ -69,8 +69,10 @@ function UpdateActivityModal(props) {
                     <label htmlFor="categories">Choose category from the list :   </label>
                     <select defaultValue={categoryName} onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
                         <option value={categoryName}> {categoryName} </option>
+
                         {categories.filter(category => category.name !== categoryName)
                                     .map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
+
                     </select>
 
                     <div id="add-category">

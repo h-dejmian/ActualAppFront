@@ -29,12 +29,15 @@ function AddActivityModal(props) {
     const [categories, setCategories] = useState([]);
     const [selected, setSelected] = useState("");
     const [message, setMessage] = useState("");
+
     const handleOpen = () => setIsOpen(true);
+
     const handleClose = () => {
         setIsOpen(false);
         setMessage("");
         resetState();
     }
+
     const handleSelect = (e) => setSelected(e.target.value);
 
     async function getCategories() {

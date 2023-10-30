@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 import AddActivityModal from "../../modals/AddActivityModal";
 import moment from "moment/moment";
 import MyCalendar from "./MyCalendar";
-import NoActivityMsg from "../../activity/activitydescription/NoActivityMsg";
+import NoActivityMsg from "../../messages/NoActivityMsg";
 import {api} from '../../App.js'
 
 class Activities extends Component {
@@ -17,12 +17,12 @@ class Activities extends Component {
     }
 
     setSelectedDate(date) {
-        this.setState({selectedDate : date})
+        this.setState({selectedDate: date})
     }
 
     async getActivitiesByDate(date) {
         const activities = await api.fetchActivitiesByDate(this.props.user.id, date);
-        if(activities !== null) {
+        if (activities !== null) {
             this.setState({activities: activities});
         }
     }
@@ -38,14 +38,14 @@ class Activities extends Component {
 
     addActivity(activity) {
         this.setState(current => ({
-            activities : [...current.activities, activity ]
+            activities: [...current.activities, activity]
         }))
     }
 
     updateActivity(id, activity) {
         this.removeActivity(id);
         this.setState(current => ({
-            activities : [...current.activities, activity ]
+            activities: [...current.activities, activity]
         }))
     }
 
@@ -55,36 +55,40 @@ class Activities extends Component {
             <div className="activities">
                 <div>
 
-                <h3>Activities in {this.state.selectedDate} </h3>
-                <AddActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate} appElement={'body'} user={this.props.user} />
+                    <h3>Activities in {this.state.selectedDate} </h3>
+                    <AddActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate}
+                                      appElement={'body'} user={this.props.user}/>
 
-                <table className="table-cst">
-                    <thead>
-                         <tr>
+                    <table className="table-cst">
+                        <thead>
+                        <tr>
                             <th>Activity</th>
                             <th>Time spent</th>
                             <th>Category</th>
                             <th>Completed</th>
                             <th>Delete</th>
                             <th>Update</th>
-                         </tr>
-                    </thead>
+                        </tr>
+                        </thead>
 
-                    <tbody>
-                            {this.state.activities.length === 0 ? <NoActivityMsg/> : this.state.activities.map((activity, index) =>  <Activity key={index}
-                                                                                                   id={activity.id}
-                                                                                                   description={activity.description}
-                                                                                                   time={activity.timeSpentInMinutes}
-                                                                                                   date={activity.date}
-                                                                                                   completed = {activity.completed}
-                                                                                                   categoryName = {activity.categoryName}
-                                                                                                   removeActivity={this.removeActivity.bind(this)}
-                                                                                                   updateActivity={this.updateActivity.bind(this)}
-                                                                                                    user={this.props.user}/> )}
-                    </tbody>
-                </table>
+                        <tbody>
+                        {this.state.activities.length === 0 ?
+                            <NoActivityMsg/> : this.state.activities.map((activity, index) => <Activity key={index}
+                                                                                                        id={activity.id}
+                                                                                                        description={activity.description}
+                                                                                                        time={activity.timeSpentInMinutes}
+                                                                                                        date={activity.date}
+                                                                                                        completed={activity.completed}
+                                                                                                        categoryName={activity.categoryName}
+                                                                                                        removeActivity={this.removeActivity.bind(this)}
+                                                                                                        updateActivity={this.updateActivity.bind(this)}
+                                                                                                        user={this.props.user}/>)}
+                        </tbody>
+                    </table>
                 </div>
-                <MyCalendar selectedDate = {this.state.selectedDate} setSelectedDate={this.setSelectedDate.bind(this)} fetchActivitiesByDate={this.getActivitiesByDate.bind(this)}/>
+                <MyCalendar selectedDate={this.state.selectedDate}
+                            setSelectedDate={this.setSelectedDate.bind(this)}
+                            fetchActivitiesByDate={this.getActivitiesByDate.bind(this)}/>
             </div>
         )
     }
