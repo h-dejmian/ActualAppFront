@@ -1,10 +1,12 @@
 import '../../css/login-form.css'
 import {useState} from "react";
+import Message from "../../messages/Message";
 
 function RegisterForm() {
     const [userName, setUserName ] = useState("");
     const [password, setPassword ] = useState("");
     const [userInfo, setUserInfo] = useState("");
+    const [message, setMessage] = useState("")
     function handleSubmitForm(e) {
         e.preventDefault();
 
@@ -19,7 +21,11 @@ function RegisterForm() {
             })
 
         }).then(res => res.json())
-            .then(json => setUserInfo(json));
+            .then(user => {
+                if(validateResponse(user)) {
+                    setUserInfo(user)
+                }
+            });
 
         resetFormFields();
     }
@@ -27,7 +33,21 @@ function RegisterForm() {
     function resetFormFields() {
         setUserName("");
         setPassword("");
+        setMessage("");
     }
+
+    function validateResponse(res) {
+        if(res.status === 404 || res.status === 400 || res.status === 401) {
+            setMessage('Invalid data');
+            return false;
+        }
+        if(res.id && res.login) {
+            setMessage('Account successfully created!');
+            return true;
+        }
+        return true;
+    }
+
     return (
         <div className="login-form">
             <h2> Register </h2>
@@ -37,6 +57,7 @@ function RegisterForm() {
                 <label>Password</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button className="button-lg" type="submit">Submit</button>
+                <Message message={message} />
             </form>
         </div>
     )

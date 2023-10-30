@@ -26,7 +26,6 @@ function UpdateCategoryModal(props) {
         setIsOpen(false);
     }
 
-
     return (
         <div>
             <a className={"button-sm"} onClick={handleOpen}>Update</a>

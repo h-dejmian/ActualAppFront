@@ -85,7 +85,8 @@ class Activities extends Component {
                                                                                                    completed = {activity.completed}
                                                                                                    categoryName = {activity.categoryName}
                                                                                                    removeActivity={this.removeActivity.bind(this)}
-                                                                                                   updateActivity={this.updateActivity.bind(this)}/> )}
+                                                                                                   updateActivity={this.updateActivity.bind(this)}
+                                                                                                    user={this.props.user}/> )}
                     </tbody>
                 </table>
                 </div>

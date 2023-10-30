@@ -32,7 +32,8 @@ function Activity(props) {
                                      date={props.date}
                                      time={props.time}
                                      categoryName={props.categoryName}
-                                     updateActivity = {props.updateActivity} /></td>
+                                     updateActivity = {props.updateActivity}
+                                      user = {props.user}  /></td>
         </tr>
     )
 }

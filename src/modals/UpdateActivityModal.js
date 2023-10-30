@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
+import Message from "../messages/Message";
 
 const customStyles = {
     content: {
@@ -22,11 +23,17 @@ function UpdateActivityModal(props) {
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(props.time);
     const [completed, setCompleted] = useState(false);
     const [categoryName, setCategoryName] = useState(props.categoryName);
+    const [newCategoryName, setNewCategoryName] = useState("");
     const [categories, setCategories] = useState([]);
     const [selected, setSelected] = useState(categoryName);
+    const [message, setMessage] = useState("");
+    const [priority, setPriority] = useState(3)
 
     const handleOpen = () => setIsOpen(true);
-    const handleClose = () => setIsOpen(false);
+    const handleClose = () => {
+        setIsOpen(false);
+        setMessage("");
+    }
 
     const handleSelect = (e) => setSelected(e.target.value);
 
@@ -71,8 +78,13 @@ function UpdateActivityModal(props) {
                                     .map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
                     </select>
 
-                    {/*<label>Category</label>*/}
-                    {/*<input type="text" value={categoryName} onChange={(e) => setCategoryName(e.target.value)}/> <br/>*/}
+                    <div id="add-category">
+                        <input type="text" value={newCategoryName} placeholder={"Category"} onChange={(e) => setNewCategoryName(e.target.value)} />
+                        <input id="priority-input"  type="number" value={priority} min="1"  max="7" onChange={(e) => setPriority(e.target.value)}/> <br/>
+
+                        <button className="button-lg" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
+                    </div>
+                    <Message message={message} />
 
                     <br/><br/>
 
@@ -106,6 +118,30 @@ function UpdateActivityModal(props) {
         props.updateActivity(props.id, activityJson)
 
         setIsOpen(false);
+    }
+
+    async function handleNewCategoryButton(e) {
+        e.preventDefault();
+
+        if(categoryName === "") {
+            return;
+        }
+        await fetch("http://localhost:8080/api/v1/categories", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: newCategoryName,
+                    priority: priority,
+                    user_Id: props.user.id
+                })
+            }
+        );
+        setCategories([...categories, {name : newCategoryName}])
+        setNewCategoryName("");
+        setMessage("New category added to list!")
     }
 
     // function resetState() {

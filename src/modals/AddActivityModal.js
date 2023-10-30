@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
-import ModalMsg from "./ModalMsg";
+import Message from "../messages/Message";
 
 const customStyles = {
     content: {
@@ -88,7 +88,7 @@ function AddActivityModal(props) {
 
                                 <button className="button-lg" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
                         </div>
-                        <ModalMsg message={message} />
+                        <Message message={message} />
 
                         <br/>
                         <div className="submit-close">

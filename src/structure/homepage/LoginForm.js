@@ -1,12 +1,12 @@
 import '../../css/login-form.css'
 import {useState} from "react";
-import ErrorMsg from "./ErrorMsg";
+import ErrorMsg from "../../messages/ErrorMsg";
 
 function LoginForm(props) {
     const [userName, setUserName ] = useState("");
     const [password, setPassword ] = useState("");
     const [logTime, setLogTime ] = useState();
-    const [errorMsg, setErrorMsg] = useState('');
+    const [errorMsg, setErrorMsg] = useState("");
 
     function handleSubmitForm(e) {
         e.preventDefault();

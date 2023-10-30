@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
-import ModalMsg from "./ModalMsg";
+import Message from "../messages/Message";
 
 const customStyles = {
     content: {
@@ -49,7 +49,7 @@ function AddCategoryModal(props) {
                     <label>Priority</label>
                     <input  type="number" value={priority} min="1"  max="7" onChange={(e) => setPriority(e.target.value)}/> <br/>
 
-                    <ModalMsg message={message} />
+                    <Message message={message} />
 
                     <div className="submit-close">
                         <button className="button-lg" type="submit">Submit</button>
