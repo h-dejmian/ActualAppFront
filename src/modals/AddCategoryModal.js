@@ -71,8 +71,8 @@ function AddCategoryModal(props) {
                 },
                 body: JSON.stringify({
                     name: name,
-                    priority: priority
-                    // user_Id: props.user.id
+                    priority: priority,
+                    user_Id: props.user.id
                 })
             }
         );

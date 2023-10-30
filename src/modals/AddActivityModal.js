@@ -132,7 +132,9 @@ function AddActivityModal(props) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: categoryName
+                    name: categoryName,
+                    priority: 3,
+                    user_Id: props.user.id
                 })
             }
         );

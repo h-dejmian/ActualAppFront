@@ -1,5 +1,6 @@
-function Api() {
-    async function fetchCategories() {
+class Api {
+
+     async fetchCategories() {
         const response = await fetch(`http://localhost:8080/api/v1/categories`, {
             method: "GET",
             credentials: "include",

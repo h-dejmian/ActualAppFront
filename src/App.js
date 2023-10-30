@@ -7,7 +7,9 @@ import RegisterForm from "./structure/homepage/RegisterForm";
 import {useEffect, useState} from "react";
 import Content from "./structure/content/Content";
 import LogoHome from "./structure/homepage/LogoHome";
+import Api from "./api/Api";
 
+export const api = new Api();
 
 function App() {
     const oneHourInMilliseconds = 3600000;

@@ -1,5 +1,4 @@
 import {useCallback} from "react";
-import '../../css/activity.css'
 
 
 function DeleteActivityButton(props) {

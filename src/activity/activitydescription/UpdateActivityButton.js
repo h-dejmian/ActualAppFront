@@ -1,6 +1,4 @@
-import {useCallback} from "react";
-import '../../css/activity.css'
-
+import {useCallback} from "react"
 
 function UpdateActivityButton(props) {
 

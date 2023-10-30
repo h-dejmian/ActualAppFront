@@ -28,7 +28,9 @@ class Activities extends Component {
             },
         });
         const activities = await response.json();
-        this.setState({activities: activities});
+        if(activities !== null) {
+            this.setState({activities: activities});
+        }
     }
 
     componentDidMount() {

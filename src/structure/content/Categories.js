@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react";
 import Category from "../../category/Category";
 import '../../css/content.css';
 import AddCategoryModal from "../../modals/AddCategoryModal";
+import {api} from '../../App.js'
 
-function Categories() {
+function Categories(props) {
     const [categories, setCategories] = useState([]);
 
     async function fetchCategories() {
@@ -17,6 +18,7 @@ function Categories() {
         const categories = await response.json();
         setCategories(categories)
     }
+
 
     useEffect(() => fetchCategories, []);
 
@@ -37,7 +39,7 @@ function Categories() {
     return (
         <div className="categories">
             <h3>Categories</h3>
-            <AddCategoryModal addCategory={addCategory.bind(this)}/>
+            <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user}/>
             <table className="table-cst">
                 <thead>
                 <tr>
