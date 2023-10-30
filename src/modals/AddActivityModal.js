@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
 import Message from "../messages/Message";
+import {api} from "../App";
+import SubmitAndClose from "./SubmitAndClose";
 
 const customStyles = {
     content: {
@@ -35,19 +37,12 @@ function AddActivityModal(props) {
     }
     const handleSelect = (e) => setSelected(e.target.value);
 
-    async function fetchCategories() {
-        const response = await fetch(`http://localhost:8080/api/v1/categories`, {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                'Content-Type': "application/json",
-            },
-        })
-        const categories = await response.json();
+    async function getCategories() {
+        const categories = await api.fetchCategories();
         setCategories(categories)
     }
 
-    useEffect(() => fetchCategories, []);
+    useEffect(() => getCategories, []);
 
     return (
         <div>
@@ -91,10 +86,9 @@ function AddActivityModal(props) {
                         <Message message={message} />
 
                         <br/>
-                        <div className="submit-close">
-                            <button className="button-lg" type="submit">Submit</button>
-                            <button className="button-lg" onClick={handleClose}>Close</button>
-                        </div>
+
+                        <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)} handleClose={handleClose.bind(this)} />
+
                     </form>
             </Modal>
         </div>

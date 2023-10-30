@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
+import SubmitAndClose from "./SubmitAndClose";
 
 const customStyles = {
     content: {
@@ -48,10 +49,8 @@ function UpdateCategoryModal(props) {
 
                     <br/><br/>
 
-                    <div className="submit-close">
-                        <button className="button-lg" onClick={handleSubmitForm}>Submit</button>
-                        <button className="button-lg" onClick={handleClose}>Close</button>
-                    </div>
+                    <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)} handleClose={handleClose.bind(this)} />
+
                 </form>
             </Modal>
         </div>

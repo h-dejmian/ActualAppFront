@@ -5,6 +5,7 @@ import AddActivityModal from "../../modals/AddActivityModal";
 import moment from "moment/moment";
 import MyCalendar from "./MyCalendar";
 import NoActivityMsg from "../../activity/activitydescription/NoActivityMsg";
+import {api} from '../../App.js'
 
 class Activities extends Component {
     constructor(props) {
@@ -19,22 +20,15 @@ class Activities extends Component {
         this.setState({selectedDate : date})
     }
 
-    async fetchActivitiesByDate(date) {
-        const response = await fetch(`http://localhost:8080/api/v1/activities/${this.props.user.id}?date=${date}`, {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                'Content-Type': "application/json",
-            },
-        });
-        const activities = await response.json();
+    async getActivitiesByDate(date) {
+        const activities = await api.fetchActivitiesByDate(this.props.user.id, date);
         if(activities !== null) {
             this.setState({activities: activities});
         }
     }
 
     componentDidMount() {
-        this.fetchActivitiesByDate(moment(new Date).format("yyyy-MM-DD"))
+        this.getActivitiesByDate(moment(new Date).format("yyyy-MM-DD"))
     }
 
     removeActivity(id) {
@@ -90,7 +84,7 @@ class Activities extends Component {
                     </tbody>
                 </table>
                 </div>
-                <MyCalendar selectedDate = {this.state.selectedDate} setSelectedDate={this.setSelectedDate.bind(this)} fetchActivitiesByDate={this.fetchActivitiesByDate.bind(this)}/>
+                <MyCalendar selectedDate = {this.state.selectedDate} setSelectedDate={this.setSelectedDate.bind(this)} fetchActivitiesByDate={this.getActivitiesByDate.bind(this)}/>
             </div>
         )
     }

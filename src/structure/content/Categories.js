@@ -7,20 +7,12 @@ import {api} from '../../App.js'
 function Categories(props) {
     const [categories, setCategories] = useState([]);
 
-    async function fetchCategories() {
-        const response = await fetch(`http://localhost:8080/api/v1/categories`, {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                'Content-Type': "application/json",
-            },
-        })
-        const categories = await response.json();
+    async function getCategories() {
+        const categories = await api.fetchCategories();
         setCategories(categories)
     }
 
-
-    useEffect(() => fetchCategories, []);
+    useEffect(() => getCategories, []);
 
     function removeCategory(id) {
         let updated = categories.filter((activity) => activity.id !== id);
