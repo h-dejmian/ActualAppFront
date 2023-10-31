@@ -155,6 +155,10 @@ function UpdateActivityModal(props) {
             setMessage("Fields must not be empty!")
             return false;
         }
+        if(timeSpentInMinutes < 1 || timeSpentInMinutes > 1440) {
+            setMessage("Time should be greater than 0 and less than 1440")
+            return false;
+        }
         return true;
     }
 

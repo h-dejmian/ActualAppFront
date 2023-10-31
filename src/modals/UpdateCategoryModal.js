@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
 import SubmitAndClose from "./SubmitAndClose";
+import Message from "../messages/Message";
 
 const customStyles = {
     content: {
@@ -20,11 +21,13 @@ const customStyles = {
 function UpdateCategoryModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState(props.name);
-    const [priority, setPriority] = useState(props.priority)
+    const [priority, setPriority] = useState(props.priority);
+    const [message, setMessage] = useState("");
 
     const handleOpen = () => setIsOpen(true);
     const handleClose = () => {
         setIsOpen(false);
+        setMessage("");
     }
 
     return (
@@ -49,6 +52,8 @@ function UpdateCategoryModal(props) {
 
                     <br/><br/>
 
+                    <Message message={message} />
+
                     <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)} handleClose={handleClose.bind(this)} />
 
                 </form>
@@ -58,6 +63,11 @@ function UpdateCategoryModal(props) {
 
     async function handleSubmitForm(e) {
         e.preventDefault();
+
+        if(!isInputValid()) {
+            return;
+        }
+
         const res = await fetch(`http://localhost:8080/api/v1/categories/${props.id}`, {
                 method: "PUT",
                 credentials: "include",
@@ -81,6 +91,18 @@ function UpdateCategoryModal(props) {
     //     setName("");
     //     setPriority("");
     // }
+
+    function isInputValid() {
+        if(priority < 1 || priority > 7) {
+            setMessage("Priority should be a number between 1 and 7")
+            return false;
+        }
+        if(name === "") {
+            setMessage("Category name cannot be empty")
+            return false;
+        }
+        return true;
+    }
 
 }
 

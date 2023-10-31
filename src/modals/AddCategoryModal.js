@@ -61,6 +61,10 @@ function AddCategoryModal(props) {
 
     async function handleSubmitForm(e) {
         e.preventDefault();
+        if(!isInputValid()) {
+            return;
+        }
+
         const res = await fetch("http://localhost:8080/api/v1/categories", {
                 method: "POST",
                 credentials: "include",
@@ -83,6 +87,19 @@ function AddCategoryModal(props) {
     function resetState() {
         setName("");
         setPriority(0);
+        setMessage("");
+    }
+
+    function isInputValid() {
+        if(priority < 1 || priority > 7) {
+            setMessage("Priority should be a number between 1 and 7")
+            return false;
+        }
+        if(name === "") {
+            setMessage("Category name cannot be empty")
+            return false;
+        }
+        return true;
     }
 }
 
