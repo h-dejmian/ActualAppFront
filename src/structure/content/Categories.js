@@ -31,7 +31,7 @@ function Categories(props) {
     return (
         <div className="categories">
             <h3>Categories</h3>
-            <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user}/>
+            {props.onlyStats ? null : <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user}/>}
             <table className="table-cst">
                 <thead>
                 <tr>
@@ -52,7 +52,8 @@ function Categories(props) {
                                                                activitiesNumber={category.activitiesNumber}
                                                                removeCategory={removeCategory.bind(this)}
                                                                updateCategory={updateCategory.bind(this)}
-                                                                addCategory={addCategory.bind(this)}/>)}
+                                                                addCategory={addCategory.bind(this)}
+                                                                onlyStats={true}/>)}
                 </tbody>
             </table>
         </div>

@@ -21,6 +21,17 @@ class Api {
         });
         return await response.json();
     }
+    async fetchActivitiesByTime() {
+        const response = await fetch(`http://localhost:8080/api/v1/activities?groupByTime`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        })
+        return await response.json();
+    }
+
 
 }
 
