@@ -4,20 +4,7 @@ import '../css/modal.css'
 import Message from "../messages/Message";
 import {api} from "../App";
 import SubmitAndClose from "./SubmitAndClose";
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '35%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        color: 'black',
-        backgroundColor: "#bdd3ef",
-        border: "1px solid black"
-    },
-};
+import customStyles from "./style/ModalStyles";
 
 function AddActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -122,23 +109,6 @@ function AddActivityModal(props) {
             props.user.id
         ]
 
-        // const res = await fetch("http://localhost:8080/api/v1/activities", {
-        //         method: "POST",
-        //         credentials: "include",
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //
-        //         },
-        //         body: JSON.stringify({
-        //             description: description,
-        //             timeSpentInMinutes: timeSpentInMinutes,
-        //             date: props.date,
-        //             completed: completed,
-        //             categoryName: selected,
-        //             user_Id: props.user.id
-        //         })
-        //     }
-        // );
         const activity = await api.newActivityFetch(activityProps);
         props.addActivity(activity)
         setIsOpen(false)

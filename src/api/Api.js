@@ -1,6 +1,6 @@
 class Api {
 
-     async fetchCategories() {
+    async fetchCategories() {
         const response = await fetch(`http://localhost:8080/api/v1/categories`, {
             method: "GET",
             credentials: "include",
@@ -11,7 +11,7 @@ class Api {
         return response.json();
     }
 
-    async fetchActivitiesByDate(user_Id, date){
+    async fetchActivitiesByDate(user_Id, date) {
         const response = await fetch(`http://localhost:8080/api/v1/activities/${user_Id}?date=${date}`, {
             method: "GET",
             credentials: "include",
@@ -21,6 +21,7 @@ class Api {
         });
         return response.json();
     }
+
     async fetchActivitiesByTime() {
         const response = await fetch(`http://localhost:8080/api/v1/activities?groupByTime`, {
             method: "GET",
@@ -33,7 +34,7 @@ class Api {
     }
 
     async newCategoryFetch(name, priority, id) {
-        await fetch("http://localhost:8080/api/v1/categories", {
+        const response = await fetch("http://localhost:8080/api/v1/categories", {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -46,10 +47,28 @@ class Api {
                 })
             }
         );
+        return response.json();
+    }
+
+    async updateCategoryFetch(name, priority, id) {
+        const res = await fetch(`http://localhost:8080/api/v1/categories/${id}`, {
+                method: "PUT",
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    priority: priority
+                })
+            }
+        );
+
+        return res.json();
     }
 
     async updateActivityFetch(activity, id) {
-        const res = await fetch(`http://localhost:8080/api/v1/activities/${id}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/activities/${id}`, {
                 method: "PUT",
                 credentials: "include",
                 headers: {
@@ -64,11 +83,11 @@ class Api {
                 })
             }
         );
-        return res.json();
+        return response.json();
     }
 
     async newActivityFetch(activity) {
-        const res = await fetch("http://localhost:8080/api/v1/activities", {
+        const response = await fetch("http://localhost:8080/api/v1/activities", {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -86,10 +105,8 @@ class Api {
             }
         );
 
-        return res.json();
+        return response.json();
     }
-
-
 }
 
 export default Api

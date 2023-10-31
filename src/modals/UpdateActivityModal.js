@@ -4,20 +4,8 @@ import '../css/modal.css'
 import Message from "../messages/Message";
 import {api} from "../App";
 import SubmitAndClose from "./SubmitAndClose";
+import customStyles from "./style/ModalStyles";
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '35%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        color: 'black',
-        backgroundColor: "#bdd3ef",
-        border: "1px solid black"
-    },
-};
 
 function UpdateActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);

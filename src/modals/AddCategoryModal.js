@@ -3,20 +3,8 @@ import Modal from 'react-modal';
 import '../css/modal.css'
 import Message from "../messages/Message";
 import SubmitAndClose from "./SubmitAndClose";
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        color: 'black',
-        backgroundColor: "#bdd3ef",
-        border: "1px solid black"
-    },
-};
+import customStyles from "./style/ModalStyles";
+import {api} from "../App";
 
 function AddCategoryModal(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -61,27 +49,16 @@ function AddCategoryModal(props) {
 
     async function handleSubmitForm(e) {
         e.preventDefault();
+
         if(!isInputValid()) {
             return;
         }
 
-        const res = await fetch("http://localhost:8080/api/v1/categories", {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    'Content-Type': 'application/json'
+        const category = await api.newCategoryFetch(name, priority, props.user.id);
 
-                },
-                body: JSON.stringify({
-                    name: name,
-                    priority: priority,
-                    user_Id: props.user.id
-                })
-            }
-        );
-        setIsOpen(false)
-        const categoryJson = await res.json();
-        props.addCategory(categoryJson)
+        props.addCategory(category);
+
+        setIsOpen(false);
         resetState();
     }
     function resetState() {
