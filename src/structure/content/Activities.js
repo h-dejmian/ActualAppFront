@@ -43,9 +43,10 @@ class Activities extends Component {
     }
 
     updateActivity(id, activity) {
-        this.removeActivity(id);
+        const activities = this.state.activities.map(a => a.id !== id  ? a : activity );
+
         this.setState(current => ({
-            activities: [...current.activities, activity]
+            activities:  activities
         }))
     }
 

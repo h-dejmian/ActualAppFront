@@ -20,8 +20,8 @@ function Categories(props) {
     }
 
     function updateCategory(category) {
-        removeCategory(category.id);
-        setCategories(categories => [...categories, category])
+        const cats = categories.map(c => c.id !== category.id  ? c : category );
+        setCategories(cats)
     }
 
     function addCategory(category) {
