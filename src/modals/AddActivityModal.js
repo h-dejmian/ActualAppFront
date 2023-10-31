@@ -60,91 +60,102 @@ function AddActivityModal(props) {
                 <h2>New Activity</h2>
                 <hr/>
                 <br/>
-                    <form>
-                        <label>Description</label>
-                        <input type="text" value={description} placeholder={"Description"} onChange={(e) => setDescription(e.target.value)}/><br/>
+                <form>
+                    <label>Description</label>
+                    <input type="text" value={description} placeholder={"Description"}
+                           onChange={(e) => setDescription(e.target.value)}/><br/>
 
-                        <label>Time spent in minutes</label>
-                        <input  type="text" min="1" max="1440" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
+                    <label>Time spent in minutes</label>
+                    <input type="text" min="1" max="1440" value={timeSpentInMinutes}
+                           onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
-                        <label htmlFor="categories">Choose category from the list :   </label>
-                        <select className="select" onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
-                            <option disabled selected value> -- select an option -- </option>
-                            {categories.map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
-                        </select>
+                    <label htmlFor="categories">Choose category from the list : </label>
+                    <select className="select" onChange={e => handleSelect(e)} name="categories"
+                            id="categories-dropdown">
+                        <option disabled selected value> -- select an option --</option>
+                        {categories.map((category, index) => (
+                            <option key={index} value={category.name}>{category.name}</option>))}
+                    </select>
 
-                        <br/><br/>
+                    <br/><br/>
 
-                        <div>
-                            <label>Or create new category</label>
-                            <label id="priority-label">Priority</label>
-                        </div>
+                    <div>
+                        <label>Or create new category</label>
+                        <label id="priority-label">Priority</label>
+                    </div>
 
-                        <div id="add-category">
-                                <input type="text" value={categoryName} placeholder={"Category"} onChange={(e) => setCategoryName(e.target.value)} />
-                                <input id="priority-input"  type="number" value={priority} min="1"  max="7" onChange={(e) => setPriority(e.target.value)}/> <br/>
+                    <div id="add-category">
+                        <input type="text" value={categoryName} placeholder={"Category"}
+                               onChange={(e) => setCategoryName(e.target.value)}/>
+                        <input id="priority-input" type="number" value={priority} min="1" max="7"
+                               onChange={(e) => setPriority(e.target.value)}/> <br/>
 
-                                <button className="button-lg" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
-                        </div>
-                        <Message message={message} />
+                        <button className="button-lg" type="button" onClick={handleNewCategoryButton}> Add new category
+                            to list
+                        </button>
+                    </div>
+                    <Message message={message}/>
 
-                        <br/>
+                    <br/>
 
-                        <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)} handleClose={handleClose.bind(this)} />
+                    <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)}
+                                    handleClose={handleClose.bind(this)}/>
 
-                    </form>
+                </form>
             </Modal>
         </div>
     )
 
     async function handleSubmitForm(e) {
         e.preventDefault();
-        if(!isInputValid()) {
+
+        if (!isInputValid()) {
             return;
         }
-        const res = await fetch("http://localhost:8080/api/v1/activities", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                'Content-Type': 'application/json'
 
-            },
-            body: JSON.stringify({
-                description: description,
-                timeSpentInMinutes: timeSpentInMinutes,
-                date : props.date,
-                completed: completed,
-                categoryName: selected,
-                user_Id: props.user.id
-            })
-        }
-        );
+        const activityProps = [
+            description,
+            timeSpentInMinutes,
+            props.date,
+            completed,
+            selected,
+            props.user.id
+        ]
+
+        // const res = await fetch("http://localhost:8080/api/v1/activities", {
+        //         method: "POST",
+        //         credentials: "include",
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //
+        //         },
+        //         body: JSON.stringify({
+        //             description: description,
+        //             timeSpentInMinutes: timeSpentInMinutes,
+        //             date: props.date,
+        //             completed: completed,
+        //             categoryName: selected,
+        //             user_Id: props.user.id
+        //         })
+        //     }
+        // );
+        const activity = await api.newActivityFetch(activityProps);
+        props.addActivity(activity)
         setIsOpen(false)
-        const activityJson = await res.json();
-        props.addActivity(activityJson)
         resetState();
     }
 
     async function handleNewCategoryButton(e) {
         e.preventDefault();
 
-        if(!isInputValid()) {
+        if (categoryName === "") {
+            setMessage("Field must not be empty!")
             return;
         }
-        await fetch("http://localhost:8080/api/v1/categories", {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: categoryName,
-                    priority: priority,
-                    user_Id: props.user.id
-                })
-            }
-        );
-        setCategories([...categories, {name : categoryName}])
+
+        await api.newCategoryFetch(categoryName, priority, props.user.id)
+
+        setCategories([...categories, {name: categoryName}])
         setCategoryName("");
         setMessage("New category added to list!")
     }
@@ -157,18 +168,17 @@ function AddActivityModal(props) {
     }
 
     function isInputValid() {
-        if(description === "" || selected === "") {
+        if (description === "" || selected === "") {
             setMessage("Fields must not be empty!")
             return false;
         }
-        if(timeSpentInMinutes < 1 || timeSpentInMinutes > 1440) {
+        if (timeSpentInMinutes < 1 || timeSpentInMinutes > 1440) {
             setMessage("Time should be greater than 0 and smaller than 1440")
             return false;
         }
         return true;
     }
 }
-
 
 
 export default AddActivityModal;

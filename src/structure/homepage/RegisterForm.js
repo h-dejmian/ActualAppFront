@@ -57,6 +57,7 @@ function RegisterForm() {
                 <label>Password</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button className="button-lg" type="submit">Submit</button>
+                <br/>
                 <Message message={message} />
             </form>
         </div>

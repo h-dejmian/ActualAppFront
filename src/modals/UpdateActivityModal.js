@@ -77,7 +77,11 @@ function UpdateActivityModal(props) {
 
                     <br/><br/>
 
-                    <label>Or create new category</label>
+                    <div>
+                        <label>Or create new category</label>
+                        <label id="priority-label">Priority</label>
+                    </div>
+
                     <div id="add-category">
                         <input type="text" value={newCategoryName} placeholder={"Category"} onChange={(e) => setNewCategoryName(e.target.value)} />
                         <input id="priority-input"  type="number" value={priority} min="1"  max="7" onChange={(e) => setPriority(e.target.value)}/> <br/>
@@ -97,23 +101,22 @@ function UpdateActivityModal(props) {
 
     async function handleSubmitForm(e) {
         e.preventDefault();
-        const res = await fetch(`http://localhost:8080/api/v1/activities/${props.id}`, {
-                method: "PUT",
-                credentials: "include",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    description: description,
-                    timeSpentInMinutes: timeSpentInMinutes,
-                    date: props.date,
-                    completed: completed,
-                    categoryName: selected
-                })
-            }
-        );
-        let activityJson = await res.json();
-        props.updateActivity(props.id, activityJson)
+
+        if(!isInputValid()) {
+            return;
+        }
+
+        const activityProps = [
+            description,
+            timeSpentInMinutes,
+            props.date,
+            completed,
+            selected
+        ]
+
+        const activity = await api.updateActivityFetch(activityProps, props.id)
+
+        props.updateActivity(props.id, activity)
 
         setIsOpen(false);
     }
@@ -121,34 +124,17 @@ function UpdateActivityModal(props) {
     async function handleNewCategoryButton(e) {
         e.preventDefault();
 
-        if(!isInputValid()) {
+        if(categoryName === "") {
+            setMessage("Field must not be empty!")
             return;
         }
 
-        await fetch("http://localhost:8080/api/v1/categories", {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: newCategoryName,
-                    priority: priority,
-                    user_Id: props.user.id
-                })
-            }
-        );
+        await api.newCategoryFetch(newCategoryName, priority, props.user.id)
+
         setCategories([...categories, {name : newCategoryName}])
         setNewCategoryName("");
         setMessage("New category added to list!")
     }
-
-    // function resetState() {
-    //     setDescription("");
-    //     setCategoryName("");
-    //     setTimeSpentInMinutes(0);
-    //     setCategoryName("")
-    // }
 
     function isInputValid() {
         if(description === "" || selected === "") {
