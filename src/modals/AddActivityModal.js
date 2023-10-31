@@ -22,7 +22,7 @@ const customStyles = {
 function AddActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [description, setDescription] = useState("");
-    const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(0);
+    const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(1);
     const [completed, setCompleted] = useState(true);
     const [categoryName, setCategoryName] = useState("");
     const [priority, setPriority] = useState(3)
@@ -60,12 +60,12 @@ function AddActivityModal(props) {
                 <h2>New Activity</h2>
                 <hr/>
                 <br/>
-                    <form onSubmit={handleSubmitForm} method="POST">
+                    <form>
                         <label>Description</label>
                         <input type="text" value={description} placeholder={"Description"} onChange={(e) => setDescription(e.target.value)}/><br/>
 
                         <label>Time spent in minutes</label>
-                        <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
+                        <input  type="text" min="1" max="1440" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
                         <label htmlFor="categories">Choose category from the list :   </label>
                         <select className="select" onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
@@ -99,6 +99,9 @@ function AddActivityModal(props) {
 
     async function handleSubmitForm(e) {
         e.preventDefault();
+        if(!isInputValid()) {
+            return;
+        }
         const res = await fetch("http://localhost:8080/api/v1/activities", {
             method: "POST",
             credentials: "include",
@@ -125,7 +128,7 @@ function AddActivityModal(props) {
     async function handleNewCategoryButton(e) {
         e.preventDefault();
 
-        if(categoryName === "") {
+        if(!isInputValid()) {
             return;
         }
         await fetch("http://localhost:8080/api/v1/categories", {
@@ -150,6 +153,15 @@ function AddActivityModal(props) {
         setDescription("");
         setCategoryName("");
         setTimeSpentInMinutes(0);
+        setMessage("");
+    }
+
+    function isInputValid() {
+        if(description === "" || selected === "") {
+            setMessage("Fields must not be empty!")
+            return false;
+        }
+        return true;
     }
 }
 

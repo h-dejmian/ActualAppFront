@@ -59,14 +59,14 @@ function UpdateActivityModal(props) {
                 <h2>Update Activity</h2>
                 <hr/>
                 <br/>
-                <form onSubmit={handleSubmitForm} method="PUT">
+                <form>
                     <label>Description</label>
                     <input type="text" value={description}  onChange={(e) => setDescription(e.target.value)}/><br/>
 
                     <label>Time spent in minutes</label>
-                    <input  type="text" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
+                    <input type="text" min="1" max="1440" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
-                    <label htmlFor="categories">Choose category from the list :   </label>
+                    <label htmlFor="categories">Choose category from the list :  </label>
                     <select defaultValue={categoryName} onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
                         <option value={categoryName}> {categoryName} </option>
 
@@ -75,6 +75,9 @@ function UpdateActivityModal(props) {
 
                     </select>
 
+                    <br/><br/>
+
+                    <label>Or create new category</label>
                     <div id="add-category">
                         <input type="text" value={newCategoryName} placeholder={"Category"} onChange={(e) => setNewCategoryName(e.target.value)} />
                         <input id="priority-input"  type="number" value={priority} min="1"  max="7" onChange={(e) => setPriority(e.target.value)}/> <br/>
@@ -118,9 +121,10 @@ function UpdateActivityModal(props) {
     async function handleNewCategoryButton(e) {
         e.preventDefault();
 
-        if(categoryName === "") {
+        if(!isInputValid()) {
             return;
         }
+
         await fetch("http://localhost:8080/api/v1/categories", {
                 method: "POST",
                 credentials: "include",
@@ -145,6 +149,14 @@ function UpdateActivityModal(props) {
     //     setTimeSpentInMinutes(0);
     //     setCategoryName("")
     // }
+
+    function isInputValid() {
+        if(description === "" || selected === "") {
+            setMessage("Fields must not be empty!")
+            return false;
+        }
+        return true;
+    }
 
 }
 
