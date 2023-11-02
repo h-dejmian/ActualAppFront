@@ -33,7 +33,7 @@ class Api {
         return response.json();
     }
 
-    async newCategoryFetch(name, priority, id) {
+    async newCategoryFetch(name, priority, user_Id, type) {
         const response = await fetch("http://localhost:8080/api/v1/categories", {
                 method: "POST",
                 credentials: "include",
@@ -43,7 +43,8 @@ class Api {
                 body: JSON.stringify({
                     name: name,
                     priority: priority,
-                    user_Id: id
+                    userId: user_Id,
+                    categoryType: type
                 })
             }
         );

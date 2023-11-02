@@ -18,6 +18,38 @@ function AddCategoryModal(props) {
         resetState();
     }
 
+    async function handleSubmitForm(e) {
+        e.preventDefault();
+
+        if(!isInputValid()) {
+            return;
+        }
+
+        const category = await api.newCategoryFetch(name, priority, props.user.id, "REGULAR");
+
+        props.addCategory(category);
+
+        setIsOpen(false);
+        resetState();
+    }
+    function resetState() {
+        setName("");
+        setPriority(0);
+        setMessage("");
+    }
+
+    function isInputValid() {
+        if(priority < 1 || priority > 7) {
+            setMessage("Priority should be a number between 1 and 7")
+            return false;
+        }
+        if(name === "") {
+            setMessage("Category name cannot be empty")
+            return false;
+        }
+        return true;
+    }
+
     return (
         <div>
             <button className="button-lg" onClick={handleOpen}>Add New Category</button>
@@ -46,38 +78,6 @@ function AddCategoryModal(props) {
             </Modal>
         </div>
     )
-
-    async function handleSubmitForm(e) {
-        e.preventDefault();
-
-        if(!isInputValid()) {
-            return;
-        }
-
-        const category = await api.newCategoryFetch(name, priority, props.user.id);
-
-        props.addCategory(category);
-
-        setIsOpen(false);
-        resetState();
-    }
-    function resetState() {
-        setName("");
-        setPriority(0);
-        setMessage("");
-    }
-
-    function isInputValid() {
-        if(priority < 1 || priority > 7) {
-            setMessage("Priority should be a number between 1 and 7")
-            return false;
-        }
-        if(name === "") {
-            setMessage("Category name cannot be empty")
-            return false;
-        }
-        return true;
-    }
 }
 
 

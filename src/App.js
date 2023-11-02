@@ -12,7 +12,7 @@ import Api from "./api/Api";
 export const api = new Api();
 
 function App() {
-    const oneHourInMilliseconds = 3600000;
+    const ONE_HOUR_IN_MILLISECONDS = 3600000;
     const [user, setUser] = useState({login : localStorage.getItem('login'),
                                                                             id : localStorage.getItem('id')});
     const [selectedContent, setSelectedContent] = useState(0);
@@ -22,7 +22,7 @@ function App() {
     function validateUserLogTime() {
         const logTime = new Date(localStorage.getItem('logTime'));
 
-        if(new Date().getTime() - logTime.getTime() > oneHourInMilliseconds) {
+        if(new Date().getTime() - logTime.getTime() > ONE_HOUR_IN_MILLISECONDS) {
             clearUserCredentials();
         }
     }

@@ -5,12 +5,14 @@ import Categories from "./Categories";
 import PlanYourDay from "./PlanYourDay";
 import About from "./About";
 import MyExpenses from "./MyExpenses";
+import Noted from "./Noted";
 
 function Content(props) {
     const menuItems = [
         <Activities user={props.user} />,
         <Categories user={props.user} />,
         <PlanYourDay />,
+        <Noted />,
         <MyExpenses />,
         <Statistics user={props.user} />,
         <About />

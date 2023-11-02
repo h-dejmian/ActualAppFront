@@ -18,6 +18,31 @@ function UpdateCategoryModal(props) {
         setMessage("");
     }
 
+    async function handleSubmitForm(e) {
+        e.preventDefault();
+
+        if (!isInputValid()) {
+            return;
+        }
+
+        const category = await api.updateCategoryFetch(name, priority, props.id);
+        props.updateCategory(category)
+
+        setIsOpen(false);
+    }
+
+    function isInputValid() {
+        if (priority < 1 || priority > 7) {
+            setMessage("Priority should be a number between 1 and 7")
+            return false;
+        }
+        if (name === "") {
+            setMessage("Category name cannot be empty")
+            return false;
+        }
+        return true;
+    }
+
     return (
         <div>
             <a className={"button-sm"} onClick={handleOpen}>Update</a>
@@ -33,47 +58,23 @@ function UpdateCategoryModal(props) {
                 <br/>
                 <form onSubmit={handleSubmitForm} method="PUT">
                     <label>Name</label>
-                    <input type="text" value={name}  onChange={(e) => setName(e.target.value)}/><br/>
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)}/><br/>
 
                     <label>Priority</label>
-                    <input  type="number" value={priority} min="1" max="7" onChange={(e) => setPriority(e.target.value)}/> <br/>
+                    <input type="number" value={priority} min="1" max="7"
+                           onChange={(e) => setPriority(e.target.value)}/> <br/>
 
                     <br/><br/>
 
-                    <Message message={message} />
+                    <Message message={message}/>
 
-                    <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)} handleClose={handleClose.bind(this)} />
+                    <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)}
+                                    handleClose={handleClose.bind(this)}/>
 
                 </form>
             </Modal>
         </div>
     )
-
-    async function handleSubmitForm(e) {
-        e.preventDefault();
-
-        if(!isInputValid()) {
-            return;
-        }
-
-        const category = await api.updateCategoryFetch(name, priority, props.id);
-        props.updateCategory(category)
-
-        setIsOpen(false);
-    }
-
-    function isInputValid() {
-        if(priority < 1 || priority > 7) {
-            setMessage("Priority should be a number between 1 and 7")
-            return false;
-        }
-        if(name === "") {
-            setMessage("Category name cannot be empty")
-            return false;
-        }
-        return true;
-    }
-
 }
 
 export default UpdateCategoryModal;

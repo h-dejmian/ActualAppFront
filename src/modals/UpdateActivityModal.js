@@ -34,6 +34,55 @@ function UpdateActivityModal(props) {
 
     useEffect(() => getCategories, []);
 
+    async function handleSubmitForm(e) {
+        e.preventDefault();
+
+        if(!isInputValid()) {
+            return;
+        }
+
+        const activityProps = [
+            description,
+            timeSpentInMinutes,
+            props.date,
+            completed,
+            selected
+        ]
+
+        const activity = await api.updateActivityFetch(activityProps, props.id)
+
+        props.updateActivity(props.id, activity)
+
+        setIsOpen(false);
+    }
+
+    async function handleNewCategoryButton(e) {
+        e.preventDefault();
+
+        if(categoryName === "") {
+            setMessage("Field must not be empty!")
+            return;
+        }
+
+        await api.newCategoryFetch(newCategoryName, priority, props.user.id, "REGULAR")
+
+        setCategories([...categories, {name : newCategoryName}])
+        setNewCategoryName("");
+        setMessage("New category added to list!")
+    }
+
+    function isInputValid() {
+        if(description === "" || selected === "") {
+            setMessage("Fields must not be empty!")
+            return false;
+        }
+        if(timeSpentInMinutes < 1 || timeSpentInMinutes > 1440) {
+            setMessage("Time should be greater than 0 and less than 1440")
+            return false;
+        }
+        return true;
+    }
+
     return (
         <div>
             <a className={"button-sm"} onClick={handleOpen}>Update</a>
@@ -86,56 +135,6 @@ function UpdateActivityModal(props) {
             </Modal>
         </div>
     )
-
-    async function handleSubmitForm(e) {
-        e.preventDefault();
-
-        if(!isInputValid()) {
-            return;
-        }
-
-        const activityProps = [
-            description,
-            timeSpentInMinutes,
-            props.date,
-            completed,
-            selected
-        ]
-
-        const activity = await api.updateActivityFetch(activityProps, props.id)
-
-        props.updateActivity(props.id, activity)
-
-        setIsOpen(false);
-    }
-
-    async function handleNewCategoryButton(e) {
-        e.preventDefault();
-
-        if(categoryName === "") {
-            setMessage("Field must not be empty!")
-            return;
-        }
-
-        await api.newCategoryFetch(newCategoryName, priority, props.user.id)
-
-        setCategories([...categories, {name : newCategoryName}])
-        setNewCategoryName("");
-        setMessage("New category added to list!")
-    }
-
-    function isInputValid() {
-        if(description === "" || selected === "") {
-            setMessage("Fields must not be empty!")
-            return false;
-        }
-        if(timeSpentInMinutes < 1 || timeSpentInMinutes > 1440) {
-            setMessage("Time should be greater than 0 and less than 1440")
-            return false;
-        }
-        return true;
-    }
-
 }
 
 export default UpdateActivityModal;
