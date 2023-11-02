@@ -29,3 +29,26 @@ td, th {
 #statistics {
 
 }
+
+#noted {
+    display: flex;
+}
+
+#noted-buttons {
+    border: 1px solid black;
+    width: 350px;
+    height: 1000px;
+}
+
+#noted-content {
+    border: 1px solid black;
+    width: 1500px;
+    height: 700px;
+    display: flex;
+}
+
+.noted-category {
+    border: 1px solid black;
+    width: 400px;
+    height: 250px;
+}

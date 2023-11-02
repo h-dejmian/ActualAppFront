@@ -25,7 +25,7 @@ function AddCategoryModal(props) {
             return;
         }
 
-        const category = await api.newCategoryFetch(name, priority, props.user.id, "REGULAR");
+        const category = await api.newCategoryFetch(name, priority, props.user.id, props.type);
 
         props.addCategory(category);
 

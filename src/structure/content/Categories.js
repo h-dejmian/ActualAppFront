@@ -31,7 +31,7 @@ function Categories(props) {
     return (
         <div className="categories">
             <h3>Categories</h3>
-            {props.onlyStats ? null : <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user}/>}
+            {props.onlyStats ? null : <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user} type={"REGULAR"}/>}
             <table className="table-cst">
                 <thead>
                 <tr>

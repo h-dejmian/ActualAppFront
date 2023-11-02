@@ -57,7 +57,7 @@ function AddActivityModal(props) {
             return;
         }
 
-        await api.newCategoryFetch(categoryName, priority, props.user.id, 'REGULAR')
+        await api.newCategoryFetch(categoryName, priority, props.user.id, props.type)
 
         setCategories([...categories, {name: categoryName}])
         setCategoryName("");

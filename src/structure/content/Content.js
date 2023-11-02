@@ -12,7 +12,7 @@ function Content(props) {
         <Activities user={props.user} />,
         <Categories user={props.user} />,
         <PlanYourDay />,
-        <Noted />,
+        <Noted user={props.user} />,
         <MyExpenses />,
         <Statistics user={props.user} />,
         <About />
