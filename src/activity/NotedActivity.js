@@ -15,11 +15,11 @@ function NotedActivity(props) {
         );
     }
     return (
-        <tr>
-            <td>{props.activity.description}</td>
-            <td> <input type="checkbox" id="is-completed-checkbox" checked={completed}
-                        onChange={handleCheckboxChange} /></td>
-        </tr>
+        <div className="noted-activity">
+            <p>{props.activity.description}</p>
+            <p> <input type="checkbox" id="is-completed-checkbox" checked={completed}
+                        onChange={handleCheckboxChange} /></p>
+        </div>
 
     )
 }

@@ -8,7 +8,7 @@ function Categories(props) {
     const [categories, setCategories] = useState([]);
 
     async function getCategories() {
-        const categories = await api.fetchCategories();
+        const categories = await api.fetchRegularCategories();
         setCategories(categories)
     }
 

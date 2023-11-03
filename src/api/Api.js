@@ -1,7 +1,18 @@
 class Api {
 
-    async fetchCategories() {
-        const response = await fetch(`http://localhost:8080/api/v1/categories`, {
+    async fetchRegularCategories() {
+        const response = await fetch(`http://localhost:8080/api/v1/categories/regular`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        })
+        return response.json();
+    }
+
+    async fetchToDoCategories() {
+        const response = await fetch(`http://localhost:8080/api/v1/categories/todo`, {
             method: "GET",
             credentials: "include",
             headers: {

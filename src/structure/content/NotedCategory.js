@@ -4,6 +4,8 @@ import activity from "../../activity/Activity";
 import NoActivityMsg from "../../messages/NoActivityMsg";
 import Activity from "../../activity/Activity";
 import NotedActivity from "../../activity/NotedActivity";
+import DeleteCategoryButton from "../../category/DeleteCategoryButton";
+import AddNotedActivityModal from "../../modals/AddNotedActivityModal";
 
 function NotedCategory(props) {
     const [activities, setActivities] = useState([]);
@@ -13,20 +15,27 @@ function NotedCategory(props) {
         setActivities(activities);
     }
 
+    function addActivity(activity) {
+        setActivities([...activities, activity])
+    }
+
     useEffect(() => getActivities, []);
 
     return (
         <div className="noted-category">
-            <h3>{props.category.name}</h3>
-            <table className="table-cst">
+            <div className="noted-category-header">
+                <div><h3 id="noted-category-name">{props.category.name}</h3></div>
+                <div id="noted-category-utils">
+                    <AddNotedActivityModal addActivity={addActivity} date={new Date()} appElement={'body'} user={props.user}
+                                           type={"NOTED"} category={props.category} />
+                    <DeleteCategoryButton id={props.category.id} removeCategory={props.removeCategory} />
+                </div>
+            </div>
 
-                <tbody>
-                {activities.length === 0 ?
-                    <NoActivityMsg/> : activities.map((activity, index) => <NotedActivity key={index} activity={activity}
-                                                                                                />)}
-                </tbody>
-            </table>
-            {/*{activities.length === 0 ? <NoActivityMsg /> : activities.map(activity => activity.description)}*/}
+            {activities.length === 0 ?
+                <NoActivityMsg/> : activities.map((activity, index) => <NotedActivity key={index} activity={activity}
+                />)}
+
         </div>
     )
 }

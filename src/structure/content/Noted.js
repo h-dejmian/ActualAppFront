@@ -7,12 +7,17 @@ function Noted(props) {
     const [categories, setCategories] = useState([]);
 
     async function getCategories() {
-        const categories = await api.fetchCategories();
+        const categories = await api.fetchToDoCategories();
         setCategories(categories)
     }
 
     function addCategory(category) {
         setCategories(categories => [...categories, category])
+    }
+
+    function removeCategory(id) {
+        let updated = categories.filter((activity) => activity.id !== id);
+        setCategories(updated);
     }
 
     useEffect(() => getCategories, [])
@@ -24,12 +29,8 @@ function Noted(props) {
                 <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user} type={"TODO"} />
             </div>
             <div id="noted-content">
-                {categories.map(category => <NotedCategory category={category} />)}
+                {categories.map(category => <NotedCategory category={category} removeCategory={removeCategory.bind(this)} user={props.user} />)}
             </div>
-
-
-
-
         </div>
     )
 }

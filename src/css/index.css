@@ -33,10 +33,7 @@ button:hover {
   background-color: #c5c5c5;
 }
 
-
 .button-sm {
-  height: 30px;
-  width: 120px;
   border: 1px solid black;
   padding: 3px;
   background-color: #6f6fda;
