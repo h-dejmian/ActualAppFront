@@ -35,7 +35,7 @@ function AddNotedActivityModal(props) {
             props.user.id
         ]
 
-        const activity = await api.newActivityFetch(activityProps);
+        const activity = await api.newActivityFetch(activityProps, "todo");
         props.addActivity(activity)
         setIsOpen(false)
         resetState();

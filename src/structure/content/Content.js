@@ -5,7 +5,7 @@ import Categories from "./Categories";
 import PlanYourDay from "./PlanYourDay";
 import About from "./About";
 import MyExpenses from "./MyExpenses";
-import Noted from "./Noted";
+import Noted from "./noted/Noted";
 
 function Content(props) {
     const menuItems = [

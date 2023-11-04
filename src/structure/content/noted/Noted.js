@@ -1,6 +1,6 @@
-import {api} from "../../App";
+import {api} from "../../../App";
 import {useEffect, useState} from "react";
-import AddCategoryModal from "../../modals/AddCategoryModal";
+import AddCategoryModal from "../../../modals/AddCategoryModal";
 import NotedCategory from "./NotedCategory";
 
 function Noted(props) {

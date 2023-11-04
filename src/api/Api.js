@@ -109,8 +109,8 @@ class Api {
         return response.json();
     }
 
-    async newActivityFetch(activity) {
-        const response = await fetch("http://localhost:8080/api/v1/activities", {
+    async newActivityFetch(activity, type) {
+        const response = await fetch(`http://localhost:8080/api/v1/activities/${type}`, {
                 method: "POST",
                 credentials: "include",
                 headers: {

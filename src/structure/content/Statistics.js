@@ -1,7 +1,5 @@
 import {useEffect, useState} from "react";
 import '../../css/content.css';
-import Activity from "../../activity/Activity";
-import Categories from "./Categories";
 import {api} from "../../App.js";
 
 function Statistics(props) {
@@ -9,16 +7,9 @@ function Statistics(props) {
     const [categories, setCategories] = useState([]);
 
     async function fetchData() {
-        // const response = await fetch(`http://localhost:8080/api/v1/activities?groupByTime`, {
-        //     method: "GET",
-        //     credentials: "include",
-        //     headers: {
-        //         'Content-Type': "application/json",
-        //     },
-        // })
         const activities = await api.fetchActivitiesByTime();
         setActivitiesByTime(activities);
-        const categories = await api.fetchCategories();
+        const categories = await api.fetchRegularCategories();
         setCategories(categories);
     }
 

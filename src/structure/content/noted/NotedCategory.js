@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {api} from "../../App";
-import activity from "../../activity/Activity";
-import NoActivityMsg from "../../messages/NoActivityMsg";
-import Activity from "../../activity/Activity";
-import NotedActivity from "../../activity/NotedActivity";
-import DeleteCategoryButton from "../../category/DeleteCategoryButton";
-import AddNotedActivityModal from "../../modals/AddNotedActivityModal";
+import {api} from "../../../App";
+import activity from "../../../activity/Activity";
+import NoActivityMsg from "../../../messages/NoActivityMsg";
+import Activity from "../../../activity/Activity";
+import NotedActivity from "./NotedActivity";
+import DeleteCategoryButton from "../../../category/DeleteCategoryButton";
+import AddNotedActivityModal from "../../../modals/AddNotedActivityModal";
 
 function NotedCategory(props) {
     const [activities, setActivities] = useState([]);
@@ -17,6 +17,11 @@ function NotedCategory(props) {
 
     function addActivity(activity) {
         setActivities([...activities, activity])
+    }
+
+    function removeActivity(id) {
+        const ac = activities.filter((activity) => activity.id !== id);
+        setActivities(ac);
     }
 
     useEffect(() => getActivities, []);
@@ -33,8 +38,7 @@ function NotedCategory(props) {
             </div>
 
             {activities.length === 0 ?
-                <NoActivityMsg/> : activities.map((activity, index) => <NotedActivity key={index} activity={activity}
-                />)}
+                <NoActivityMsg/> : activities.map((activity, index) => <NotedActivity key={index} activity={activity} removeActivity={removeActivity}/>)}
 
         </div>
     )

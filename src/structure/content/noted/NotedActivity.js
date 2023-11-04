@@ -1,4 +1,5 @@
 import {useState} from "react";
+import DeleteActivityButton from "../../../activity/DeleteActivityButton";
 
 function NotedActivity(props) {
     const[completed, setCompleted] = useState(props.activity.completed);
@@ -19,6 +20,7 @@ function NotedActivity(props) {
             <p>{props.activity.description}</p>
             <p> <input type="checkbox" id="is-completed-checkbox" checked={completed}
                         onChange={handleCheckboxChange} /></p>
+            <DeleteActivityButton id={props.activity.id} removeActivity={props.removeActivity} />
         </div>
 
     )
