@@ -65,7 +65,7 @@ function AddActivityModal(props) {
     }
 
     async function getCategories() {
-        const categories = await api.fetchRegularCategories();
+        const categories = await api.fetchCategories("regular", props.user.id);
         setCategories(categories)
     }
 

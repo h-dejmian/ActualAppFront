@@ -7,7 +7,7 @@ function Noted(props) {
     const [categories, setCategories] = useState([]);
 
     async function getCategories() {
-        const categories = await api.fetchToDoCategories();
+        const categories = await api.fetchCategories("todo", props.user.id);
         setCategories(categories)
     }
 

@@ -28,7 +28,7 @@ function AddNotedActivityModal(props) {
 
         const activityProps = [
             description,
-            1,
+            0,
             props.date,
             false,
             props.category.name,

@@ -1,5 +1,16 @@
 class Api {
 
+    async fetchCategories(type, userId) {
+        const response = await fetch(`http://localhost:8080/api/v1/categories?type=${type}&userId=${userId}`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        })
+        return response.json();
+    }
+
     async fetchRegularCategories() {
         const response = await fetch(`http://localhost:8080/api/v1/categories/regular`, {
             method: "GET",
@@ -33,8 +44,8 @@ class Api {
         return response.json();
     }
 
-    async fetchActivitiesByTime() {
-        const response = await fetch(`http://localhost:8080/api/v1/activities?groupByTime`, {
+    async fetchActivitiesByTime(userId) {
+        const response = await fetch(`http://localhost:8080/api/v1/activities?groupByTime&userId=${userId}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -110,7 +121,7 @@ class Api {
     }
 
     async newActivityFetch(activity, type) {
-        const response = await fetch(`http://localhost:8080/api/v1/activities/${type}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/activities?type=${type}`, {
                 method: "POST",
                 credentials: "include",
                 headers: {

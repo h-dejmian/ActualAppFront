@@ -7,9 +7,9 @@ function Statistics(props) {
     const [categories, setCategories] = useState([]);
 
     async function fetchData() {
-        const activities = await api.fetchActivitiesByTime();
+        const activities = await api.fetchActivitiesByTime(props.user.id);
         setActivitiesByTime(activities);
-        const categories = await api.fetchRegularCategories();
+        const categories = await api.fetchCategories("regular", props.user.id);
         setCategories(categories);
     }
 

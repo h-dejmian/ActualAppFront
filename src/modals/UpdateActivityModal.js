@@ -28,7 +28,7 @@ function UpdateActivityModal(props) {
     const handleSelect = (e) => setSelected(e.target.value);
 
     async function getCategories() {
-        const categories = await api.fetchRegularCategories();
+        const categories = await api.fetchCategories("regular", props.user.id);
         setCategories(categories)
     }
 
