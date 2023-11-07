@@ -10,7 +10,7 @@ function DeleteCategoryButton(props) {
     }, [props])
 
     return (
-        <a className="button-sm" onClick={fetchDelete}> X </a>
+        <button className="noted-activity-btn" onClick={fetchDelete}> X </button>
     )
 }
 

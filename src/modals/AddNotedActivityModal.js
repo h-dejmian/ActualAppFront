@@ -56,7 +56,7 @@ function AddNotedActivityModal(props) {
 
     return (
         <div>
-            <button className="button-sm" onClick={handleOpen}> + </button>
+            <button className="noted-activity-btn" onClick={handleOpen}> + </button>
             <Modal
                 isOpen={isOpen}
                 ariaHideApp={false}

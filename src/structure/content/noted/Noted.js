@@ -2,6 +2,7 @@ import {api} from "../../../App";
 import {useEffect, useState} from "react";
 import AddCategoryModal from "../../../modals/AddCategoryModal";
 import NotedCategory from "./NotedCategory";
+import ClearCompletedButton from "./ClearCompletedButton";
 
 function Noted(props) {
     const [categories, setCategories] = useState([]);
@@ -16,8 +17,12 @@ function Noted(props) {
     }
 
     function removeCategory(id) {
-        let updated = categories.filter((activity) => activity.id !== id);
+        let updated = categories.filter((category) => category.id !== id);
         setCategories(updated);
+    }
+
+    function removeCompletedActivities() {
+
     }
 
     useEffect(() => getCategories, [])
@@ -27,9 +32,11 @@ function Noted(props) {
             <div id="noted-buttons">
                 <h3>Things you want to do, but you forget!</h3>
                 <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user} type={"TODO"} />
+                <br/>
+                <ClearCompletedButton removeCompletedActivities={removeCompletedActivities}/>
             </div>
             <div id="noted-content">
-                {categories.map(category => <NotedCategory category={category} removeCategory={removeCategory.bind(this)} user={props.user} />)}
+                {categories.map((category, index) => <NotedCategory key={index} category={category} removeCategory={removeCategory.bind(this)} user={props.user} />)}
             </div>
         </div>
     )

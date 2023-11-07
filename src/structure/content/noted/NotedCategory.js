@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {api} from "../../../App";
-import activity from "../../../activity/Activity";
 import NoActivityMsg from "../../../messages/NoActivityMsg";
-import Activity from "../../../activity/Activity";
 import NotedActivity from "./NotedActivity";
 import DeleteCategoryButton from "../../../category/DeleteCategoryButton";
 import AddNotedActivityModal from "../../../modals/AddNotedActivityModal";

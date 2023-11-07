@@ -11,30 +11,8 @@ class Api {
         return response.json();
     }
 
-    async fetchRegularCategories() {
-        const response = await fetch(`http://localhost:8080/api/v1/categories/regular`, {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                'Content-Type': "application/json",
-            },
-        })
-        return response.json();
-    }
-
-    async fetchToDoCategories() {
-        const response = await fetch(`http://localhost:8080/api/v1/categories/todo`, {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                'Content-Type': "application/json",
-            },
-        })
-        return response.json();
-    }
-
-    async fetchActivitiesByDate(user_Id, date) {
-        const response = await fetch(`http://localhost:8080/api/v1/activities/${user_Id}?date=${date}`, {
+    async fetchActivitiesByDate(userId, date) {
+        const response = await fetch(`http://localhost:8080/api/v1/activities/${userId}?date=${date}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -140,6 +118,10 @@ class Api {
         );
 
         return response.json();
+    }
+
+    async deleteActivityFetch(activity) {
+        fetch(`http://localhost:8080/api/v1/activities/${activity.id}`, {method: 'DELETE', credentials: "include"});
     }
 }
 

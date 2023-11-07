@@ -18,7 +18,8 @@ function NotedActivity(props) {
     return (
         <div className="noted-activity">
             <p>{props.activity.description}</p>
-            <p> <input type="checkbox" id="is-completed-checkbox" checked={completed}
+
+            <p> <input type="checkbox" id="checkbox-noted" checked={completed}
                         onChange={handleCheckboxChange} /></p>
             <DeleteActivityButton id={props.activity.id} removeActivity={props.removeActivity} />
         </div>
