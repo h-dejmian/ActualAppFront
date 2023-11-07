@@ -4,9 +4,19 @@ import NoActivityMsg from "../../../messages/NoActivityMsg";
 import NotedActivity from "./NotedActivity";
 import DeleteCategoryButton from "../../../category/DeleteCategoryButton";
 import AddNotedActivityModal from "../../../modals/AddNotedActivityModal";
+import activity from "../../../activity/Activity";
 
 function NotedCategory(props) {
     const [activities, setActivities] = useState([]);
+
+    useEffect(checkRemoveActivityTrigger, [props.removeCompletedTrigger]);
+
+    function checkRemoveActivityTrigger() {
+        if(props.removeCompletedTrigger === 1) {
+            removeCompletedActivities();
+            props.setRemoveCompletedTrigger(0);
+        }
+    }
 
     async function getActivities() {
         const activities = await api.fetchActivitiesByCategory(props.category.id);
@@ -19,6 +29,14 @@ function NotedCategory(props) {
 
     function removeActivity(id) {
         const ac = activities.filter((activity) => activity.id !== id);
+        setActivities(ac);
+    }
+
+    function removeCompletedActivities() {
+        const toDelete = activities.filter((activity) => activity.completed === true);
+        toDelete.forEach(activity => api.deleteActivityFetch(activity))
+
+        const ac = activities.filter((activity) => activity.completed !== true);
         setActivities(ac);
     }
 
@@ -36,7 +54,8 @@ function NotedCategory(props) {
             </div>
 
             {activities.length === 0 ?
-                <NoActivityMsg/> : activities.map((activity, index) => <NotedActivity key={index} activity={activity} removeActivity={removeActivity}/>)}
+                <NoActivityMsg/> : activities.map((activity, index) => <NotedActivity key={index} activity={activity}
+                                                                                      removeActivity={removeActivity}/>)}
 
         </div>
     )

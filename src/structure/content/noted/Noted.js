@@ -6,6 +6,7 @@ import ClearCompletedButton from "./ClearCompletedButton";
 
 function Noted(props) {
     const [categories, setCategories] = useState([]);
+    const [removeCompletedTrigger, setRemoveCompletedTrigger ] = useState(0);
 
     async function getCategories() {
         const categories = await api.fetchCategories("todo", props.user.id);
@@ -22,7 +23,7 @@ function Noted(props) {
     }
 
     function removeCompletedActivities() {
-
+        setRemoveCompletedTrigger(1);
     }
 
     useEffect(() => getCategories, [])
@@ -36,7 +37,12 @@ function Noted(props) {
                 <ClearCompletedButton removeCompletedActivities={removeCompletedActivities}/>
             </div>
             <div id="noted-content">
-                {categories.map((category, index) => <NotedCategory key={index} category={category} removeCategory={removeCategory.bind(this)} user={props.user} />)}
+                {categories.map((category, index) => <NotedCategory key={index}
+                                                                    removeCompletedTrigger={removeCompletedTrigger}
+                                                                    setRemoveCompletedTrigger={setRemoveCompletedTrigger}
+                                                                    category={category}
+                                                                    removeCategory={removeCategory.bind(this)}
+                                                                    user={props.user} />)}
             </div>
         </div>
     )

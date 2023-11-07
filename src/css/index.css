@@ -86,8 +86,9 @@ td, th {
 }
 
 #checkbox-noted {
-  width: 25px;
-  margin: 0px 10px 5px 20px;
+  width: 20px;
+  height: 20px;
+  margin: 0px 10px 10px 20px;
 }
 
 #no-activity-msg {

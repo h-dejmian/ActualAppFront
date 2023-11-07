@@ -43,19 +43,16 @@ td, th {
 
 #noted-content {
     width: 1500px;
-    height: 700px;
-    display: flex;
-}
-
-#noted-categories {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
 
 .noted-category {
     border: 1px solid black;
     background-color: #c1dede;
     box-shadow: 1px 1px 2px black;
-    width: 400px;
+    margin: 0px 20px 20px 40px;
+    height: max-content;
 }
 
 .noted-activity {
@@ -93,7 +90,7 @@ td, th {
     height: 50px;
 }
 
-.noted-activity-btn {
+.noted-btn-sm {
     height: 25px;
     border: 1px solid black;
     background-color: #6f6fda;
@@ -102,7 +99,8 @@ td, th {
     margin: 5px;
 }
 
-.noted-activity-btn:hover {
+.noted-btn-sm:hover {
     cursor: pointer;
     background-color: #61dafb;
 }
+
