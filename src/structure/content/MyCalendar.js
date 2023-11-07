@@ -15,9 +15,7 @@ function MyCalendar(props) {
     }
 
     return (
-        <div className="calendar"> <Calendar onChange={onChange} value={date}/>
-            {/*<p> Wybrana data: {date}</p>*/}
-        </div>
+        <div className="calendar"> <Calendar onChange={onChange} value={date}/></div>
     )
 }
 

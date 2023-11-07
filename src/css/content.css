@@ -39,6 +39,7 @@ td, th {
     height: 700px;
     border: 1px solid black;
     background-color: #c1dede;
+    margin-left: 20px;
 }
 
 #noted-content {

@@ -4,7 +4,6 @@ import NoActivityMsg from "../../../messages/NoActivityMsg";
 import NotedActivity from "./NotedActivity";
 import DeleteCategoryButton from "../../../category/DeleteCategoryButton";
 import AddNotedActivityModal from "../../../modals/AddNotedActivityModal";
-import activity from "../../../activity/Activity";
 
 function NotedCategory(props) {
     const [activities, setActivities] = useState([]);
@@ -32,6 +31,16 @@ function NotedCategory(props) {
         setActivities(ac);
     }
 
+    function toggleCompleted(id) {
+        const act = activities.map(a => {
+            if(a.id === id) {
+                return {...a, completed : !a.completed};
+            }
+            return a;
+        })
+        setActivities(act);
+    }
+
     function removeCompletedActivities() {
         const toDelete = activities.filter((activity) => activity.completed === true);
         toDelete.forEach(activity => api.deleteActivityFetch(activity))
@@ -55,7 +64,8 @@ function NotedCategory(props) {
 
             {activities.length === 0 ?
                 <NoActivityMsg/> : activities.map((activity, index) => <NotedActivity key={index} activity={activity}
-                                                                                      removeActivity={removeActivity}/>)}
+                                                                                      removeActivity={removeActivity}
+                                                                                      toggleCompleted={toggleCompleted}/>)}
 
         </div>
     )
