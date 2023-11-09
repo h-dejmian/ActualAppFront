@@ -71,11 +71,31 @@ button:hover {
   border-style: hidden;
 }
 
-th {
+.table-cst > thead > th {
   background-color: #e9e9f1;
 }
 
-td, th {
+.table-cst > tbody > tr > td {
+  border: 2px solid black;
+  padding: 14px;
+}
+
+.table-cstPlanned {
+  background-color: #ada8a8;
+  margin: 20px auto auto;
+  border-collapse: collapse;
+  border-style: hidden;
+  color: white;
+  text-shadow: 1px 2px #000;
+}
+
+.table-cstPlanned > thead > tr > th {
+  background-color: #8a8a8a;
+  color: white;
+  text-shadow: 1px 2px #000;
+}
+
+.table-cstPlanned > tbody > tr > td {
   border: 2px solid black;
   padding: 14px;
 }

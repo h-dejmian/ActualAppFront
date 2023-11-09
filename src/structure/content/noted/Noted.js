@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import AddCategoryModal from "../../../modals/AddCategoryModal";
 import NotedCategory from "./NotedCategory";
 import ClearCompletedButton from "./ClearCompletedButton";
+import ContentHeader from "../ContentHeader";
 
 function Noted(props) {
     const [categories, setCategories] = useState([]);
@@ -30,20 +31,23 @@ function Noted(props) {
 
     return (
         <div id="noted">
-            <div id="noted-buttons">
-                <h3>Things you want to do, but you forget!</h3>
-                <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user} type={"TODO"} />
-                <br/>
-                <ClearCompletedButton removeCompletedActivities={removeCompletedActivities}/>
-            </div>
+            <ContentHeader header="Things you want to do, but you forget!" />
             <div id="noted-content">
-                {categories.map((category, index) => <NotedCategory key={index}
-                                                                    removeCompletedTrigger={removeCompletedTrigger}
-                                                                    setRemoveCompletedTrigger={setRemoveCompletedTrigger}
-                                                                    category={category}
-                                                                    removeCategory={removeCategory.bind(this)}
-                                                                    user={props.user} />)}
+                <div id="noted-buttons">
+                    <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user} type={"TODO"} />
+                    <br/>
+                    <ClearCompletedButton removeCompletedActivities={removeCompletedActivities}/>
+                </div>
+                <div id="noted-categories">
+                    {categories.map((category, index) => <NotedCategory key={index}
+                                                                        removeCompletedTrigger={removeCompletedTrigger}
+                                                                        setRemoveCompletedTrigger={setRemoveCompletedTrigger}
+                                                                        category={category}
+                                                                        removeCategory={removeCategory.bind(this)}
+                                                                        user={props.user} />)}
+                </div>
             </div>
+
         </div>
     )
 }

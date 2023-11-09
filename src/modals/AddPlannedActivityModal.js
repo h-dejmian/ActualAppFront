@@ -39,7 +39,7 @@ function AddPlannedActivityModal(props) {
             description,
             0,
             props.date,
-            completed,
+            false,
             selected,
             props.user.id,
             startTime,

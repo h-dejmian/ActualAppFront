@@ -64,7 +64,7 @@ class PlannedActivities extends Component {
                                       appElement={'body'} user={this.props.user}
                                       type={"regular"}  />
 
-                    <table className="table-cst">
+                    <table className="table-cstPlanned">
                         <thead>
                         <tr>
                             <th>Activity</th>
@@ -80,16 +80,16 @@ class PlannedActivities extends Component {
                         <tbody>
                         {this.state.activities.length === 0 ?
                             <NoActivityMsg/> : this.state.activities.map((activity, index) => <PlannedActivity key={index}
-                                                                                                        id={activity.id}
-                                                                                                        description={activity.description}
-                                                                                                        startTime={activity.startTime}
-                                                                                                        endTime={activity.endTime}
-                                                                                                        date={activity.date}
-                                                                                                        completed={activity.completed}
-                                                                                                        categoryName={activity.categoryName}
-                                                                                                        removeActivity={this.removeActivity.bind(this)}
-                                                                                                        updateActivity={this.updateActivity.bind(this)}
-                                                                                                        user={this.props.user}/>)}
+                                                                                                                            id={activity.id}
+                                                                                                                            description={activity.description}
+                                                                                                                            startTime={activity.startTime}
+                                                                                                                            endTime={activity.endTime}
+                                                                                                                            date={activity.date}
+                                                                                                                            completed={activity.completed}
+                                                                                                                            categoryName={activity.categoryName}
+                                                                                                                            removeActivity={this.removeActivity.bind(this)}
+                                                                                                                            updateActivity={this.updateActivity.bind(this)}
+                                                                                                                            user={this.props.user}/>)}
                         </tbody>
                     </table>
                 </div>

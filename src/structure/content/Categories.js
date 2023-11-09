@@ -3,6 +3,7 @@ import Category from "../../category/Category";
 import '../../css/content.css';
 import AddCategoryModal from "../../modals/AddCategoryModal";
 import {api} from '../../App.js'
+import ContentHeader from "./ContentHeader";
 
 function Categories(props) {
     const [categories, setCategories] = useState([]);
@@ -30,7 +31,7 @@ function Categories(props) {
 
     return (
         <div className="categories">
-            <h3>Categories</h3>
+            <ContentHeader header="Categories" />
             {props.onlyStats ? null : <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user} type={"REGULAR"}/>}
             <table className="table-cst">
                 <thead>
