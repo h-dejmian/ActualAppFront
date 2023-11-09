@@ -30,12 +30,9 @@ td, th {
     padding: 14px;
 }
 
-#noted {
-
-}
-
 #noted-content {
     display: flex;
+    margin-top: 30px;
 }
 
 #noted-buttons {
@@ -119,11 +116,11 @@ td, th {
     height: 600px;
 }
 
-#planned-header {
-    background-color: #c1dede;
-    height: 45px;
-    box-shadow: 1px 1px 1px black;
-    border: 1px solid black;
-    padding-top: 20px;
+#statistics-content {
+    display: flex;
+}
+
+.statistics-single {
+    margin: 0 20px 0 40px
 }
 
