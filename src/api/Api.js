@@ -12,7 +12,18 @@ class Api {
     }
 
     async fetchActivitiesByDate(userId, date) {
-        const response = await fetch(`http://localhost:8080/api/v1/activities/${userId}?date=${date}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/activities?userId=${userId}&date=${date}`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        });
+        return response.json();
+    }
+
+    async fetchActivitiesWithTimeRangeByDate(userId, date) {
+        const response = await fetch(`http://localhost:8080/api/v1/activities?planned&userId=${userId}&date=${date}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -112,7 +123,9 @@ class Api {
                     date: activity[2],
                     completed: activity[3],
                     categoryName: activity[4],
-                    user_Id: activity[5]
+                    user_Id: activity[5],
+                    startTime: activity[6],
+                    endTime: activity[7]
                 })
             }
         );

@@ -1,13 +1,16 @@
-import Activity from "../../activity/Activity";
-import '../../css/content.css';
+import '../../../css/content.css';
 import React, {Component} from 'react'
-import AddActivityModal from "../../modals/AddActivityModal";
-import moment from "moment/moment";
-import MyCalendar from "./MyCalendar";
-import NoActivityMsg from "../../messages/NoActivityMsg";
-import {api} from '../../App.js'
 
-class Activities extends Component {
+import moment from "moment/moment";
+import {api} from "../../../App";
+import AddActivityModal from "../../../modals/AddActivityModal";
+import NoActivityMsg from "../../../messages/NoActivityMsg";
+import MyCalendar from "../MyCalendar";
+import PlannedActivity from "./PlannedActivity";
+import AddPlannedActivityModal from "../../../modals/AddPlannedActivityModal";
+
+
+class PlannedActivities extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,7 +24,7 @@ class Activities extends Component {
     }
 
     async getActivitiesByDate(date) {
-        const activities = await api.fetchActivitiesByDate(this.props.user.id, date);
+        const activities = await api.fetchActivitiesWithTimeRangeByDate(this.props.user.id, date);
         if (activities !== null) {
             this.setState({activities: activities});
         }
@@ -53,10 +56,11 @@ class Activities extends Component {
 
     render() {
         return (
-            <div className="activities">
+            <div id="planned-activities">
                 <div>
-                    <h3>Activities in {this.state.selectedDate} </h3>
-                    <AddActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate}
+                    <h3>Planned Activities in {this.state.selectedDate} </h3>
+
+                    <AddPlannedActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate}
                                       appElement={'body'} user={this.props.user}
                                       type={"regular"}  />
 
@@ -64,7 +68,8 @@ class Activities extends Component {
                         <thead>
                         <tr>
                             <th>Activity</th>
-                            <th>Time spent</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
                             <th>Category</th>
                             <th>Completed</th>
                             <th>Delete</th>
@@ -74,10 +79,11 @@ class Activities extends Component {
 
                         <tbody>
                         {this.state.activities.length === 0 ?
-                            <NoActivityMsg/> : this.state.activities.map((activity, index) => <Activity key={index}
+                            <NoActivityMsg/> : this.state.activities.map((activity, index) => <PlannedActivity key={index}
                                                                                                         id={activity.id}
                                                                                                         description={activity.description}
-                                                                                                        time={activity.timeSpentInMinutes}
+                                                                                                        startTime={activity.startTime}
+                                                                                                        endTime={activity.endTime}
                                                                                                         date={activity.date}
                                                                                                         completed={activity.completed}
                                                                                                         categoryName={activity.categoryName}
@@ -95,4 +101,4 @@ class Activities extends Component {
     }
 }
 
-export default Activities;
+export default PlannedActivities;

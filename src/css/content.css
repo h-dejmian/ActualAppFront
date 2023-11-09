@@ -26,10 +26,6 @@ td, th {
     padding: 14px;
 }
 
-#statistics {
-
-}
-
 #noted {
     display: flex;
 }
@@ -103,5 +99,21 @@ td, th {
 .noted-btn-sm:hover {
     cursor: pointer;
     background-color: #61dafb;
+}
+
+
+#planned-activities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: #282c34;
+    height: 600px;
+}
+
+#planned-header {
+    background-color: #c1dede;
+    height: 45px;
+    box-shadow: 1px 1px 1px black;
+    border: 1px solid black;
+    padding-top: 20px;
 }
 
