@@ -60,7 +60,7 @@ function AddPlannedActivityModal(props) {
             return;
         }
 
-        await api.newCategoryFetch(categoryName, priority, props.user.id, props.type)
+        await api.newCategoryFetch(categoryName, priority, props.user.id, props.type.toUpperCase())
 
         setCategories([...categories, {name: categoryName}])
         setCategoryName("");

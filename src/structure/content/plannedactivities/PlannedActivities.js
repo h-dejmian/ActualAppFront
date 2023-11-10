@@ -3,12 +3,14 @@ import React, {Component} from 'react'
 
 import moment from "moment/moment";
 import {api} from "../../../App";
-import AddActivityModal from "../../../modals/AddActivityModal";
 import NoActivityMsg from "../../../messages/NoActivityMsg";
 import MyCalendar from "../MyCalendar";
 import PlannedActivity from "./PlannedActivity";
 import AddPlannedActivityModal from "../../../modals/AddPlannedActivityModal";
+import TimeComparator from "./TimeComparator";
 
+
+const timeComparatator = new TimeComparator();
 
 class PlannedActivities extends Component {
     constructor(props) {
@@ -40,9 +42,11 @@ class PlannedActivities extends Component {
     }
 
     addActivity(activity) {
-        this.setState(current => ({
-            activities: [...current.activities, activity]
-        }))
+        const updated = [...this.state.activities, activity]
+        updated.sort((a, b) => timeComparatator.compareTime(a.startTime, b.startTime))
+        this.setState({
+            activities: updated
+        })
     }
 
     updateActivity(id, activity) {
@@ -62,7 +66,7 @@ class PlannedActivities extends Component {
 
                     <AddPlannedActivityModal addActivity={this.addActivity.bind(this)} date={this.state.selectedDate}
                                       appElement={'body'} user={this.props.user}
-                                      type={"regular"}  />
+                                      type={"REGULAR"}  />
 
                     <table className="table-cstPlanned">
                         <thead>

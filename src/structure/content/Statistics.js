@@ -47,10 +47,12 @@ function Statistics(props) {
                         </tr>
                         </thead>
                         <tbody>
-                        {categories.map((category, index) =>  <tr key={index}><td>{category.name}</td>
+                        {categories.map((category, index) =>
+                            <tr key={index}>
+                            <td>{category.name}</td>
                             <td>{category.activitiesNumber}</td>
                             <td>{category.timeSpentInMinutes}</td>
-                        </tr>  )}
+                           </tr>  )}
 
                         </tbody>
                     </table>

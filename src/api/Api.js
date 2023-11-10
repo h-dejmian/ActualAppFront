@@ -102,7 +102,9 @@ class Api {
                     timeSpentInMinutes: activity[1],
                     date: activity[2],
                     completed: activity[3],
-                    categoryName: activity[4]
+                    categoryName: activity[4],
+                    startTime: activity[5],
+                    endTime: activity[6]
                 })
             }
         );

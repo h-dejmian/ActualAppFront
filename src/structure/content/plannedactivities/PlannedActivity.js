@@ -1,6 +1,7 @@
 import DeleteActivityButton from "../../../activity/DeleteActivityButton";
 import UpdateActivityModal from "../../../modals/UpdateActivityModal";
 import {useState} from "react";
+import UpdatePlannedActivityModal from "../../../modals/UpdatePlannedActivityModal";
 
 function PlannedActivity(props) {
     const [completed, setCompleted] = useState(props.completed);
@@ -27,13 +28,15 @@ function PlannedActivity(props) {
                         onChange={handleCheckboxChange} /></td>
 
             <td><DeleteActivityButton id={props.id} removeActivity = {props.removeActivity} /></td>
-            <td><UpdateActivityModal id={props.id}
+            <td><UpdatePlannedActivityModal id={props.id}
                                      description={props.description}
                                      date={props.date}
                                      time={props.time}
                                      categoryName={props.categoryName}
                                      updateActivity = {props.updateActivity}
-                                     user = {props.user}  /></td>
+                                     user = {props.user}
+                                     startTime={props.startTime}
+                                     endTime={props.endTime}/></td>
         </tr>
     )
 }
