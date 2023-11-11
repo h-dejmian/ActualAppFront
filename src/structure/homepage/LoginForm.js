@@ -8,9 +8,9 @@ function LoginForm(props) {
     const [logTime, setLogTime ] = useState();
     const [errorMsg, setErrorMsg] = useState("");
 
-    function handleSubmitForm(e) {
+    async function handleSubmitForm(e) {
         e.preventDefault();
-        fetch("http://localhost:8080/api/v1/login", {
+        const res = await fetch("http://localhost:8080/api/v1/login", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -21,25 +21,18 @@ function LoginForm(props) {
                 userName: userName,
                 password: password
             })
-        }).then(res => res.json())
-            .then(user => {
-                if(validateResponse(user)) {
-                    props.setUser(user);
-                    localStorage.setItem('login', user.login);
-                    localStorage.setItem('id', user.id);
-                    localStorage.setItem('logTime', new Date().toString())
-                }
-            })
-
-        resetFormFields();
-    }
-
-    function validateResponse(res) {
-        if(res.status === 404 || res.status === 400 || res.status === 401) {
-            setErrorMsg('Invalid credentials');
-            return false;
+        })
+        if(res.status === 200) {
+            const user = await res.json()
+            props.setUser(user);
+            localStorage.setItem('login', user.login);
+            localStorage.setItem('id', user.id);
+            localStorage.setItem('logTime', new Date().toString())
         }
-        return true;
+        else {
+            setErrorMsg('Invalid credentials');
+        }
+        resetFormFields();
     }
 
     function resetFormFields() {

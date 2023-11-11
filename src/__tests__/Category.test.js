@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react'
 import Category from "../category/Category";
 
-test("Message renders element name", () => {
+test("Category renders", () => {
     render(<Category name="test name" priority="3" activitiesNumber="10" timeSpentInMinutes="120"/>);
 
     const name = screen.getByText(/test name/i)
@@ -9,7 +9,7 @@ test("Message renders element name", () => {
     const activitiesNumber = screen.getByText(/10/i)
     const timeSpentInMinutes = screen.getByText(/120/i)
 
-    expect(name).toBeInTheDocument;
+    expect(name).toBeInTheDocument();
     expect(priority).toBeInTheDocument();
     expect(activitiesNumber).toBeInTheDocument();
     expect(timeSpentInMinutes).toBeInTheDocument();

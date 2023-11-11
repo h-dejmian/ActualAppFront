@@ -30,7 +30,7 @@ button {
   font-size: medium;
 }
 button:hover {
-  background-color: #c5c5c5;
+  background-color: #61dafb;
 }
 
 .button-sm {
@@ -57,6 +57,10 @@ button:hover {
   background-color: #6f6fda;
   color: white;
   box-shadow: 1px 1px 1px black;
+}
+
+.button-listed {
+  margin-bottom: 20px;
 }
 
 .button-lg:hover {
@@ -113,6 +117,18 @@ button:hover {
 
 #no-activity-msg {
   text-align: center;
+}
+
+select {
+  border: 1px solid black;
+  padding: 3px;
+  background-color: #6f6fda;
+  color: white;
+  box-shadow: 1px 1px 1px black;
+}
+
+select:hover {
+  cursor: pointer;
 }
 
 

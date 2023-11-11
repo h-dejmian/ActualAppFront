@@ -1,6 +1,6 @@
 function ClearCompletedButton(props) {
     return (
-        <button className="button-lg" onClick={props.removeCompletedActivities}> Clear completed </button>
+        <button className="button-lg button-listed" onClick={props.removeCompletedActivities}> Clear completed </button>
     )
 }
 

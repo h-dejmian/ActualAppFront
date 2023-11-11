@@ -52,7 +52,7 @@ function UpdatePlannedActivityModal(props) {
             endTime
         ]
 
-        const activity = await api.updateActivityFetch(activityProps, props.id)
+        const activity = await api.updateActivityFetch(activityProps, props.id, "REGULAR")
 
         props.updateActivity(props.id, activity)
 

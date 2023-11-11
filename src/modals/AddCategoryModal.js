@@ -52,7 +52,7 @@ function AddCategoryModal(props) {
 
     return (
         <div>
-            <button className="button-lg" onClick={handleOpen}>Add New Category</button>
+            <button className="button-lg button-listed" onClick={handleOpen}>Add New Category</button>
             <Modal
                 isOpen={isOpen}
                 ariaHideApp={false}

@@ -4,6 +4,11 @@ import AddCategoryModal from "../../../modals/AddCategoryModal";
 import NotedCategory from "./NotedCategory";
 import ClearCompletedButton from "./ClearCompletedButton";
 import ContentHeader from "../ContentHeader";
+import SortByActivitiesButton from "./SortByActivitiesButton";
+import SortAlphabeticallyButton from "./SortAlphabeticallyButton";
+import CategoriesComparator from "./CategoriesComparator";
+
+const categoriesComparator = new CategoriesComparator();
 
 function Noted(props) {
     const [categories, setCategories] = useState([]);
@@ -19,7 +24,7 @@ function Noted(props) {
     }
 
     function removeCategory(id) {
-        let updated = categories.filter((category) => category.id !== id);
+        const updated = categories.filter((category) => category.id !== id);
         setCategories(updated);
     }
 
@@ -35,7 +40,6 @@ function Noted(props) {
             <div id="noted-content">
                 <div id="noted-buttons">
                     <AddCategoryModal addCategory={addCategory.bind(this)} user={props.user} type={"TODO"} />
-                    <br/>
                     <ClearCompletedButton removeCompletedActivities={removeCompletedActivities}/>
                 </div>
                 <div id="noted-categories">

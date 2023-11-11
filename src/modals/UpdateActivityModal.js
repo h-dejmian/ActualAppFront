@@ -12,9 +12,9 @@ function UpdateActivityModal(props) {
     const [description, setDescription] = useState(props.description);
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(props.time);
     const [completed, setCompleted] = useState(false);
-    const [categoryName, setCategoryName] = useState(props.categoryName);
     const [newCategoryName, setNewCategoryName] = useState("");
     const [categories, setCategories] = useState([]);
+    const [categoryName, setCategoryName] = useState(props.categoryName);
     const [selected, setSelected] = useState(categoryName);
     const [message, setMessage] = useState("");
     const [priority, setPriority] = useState(3)
@@ -25,7 +25,9 @@ function UpdateActivityModal(props) {
         setMessage("");
     }
 
-    const handleSelect = (e) => setSelected(e.target.value);
+    const handleSelect = (e) => {
+        setSelected(e.target.value);
+    };
 
     async function getCategories() {
         const categories = await api.fetchCategories("regular", props.user.id);
@@ -49,10 +51,12 @@ function UpdateActivityModal(props) {
             selected
         ]
 
-        const activity = await api.updateActivityFetch(activityProps, props.id)
+        const activity = await api.updateActivityFetch(activityProps, props.id, "REGULAR")
 
         props.updateActivity(props.id, activity)
 
+        setSelected(categoryName)
+        setCategoryName(selected)
         setIsOpen(false);
     }
 
@@ -104,7 +108,7 @@ function UpdateActivityModal(props) {
                     <input type="text" min="1" max="1440" value={timeSpentInMinutes} onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
 
                     <label htmlFor="categories">Choose category from the list :  </label>
-                    <select defaultValue={categoryName} onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
+                    <select  onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
                         <option value={categoryName}> {categoryName} </option>
 
                         {categories.filter(category => category.name !== categoryName)

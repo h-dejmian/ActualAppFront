@@ -90,8 +90,8 @@ class Api {
         return res.json();
     }
 
-    async updateActivityFetch(activity, id) {
-        const response = await fetch(`http://localhost:8080/api/v1/activities/${id}`, {
+    async updateActivityFetch(activity, id, type) {
+        const response = await fetch(`http://localhost:8080/api/v1/activities/${id}?type=${type}`, {
                 method: "PUT",
                 credentials: "include",
                 headers: {

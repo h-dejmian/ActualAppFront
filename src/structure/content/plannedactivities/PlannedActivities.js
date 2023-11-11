@@ -10,7 +10,7 @@ import AddPlannedActivityModal from "../../../modals/AddPlannedActivityModal";
 import TimeComparator from "./TimeComparator";
 
 
-const timeComparatator = new TimeComparator();
+const timeComparator = new TimeComparator();
 
 class PlannedActivities extends Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class PlannedActivities extends Component {
 
     addActivity(activity) {
         const updated = [...this.state.activities, activity]
-        updated.sort((a, b) => timeComparatator.compareTime(a.startTime, b.startTime))
+        updated.sort((a, b) => timeComparator.compareTime(a.startTime, b.startTime))
         this.setState({
             activities: updated
         })
