@@ -22,7 +22,12 @@ class PlannedActivities extends Component {
     }
 
     setSelectedDate(date) {
-        this.setState({selectedDate: date})
+        if(moment(date).format("yyyy-MM-DD") < moment(new Date).format("yyyy-MM-DD")) {
+            alert("Sorry, cannot make a plan for the past!")
+        }
+        else {
+            this.setState({selectedDate: date})
+        }
     }
 
     async getActivitiesByDate(date) {

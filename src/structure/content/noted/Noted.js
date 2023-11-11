@@ -4,11 +4,6 @@ import AddCategoryModal from "../../../modals/AddCategoryModal";
 import NotedCategory from "./NotedCategory";
 import ClearCompletedButton from "./ClearCompletedButton";
 import ContentHeader from "../ContentHeader";
-import SortByActivitiesButton from "./SortByActivitiesButton";
-import SortAlphabeticallyButton from "./SortAlphabeticallyButton";
-import CategoriesComparator from "./CategoriesComparator";
-
-const categoriesComparator = new CategoriesComparator();
 
 function Noted(props) {
     const [categories, setCategories] = useState([]);
