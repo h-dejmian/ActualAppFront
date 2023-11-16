@@ -1,6 +1,12 @@
+import ContentHeader from "./ContentHeader";
+import AboutContent from "./AboutContent";
+
 function About() {
     return (
-        <div>About</div>
+        <div>
+            <ContentHeader header="About" />
+            <AboutContent />
+        </div>
     )
 }
 

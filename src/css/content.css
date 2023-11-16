@@ -125,3 +125,32 @@ td, th {
     margin: 0 20px 0 40px
 }
 
+.about-paragraph {
+    font-size: x-large;
+    text-align: left;
+}
+
+#about-content {
+    display: flex;
+    background-color: #abcece;
+    border: 1px solid black;
+}
+
+#about-header {
+    margin: 23px 45px 30px 30px;
+    background-color: #94b9b9;
+    height: 700px;
+    padding: 5px 20px;
+    box-shadow: 1px 1px 1px black;
+}
+
+#welcome-message {
+    height: 30px;
+    color: #61617d;
+    text-shadow: 2px 2px 2px;
+    font-size: xx-large;
+    float: left;
+    margin: 18px;
+    padding-left: 70px;
+}
+
