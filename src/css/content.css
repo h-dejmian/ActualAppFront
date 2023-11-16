@@ -132,7 +132,6 @@ td, th {
 
 #about-content {
     display: flex;
-    background-color: #abcece;
     border: 1px solid black;
 }
 
@@ -149,8 +148,42 @@ td, th {
     color: #61617d;
     text-shadow: 2px 2px 2px;
     font-size: xx-large;
-    float: left;
-    margin: 18px;
+    margin: 30px;
     padding-left: 70px;
+    text-align: left;
+}
+
+.title-icon {
+    background-color: white;
+    height: max-content;
+    width: max-content;
+    padding: 10px;
+    margin: 50px;
+    font-weight: bold;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px black;
+}
+
+#titles-and-icons {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.subsite-element {
+    width: 500px;
+    height: 200px;
+    margin: 15px;
+    color: purple;
+    display: flex;
+    background-color: #a3c0c0;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px black;
+}
+
+.subsite-desc {
+    color: black;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-right: 20px;
 }
 
