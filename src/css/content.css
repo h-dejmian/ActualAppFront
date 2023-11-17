@@ -136,8 +136,8 @@ td, th {
 }
 
 #about-header {
-    margin: 23px 45px 30px 30px;
-    background-color: #94b9b9;
+    margin: 19px 45px 30px 30px;
+    background-color: #03bfef;
     height: 700px;
     padding: 5px 20px;
     box-shadow: 1px 1px 1px black;
@@ -175,7 +175,7 @@ td, th {
     margin: 15px;
     color: purple;
     display: flex;
-    background-color: #a3c0c0;
+    background-color: #03bfef;
     border: 1px solid black;
     box-shadow: 1px 1px 1px black;
 }

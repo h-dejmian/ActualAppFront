@@ -30,7 +30,8 @@ function HomePageLogged(props) {
                 <div className="subsite-element">
                     <TitleAndIcon className="fa-solid fa-icons" name="Noted" />
                     <p className="subsite-desc">
-                        Noted is a place where you can keep all the things that you want to do in the nearest future. Books you want read, movies you want to watch etc.
+                        Noted is a place where you can keep all the things that you want to do in the nearest future.
+                        Books you want read, movies you want to watch etc.
                     </p>
                 </div>
                 <div className="subsite-element">
