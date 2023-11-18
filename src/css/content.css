@@ -118,7 +118,8 @@ td, th {
 }
 
 #statistics-content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .statistics-single {
@@ -165,6 +166,7 @@ td, th {
 }
 
 #titles-and-icons {
+    margin: 40px;
     display: grid;
     grid-template-columns: auto auto auto;
 }

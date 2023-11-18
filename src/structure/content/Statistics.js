@@ -6,12 +6,16 @@ import ContentHeader from "./ContentHeader";
 function Statistics(props) {
     const [activitiesByTime, setActivitiesByTime] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [currentMonthCats, setCurrentMonthCats] = useState([]);
+
 
     async function fetchData() {
         const activities = await api.fetchActivitiesByTime(props.user.id);
         setActivitiesByTime(activities);
         const categories = await api.fetchCategories("regular", props.user.id);
         setCategories(categories);
+        const currentMonthCats = await api.fetchCategoriesWithTimeByMonth(props.user.id, new Date().getMonth()+1);
+        setCurrentMonthCats(currentMonthCats);
     }
 
     useEffect(() => fetchData, []);
@@ -21,7 +25,7 @@ function Statistics(props) {
             <ContentHeader header="Statistics" />
             <div id="statistics-content">
                 <div className="statistics-single">
-                    <h4> Activities by time spent</h4>
+                    <h4> Activities by time spent summary </h4>
                     <table className="table-cst">
                         <thead>
                             <tr>
@@ -37,7 +41,7 @@ function Statistics(props) {
                     </table>
                 </div>
                 <div className="statistics-single">
-                    <h4> Categories</h4>
+                    <h4> Categories time summary </h4>
                     <table className="table-cst">
                         <thead>
                         <tr>
@@ -53,6 +57,25 @@ function Statistics(props) {
                             <td>{category.activitiesNumber}</td>
                             <td>{category.timeSpentInMinutes}</td>
                            </tr>  )}
+
+                        </tbody>
+                    </table>
+                </div>
+                <div className="statistics-single">
+                    <h4> Categories in current month </h4>
+                    <table className="table-cst">
+                        <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Time spent</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {currentMonthCats.map((category, index) =>
+                            <tr key={index}>
+                                <td>{category.description}</td>
+                                <td>{category.timeSpentInMinutes}</td>
+                            </tr>  )}
 
                         </tbody>
                     </table>

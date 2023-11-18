@@ -11,6 +11,17 @@ class Api {
         return response.json();
     }
 
+    async fetchCategoriesWithTimeByMonth(userId, month) {
+        const response = await fetch(`http://localhost:8080/api/v1/categories?withTimeSpent=true&userId=${userId}&month=${month}`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        })
+        return response.json();
+    }
+
     async fetchActivitiesByDate(userId, date) {
         const response = await fetch(`http://localhost:8080/api/v1/activities?userId=${userId}&date=${date}`, {
             method: "GET",
