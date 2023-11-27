@@ -2,10 +2,11 @@ import {render, screen} from '@testing-library/react'
 import Message from "../../messages/Message";
 import ErrorMsg from "../../messages/ErrorMsg";
 
-test("Message renders successfully", () => {
-    render(<ErrorMsg message="test message"/>);
+test("Error Message renders successfully", () => {
+    render(<ErrorMsg errorMsg="test message"/>);
 
     const element = screen.getByText(/test message/i)
 
     expect(element).toBeInTheDocument();
+    expect(element).toHaveStyle("color : red");
 })

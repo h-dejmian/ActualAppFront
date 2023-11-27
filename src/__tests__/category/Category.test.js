@@ -1,5 +1,5 @@
 import {render, screen} from '@testing-library/react'
-import Category from "../category/Category";
+import Category from "../../category/Category";
 
 test("Category renders", () => {
     render(<Category name="test name" priority="3" activitiesNumber="10" timeSpentInMinutes="120"/>);
