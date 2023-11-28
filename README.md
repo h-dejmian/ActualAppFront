@@ -2,7 +2,7 @@
 Web application to control daily activities and organize time
 
 # Description
-Web application that can be used to manage time and track how many time we spend on different activities during the day.  
+Web application that can be used to track how many time we spend on different activities during the day.  
 Users are able to create activities, delete, and update them when needed. To view activities by a specific date we can use interactive calendar.
 We can also form categories that we assign to activities. Categories can be managed just like activities.
 
@@ -17,4 +17,8 @@ In the Statistics part of the web site we can display actual statistic data abou
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+# Requirements
+ - node 6.9.0
+ - react 18.2.0
 
