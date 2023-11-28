@@ -45,10 +45,10 @@ function LoginForm(props) {
         <div className="login-form">
             <h2> Login </h2>
             <form onSubmit={handleSubmitForm}>
-                <label>User Name</label>
-                <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
-                <label>Password</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <label htmlFor="userName">User Name</label>
+                <input type="text" id="userName" value={userName} onChange={(e) => setUserName(e.target.value)}/>
+                <label htmlFor="password" >Password</label>
+                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <ErrorMsg errorMsg={errorMsg} />
                 <button className="button-lg" type="submit">Submit</button>
             </form>

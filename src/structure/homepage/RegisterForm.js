@@ -52,10 +52,10 @@ function RegisterForm() {
         <div className="login-form">
             <h2> Register </h2>
             <form onSubmit={handleSubmitForm}>
-                <label>User Name</label>
-                <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
-                <label>Password</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <label htmlFor="userName">User Name</label>
+                <input id="userName" type="text" value={userName} onChange={(e) => setUserName(e.target.value)}/>
+                <label htmlFor="password">Password</label>
+                <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button className="button-lg" type="submit">Submit</button>
                 <br/>
                 <Message message={message} />
