@@ -12,7 +12,7 @@ class Api {
     }
 
     async fetchCategoriesWithTimeByMonth(userId, month) {
-        const response = await fetch(`http://localhost:8080/api/v1/categories?withTimeSpent=true&userId=${userId}&month=${month}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/categories?byTimeSpent=true&userId=${userId}&month=${month}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -45,7 +45,18 @@ class Api {
     }
 
     async fetchActivitiesByTime(userId) {
-        const response = await fetch(`http://localhost:8080/api/v1/activities?groupByTime&userId=${userId}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/activities?groupByTime&userId=${userId}&month=-1`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json",
+            },
+        })
+        return response.json();
+    }
+
+    async fetchActivitiesByTimeInMonth(userId, month) {
+        const response = await fetch(`http://localhost:8080/api/v1/activities?groupByTime&userId=${userId}&month=${month}`, {
             method: "GET",
             credentials: "include",
             headers: {

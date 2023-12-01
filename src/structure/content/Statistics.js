@@ -7,15 +7,18 @@ function Statistics(props) {
     const [activitiesByTime, setActivitiesByTime] = useState([]);
     const [categories, setCategories] = useState([]);
     const [currentMonthCats, setCurrentMonthCats] = useState([]);
+    const [currentMonthActivities, setCurrentMonthActivities] = useState([]);
 
 
     async function fetchData() {
-        const activities = await api.fetchActivitiesByTime(props.user.id);
+        const activities = await api.fetchActivitiesByTime(props.user.id, -1);
         setActivitiesByTime(activities);
         const categories = await api.fetchCategories("regular", props.user.id);
         setCategories(categories);
         const currentMonthCats = await api.fetchCategoriesWithTimeByMonth(props.user.id, new Date().getMonth()+1);
         setCurrentMonthCats(currentMonthCats);
+        const currentMonthActivities = await api.fetchActivitiesByTimeInMonth(props.user.id, new Date().getMonth()+1)
+        setCurrentMonthActivities(currentMonthActivities);
     }
 
     useEffect(() => fetchData, []);
@@ -75,6 +78,25 @@ function Statistics(props) {
                             <tr key={index}>
                                 <td>{category.description}</td>
                                 <td>{category.timeSpentInMinutes}</td>
+                            </tr>  )}
+
+                        </tbody>
+                    </table>
+                </div>
+                <div className="statistics-single">
+                    <h4> Activities in current month </h4>
+                    <table className="table-cst">
+                        <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Time spent</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {currentMonthActivities.map((activity, index) =>
+                            <tr key={index}>
+                                <td>{activity.description}</td>
+                                <td>{activity.timeSpentInMinutes}</td>
                             </tr>  )}
 
                         </tbody>
