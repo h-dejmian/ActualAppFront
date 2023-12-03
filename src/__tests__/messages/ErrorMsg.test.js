@@ -1,5 +1,4 @@
 import {render, screen} from '@testing-library/react'
-import Message from "../../messages/Message";
 import ErrorMsg from "../../messages/ErrorMsg";
 
 test("Error Message renders successfully", () => {
