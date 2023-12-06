@@ -1,6 +1,6 @@
 function ContentHeader(props) {
     return (
-        <h3 className="content-header"> {props.header} </h3>
+        <h3 className="content-header" aria-label="about-content-header"> {props.header} </h3>
     )
 }
 

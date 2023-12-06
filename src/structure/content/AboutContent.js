@@ -1,7 +1,7 @@
 function AboutContent() {
     return (
         <div id="about-content">
-            <h2 id="about-header">ActualApp</h2>
+            <h2 id="about-header" aria-label="about-header">ActualApp</h2>
             <div>
                 <p className="about-paragraph">  Was created in 2023 as a final project at Codecool bootcamp. Main goal of this application is to help people manage their time and track daily activities.
                     Sometimes we don't really know in what we invest out precious time. Sometimes we think that we know but reality is different. This application is here to tell you the truth!
