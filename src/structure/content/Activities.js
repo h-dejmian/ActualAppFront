@@ -55,7 +55,7 @@ class Activities extends Component {
     render() {
         return (
             <div className="activities">
-                <ContentHeader header="Activities" />
+                <ContentHeader aria-label="header" header="Activities" />
                 <div className="activities-content">
                     <div>
                         <h3>Activities in {this.state.selectedDate} </h3>
@@ -77,7 +77,7 @@ class Activities extends Component {
 
                             <tbody>
                             {this.state.activities.length === 0 ?
-                                <NoActivityMsg/> : this.state.activities.map((activity, index) => <Activity key={index}
+                                <NoActivityMsg/> : this.state.activities.map((activity, index) => <Activity data-testid="item" key={index}
                                                                                                             id={activity.id}
                                                                                                             description={activity.description}
                                                                                                             time={activity.timeSpentInMinutes}
