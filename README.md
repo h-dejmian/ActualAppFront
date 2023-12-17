@@ -1,7 +1,7 @@
 # ActualApp (frontend)
 Web application to control daily activities and organize time
 
-# Description
+# DescriptionInput
 Web application that can be used to track how many time we spend on different activities during the day.  
 Users are able to create activities, delete, and update them when needed. To view activities by a specific date we can use interactive calendar.
 We can also form categories that we assign to activities. Categories can be managed just like activities.

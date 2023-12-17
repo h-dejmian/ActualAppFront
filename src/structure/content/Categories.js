@@ -13,7 +13,7 @@ function Categories(props) {
         setCategories(categories)
     }
 
-    useEffect(() => getCategories, []);
+    React.useEffect(() => getCategories, []);
 
     function removeCategory(id) {
         let updated = categories.filter((activity) => activity.id !== id);

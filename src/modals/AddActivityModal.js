@@ -5,6 +5,10 @@ import Message from "../messages/Message";
 import {api} from "../App";
 import SubmitAndClose from "./SubmitAndClose";
 import customStyles from "./style/ModalStyles";
+import DescriptionInput from "./inputs/DescriptionInput";
+import TimeSpentInput from "./inputs/TimeSpentInput";
+import CategoriesSelect from "./inputs/CategoriesSelect";
+import NewCategoryInput from "./inputs/NewCategoryInput";
 
 function AddActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -105,46 +109,19 @@ function AddActivityModal(props) {
                 <hr/>
                 <br/>
                 <form>
-                    <label>Description</label>
-                    <input type="text" value={description} placeholder={"Description"}
-                           onChange={(e) => setDescription(e.target.value)}/><br/>
+                    <DescriptionInput description={description} setDescription={setDescription} />
+                    <TimeSpentInput timeSpentInMinutes={timeSpentInMinutes} setTimeSpentInMinutes={setTimeSpentInMinutes} />
 
-                    <label>Time spent in minutes</label>
-                    <input type="text" min="1" max="1440" value={timeSpentInMinutes}
-                           onChange={(e) => setTimeSpentInMinutes(e.target.value)}/> <br/>
+                    <CategoriesSelect handleSelect={handleSelect} categories={categories} />
 
-                    <label htmlFor="categories">Choose category from the list : </label>
-                    <select className="select" onChange={e => handleSelect(e)} name="categories"
-                            id="categories-dropdown">
-                        <option disabled selected value> -- select an option --</option>
-                        {categories.map((category, index) => (
-                            <option key={index} value={category.name}>{category.name}</option>))}
-                    </select>
+                    <NewCategoryInput categoryName={categoryName} setCategoryName={setCategoryName}
+                                      priority={priority} setPriority={setPriority}
+                                      handleNewCategoryButton={handleNewCategoryButton}/>
 
-                    <br/><br/>
-
-                    <div>
-                        <label>Or create new category</label>
-                        <label id="priority-label">Priority</label>
-                    </div>
-
-                    <div id="add-category">
-                        <input type="text" value={categoryName} placeholder={"Category"}
-                               onChange={(e) => setCategoryName(e.target.value)}/>
-                        <input id="priority-input" type="number" value={priority} min="1" max="7"
-                               onChange={(e) => setPriority(e.target.value)}/> <br/>
-
-                        <button className="button-lg" type="button" onClick={handleNewCategoryButton}> Add new category
-                            to list
-                        </button>
-                    </div>
                     <Message message={message}/>
-
-                    <br/>
 
                     <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)}
                                     handleClose={handleClose.bind(this)}/>
-
                 </form>
             </Modal>
         </div>
