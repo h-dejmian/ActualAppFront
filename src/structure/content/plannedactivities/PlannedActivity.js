@@ -1,5 +1,4 @@
 import DeleteActivityButton from "../../../activity/DeleteActivityButton";
-import UpdateActivityModal from "../../../modals/UpdateActivityModal";
 import {useState} from "react";
 import UpdatePlannedActivityModal from "../../../modals/UpdatePlannedActivityModal";
 
@@ -30,6 +29,7 @@ function PlannedActivity(props) {
             <td><DeleteActivityButton id={props.id} removeActivity = {props.removeActivity} /></td>
             <td><UpdatePlannedActivityModal id={props.id}
                                      description={props.description}
+                                     completed={completed}
                                      date={props.date}
                                      time={props.time}
                                      categoryName={props.categoryName}

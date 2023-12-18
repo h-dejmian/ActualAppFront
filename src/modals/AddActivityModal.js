@@ -9,19 +9,22 @@ import DescriptionInput from "./inputs/DescriptionInput";
 import TimeSpentInput from "./inputs/TimeSpentInput";
 import CategoriesSelect from "./inputs/CategoriesSelect";
 import NewCategoryInput from "./inputs/NewCategoryInput";
+import FormInput from "./inputs/FormInput";
 
 function AddActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [description, setDescription] = useState("");
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(1);
-    const [completed, setCompleted] = useState(true);
     const [categoryName, setCategoryName] = useState("");
     const [priority, setPriority] = useState(3)
     const [categories, setCategories] = useState([]);
     const [selected, setSelected] = useState("");
     const [message, setMessage] = useState("");
 
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+        getCategories();
+        setIsOpen(true);
+    }
 
     const handleClose = () => {
         setIsOpen(false);
@@ -42,7 +45,7 @@ function AddActivityModal(props) {
             description,
             timeSpentInMinutes,
             props.date,
-            completed,
+            true,
             selected,
             props.user.id
         ]
@@ -72,8 +75,6 @@ function AddActivityModal(props) {
         const categories = await api.fetchCategories("regular", props.user.id);
         setCategories(categories)
     }
-
-    useEffect(() => getCategories, []);
 
 
     function resetState() {
@@ -109,7 +110,7 @@ function AddActivityModal(props) {
                 <hr/>
                 <br/>
                 <form>
-                    <DescriptionInput description={description} setDescription={setDescription} />
+                    <FormInput type="text" label="Description" value={description} inputSetter={setDescription}  />
                     <TimeSpentInput timeSpentInMinutes={timeSpentInMinutes} setTimeSpentInMinutes={setTimeSpentInMinutes} />
 
                     <CategoriesSelect handleSelect={handleSelect} categories={categories} />

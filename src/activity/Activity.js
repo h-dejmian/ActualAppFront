@@ -31,6 +31,7 @@ function Activity(props) {
                                      description={props.description}
                                      date={props.date}
                                      time={props.time}
+                                     completed={completed}
                                      categoryName={props.categoryName}
                                      updateActivity = {props.updateActivity}
                                       user = {props.user}  /></td>

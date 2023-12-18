@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import customStyles from "./style/ModalStyles";
 import Message from "../messages/Message";
 import SubmitAndClose from "./SubmitAndClose";
+import FormInput from "./inputs/FormInput";
 
 function AddNotedActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -68,12 +69,9 @@ function AddNotedActivityModal(props) {
                 <hr/>
                 <br/>
                 <form>
-                    <label>Description</label>
-                    <input type="text" value={description} placeholder={"Description"}
-                           onChange={(e) => setDescription(e.target.value)}/><br/>
+                    <FormInput type="text" label="Description" value={description} inputSetter={setDescription}  />
 
                     <Message message={message}/>
-                    <br/>
 
                     <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)}
                                     handleClose={handleClose.bind(this)}/>

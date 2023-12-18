@@ -11,7 +11,6 @@ function UpdateActivityModal(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [description, setDescription] = useState(props.description);
     const [timeSpentInMinutes, setTimeSpentInMinutes] = useState(props.time);
-    const [completed, setCompleted] = useState(false);
     const [newCategoryName, setNewCategoryName] = useState("");
     const [categories, setCategories] = useState([]);
     const [categoryName, setCategoryName] = useState(props.categoryName);
@@ -19,7 +18,10 @@ function UpdateActivityModal(props) {
     const [message, setMessage] = useState("");
     const [priority, setPriority] = useState(3)
 
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+        getCategories();
+        setIsOpen(true);
+    }
     const handleClose = () => {
         setIsOpen(false);
         setMessage("");
@@ -34,8 +36,6 @@ function UpdateActivityModal(props) {
         setCategories(categories)
     }
 
-    useEffect(() => getCategories, []);
-
     async function handleSubmitForm(e) {
         e.preventDefault();
 
@@ -47,7 +47,7 @@ function UpdateActivityModal(props) {
             description,
             timeSpentInMinutes,
             props.date,
-            completed,
+            props.completed,
             selected
         ]
 

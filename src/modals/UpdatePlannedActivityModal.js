@@ -12,7 +12,6 @@ function UpdatePlannedActivityModal(props) {
     const [description, setDescription] = useState(props.description);
     const [startTime, setStartTime] = useState(props.startTime);
     const [endTime, setEndTime] = useState(props.endTime);
-    const [completed, setCompleted] = useState(false);
     const [categoryName, setCategoryName] = useState(props.categoryName);
     const [newCategoryName, setNewCategoryName] = useState("");
     const [categories, setCategories] = useState([]);
@@ -46,7 +45,7 @@ function UpdatePlannedActivityModal(props) {
             description,
             0,
             props.date,
-            completed,
+            props.completed,
             selected,
             startTime,
             endTime

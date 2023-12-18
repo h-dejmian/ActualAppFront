@@ -5,6 +5,7 @@ import SubmitAndClose from "./SubmitAndClose";
 import Message from "../messages/Message";
 import customStyles from "./style/ModalStyles";
 import {api} from "../App";
+import FormInput from "./inputs/FormInput";
 
 function UpdateCategoryModal(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -57,14 +58,11 @@ function UpdateCategoryModal(props) {
                 <hr/>
                 <br/>
                 <form onSubmit={handleSubmitForm} method="PUT">
-                    <label>Name</label>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)}/><br/>
+                    <FormInput type="text" label="Name" value={name} inputSetter={setName}  />
 
                     <label>Priority</label>
                     <input type="number" value={priority} min="1" max="7"
-                           onChange={(e) => setPriority(e.target.value)}/> <br/>
-
-                    <br/><br/>
+                           onChange={(e) => setPriority(e.target.value)}/>
 
                     <Message message={message}/>
 
