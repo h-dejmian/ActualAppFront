@@ -5,6 +5,8 @@ import Message from "../messages/Message";
 import {api} from "../App";
 import SubmitAndClose from "./SubmitAndClose";
 import customStyles from "./style/ModalStyles";
+import FormInput from "./inputs/FormInput";
+import CategoriesSelect from "./inputs/CategoriesSelect";
 
 
 function UpdatePlannedActivityModal(props) {
@@ -95,26 +97,11 @@ function UpdatePlannedActivityModal(props) {
                 <hr/>
                 <br/>
                 <form>
-                    <label>Description</label>
-                    <input type="text" value={description}  onChange={(e) => setDescription(e.target.value)}/><br/>
+                    <FormInput type="text" label="Description" value={description} inputSetter={setDescription}  />
+                    <FormInput type="time" label="Start Time" value={startTime} inputSetter={setStartTime}  />
+                    <FormInput type="time" label="End Time" value={endTime} inputSetter={setEndTime}  />
 
-                    <label>Start Time</label>
-                    <input type="time"  value={startTime}
-                           onChange={(e) => setStartTime(e.target.value)}/> <br/>
-                    <label>End Time</label>
-                    <input type="time"  value={endTime}
-                           onChange={(e) => setEndTime(e.target.value)}/> <br/>
-
-                    <label htmlFor="categories">Choose category from the list :  </label>
-                    <select defaultValue={categoryName} onChange={ e => handleSelect(e)} name="categories" id="categories-dropdown">
-                        <option value={categoryName}> {categoryName} </option>
-
-                        {categories.filter(category => category.name !== categoryName)
-                            .map((category, index) => (<option key={index} value={category.name}>{category.name}</option>))}
-
-                    </select>
-
-                    <br/><br/>
+                    <CategoriesSelect handleSelect={handleSelect} categories={categories} />
 
                     <div>
                         <label>Or create new category</label>
@@ -127,9 +114,8 @@ function UpdatePlannedActivityModal(props) {
 
                         <button className="button-lg" type="button" onClick={handleNewCategoryButton}> Add new category to list </button>
                     </div>
-                    <Message message={message} />
 
-                    <br/><br/>
+                    <Message message={message} />
 
                     <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)} handleClose={handleClose.bind(this)} />
 

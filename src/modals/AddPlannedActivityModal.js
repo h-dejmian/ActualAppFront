@@ -117,8 +117,6 @@ function AddPlannedActivityModal(props) {
 
                     <Message message={message}/>
 
-                    <br/>
-
                     <SubmitAndClose handleSubmitForm={handleSubmitForm.bind(this)}
                                     handleClose={handleClose.bind(this)}/>
 

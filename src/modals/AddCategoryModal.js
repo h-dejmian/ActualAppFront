@@ -67,8 +67,9 @@ function AddCategoryModal(props) {
                 <form onSubmit={handleSubmitForm} method="POST">
                     <FormInput type="text" label="Name" value={name} inputSetter={setName}  />
 
-                    <label>Priority</label>
-                    <input  type="number" value={priority} min="1"  max="7" onChange={(e) => setPriority(e.target.value)}/> <br/>
+                    <FormInput type="number"  label="Priority"
+                               value={priority} inputSetter={setPriority}
+                               min="1" max="7"/>
 
                     <Message message={message} />
 

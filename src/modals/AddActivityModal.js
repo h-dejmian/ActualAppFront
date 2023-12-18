@@ -1,12 +1,10 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Modal from 'react-modal';
 import '../css/modal.css'
 import Message from "../messages/Message";
 import {api} from "../App";
 import SubmitAndClose from "./SubmitAndClose";
 import customStyles from "./style/ModalStyles";
-import DescriptionInput from "./inputs/DescriptionInput";
-import TimeSpentInput from "./inputs/TimeSpentInput";
 import CategoriesSelect from "./inputs/CategoriesSelect";
 import NewCategoryInput from "./inputs/NewCategoryInput";
 import FormInput from "./inputs/FormInput";
@@ -111,7 +109,9 @@ function AddActivityModal(props) {
                 <br/>
                 <form>
                     <FormInput type="text" label="Description" value={description} inputSetter={setDescription}  />
-                    <TimeSpentInput timeSpentInMinutes={timeSpentInMinutes} setTimeSpentInMinutes={setTimeSpentInMinutes} />
+                    <FormInput type="number"  label="Time spent in minutes"
+                               value={timeSpentInMinutes} inputSetter={setTimeSpentInMinutes}
+                               min="0" max="1440"/>
 
                     <CategoriesSelect handleSelect={handleSelect} categories={categories} />
 
